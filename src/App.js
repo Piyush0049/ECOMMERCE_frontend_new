@@ -47,7 +47,7 @@ function App() {
       store.dispatch(userdataaccess());
       getsapikey();
     }
-  }, [dispatch, isAuthenticated, user]); 
+  }, [dispatch, isAuthenticated, user, Stripeapikey]); 
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
