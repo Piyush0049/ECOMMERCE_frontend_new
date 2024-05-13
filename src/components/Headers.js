@@ -36,7 +36,7 @@ function Headers() {
   }
 
   const { _id } = useSelector((state) => state.userdetails.user);
-  if(isAuthenticated){
+  if(isAuthenticated && cartitems!== null){
   let selectedproducts = cartitems.filter((item) => item.user_id === _id);
   console.log(selectedproducts);
   }
