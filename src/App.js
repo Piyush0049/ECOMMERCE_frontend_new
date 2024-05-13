@@ -1,50 +1,68 @@
-import React, { useEffect, useState } from "react";
-import { HashRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-
 import Headers from "./components/Headers";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Prodpage from "./components/Prodpage";
-import Allproducts from "./components/Allproducts";
+import Allproducts from "./components/Allproducts"
 import Searchbar from "./components/Searchbar";
 import LoginPage from "./components/Login";
 import Account from "./components/Account";
 import Getnewpassword from "./components/Getnewpassword";
+import { useDispatch, useSelector } from "react-redux";
+import store from "./store";
+import { useEffect, useState } from "react";
+import { userdataaccess } from "./components/actions/useractions";
+import React from "react";
 import Forgotpassword from "./components/Forgotpassword";
 import Mycart from "./components/Mycart";
 import Shippingpage from "./components/Shippingpage";
-import Payment from "./components/Payment";
+import Payment from "./components/Payment"
 import ConfirmOrder from "./components/ConfirmOrder";
+import axios from "axios";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
-import { userdataaccess } from "./components/actions/useractions";
-
 function App() {
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state) => state.userdetails);
-  const [Stripeapikey, setStripeapikey] = useState("");
+  const [Stripeapikey, setstripeapikey] = useState("");
+  const { user, isAuthenticated } = useSelector((state) => state.userdetails);
 
   const getsapikey = async () => {
-    try {
-      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey");
-      setStripeapikey(data.stripeapikey);
-    } catch (error) {
-      console.error("Error fetching Stripe API key:", error);
-    }
-  };
-
+    const { data } = await axios.get("/api/v1/stripeapikey");
+    setstripeapikey(data.stripeapikey);
+    console.log(Stripeapikey + "zmozpnp")
+  }
   useEffect(() => {
+    console.log(JSON.stringify(user))
+    getsapikey();
     if (isAuthenticated) {
-      dispatch(userdataaccess());
+      store.dispatch(userdataaccess());
       getsapikey();
     }
-  }, [dispatch, isAuthenticated]);
+  }, [dispatch]);
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+        };
+        
+        console.log(windowWidth);
+        window.addEventListener('resize', handleResize);
+
+        // Cleanup function to remove event listener
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [windowWidth]);
   return (
     <>
       <Router>
@@ -61,33 +79,23 @@ function App() {
               <Route path="/search" element={<Searchbar />} />
               <Route path="/account" element={<Account />} />
               <Route path="/password/forgot" element={<Forgotpassword />} />
-              <Route path="/auth/password/reset/:id" element={<Getnewpassword />} />
               <Route path="/mycart" element={<Mycart />} />
+              <Route path="/auth/password/reset/:id" element={<Getnewpassword />} />
               <Route path="/shipping" element={<Shippingpage />} />
-              <Route
-                path="/confirmorder"
-                element={
-                  <ConfirmOrder />
-                }
-              />
-              <Route
-                path="/dashboard"
-                element={<Dashboard />}
-              />
+              <Route path="/confirmorder" element={<ConfirmOrder />} />
+              <Route path="/dashboard" element={<Dashboard/>}></Route>
               <Route
                 path="/payment"
                 element={
-                  Stripeapikey ? (
+                  Stripeapikey  && (
                     <Elements stripe={loadStripe(Stripeapikey)}>
                       <Payment />
                     </Elements>
-                  ) : (
-                    <Navigate to="/login" />
                   )
                 }
               />
               <Route path="/success" element={<Success />} />
-              <Route path="/myorders" element={<Myorders />} />
+              <Route path="/myorders" element={<Myorders/>} />
             </>
           ) : (
             <>
@@ -105,8 +113,8 @@ function App() {
               <Route path="/shipping" element={<LoginPage />} />
               <Route path="/payment" element={<LoginPage />} />
               <Route path="/confirmorder" element={<LoginPage />} />
-              <Route path="/myorders" element={<LoginPage />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/myorders" element={<LoginPage/>} />
+              <Route path="/dashboard" element={<Dashboard/>}/>
             </>
           )}
         </Routes>
