@@ -35,7 +35,7 @@ function App() {
   const { user, isAuthenticated } = useSelector((state) => state.userdetails);
 
   const getsapikey = async () => {
-    const { data } = await axios.get("/api/v1/stripeapikey");
+    const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey");
     setstripeapikey(data.stripeapikey);
     console.log(Stripeapikey + "zmozpnp")
   }
