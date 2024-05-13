@@ -15,7 +15,7 @@ import Account from "./components/Account";
 import Getnewpassword from "./components/Getnewpassword";
 import { useDispatch, useSelector } from "react-redux";
 import store from "./store";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react"; // Import useCallback
 import { userdataaccess } from "./components/actions/useractions";
 import React from "react";
 import Forgotpassword from "./components/Forgotpassword";
@@ -34,35 +34,34 @@ function App() {
   const [Stripeapikey, setstripeapikey] = useState("");
   const { user, isAuthenticated } = useSelector((state) => state.userdetails);
 
-  const getsapikey = async () => {
-    const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey");
-    setstripeapikey(data.stripeapikey);
-    console.log(Stripeapikey + "zmozpnp")
-  }
   useEffect(() => {
+    const getsapikey = async () => {
+      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey");
+      setstripeapikey(data.stripeapikey);
+      console.log(Stripeapikey + "zmozpnp")
+    }
+
     console.log(JSON.stringify(user))
     getsapikey();
     if (isAuthenticated) {
       store.dispatch(userdataaccess());
       getsapikey();
     }
-  }, [dispatch, isAuthenticated, getsapikey,user ]);
+  }, [dispatch, isAuthenticated, user]); 
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-        
-        console.log(windowWidth);
-        window.addEventListener('resize', handleResize);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
 
-        // Cleanup function to remove event listener
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [windowWidth]);
+    console.log(windowWidth);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [windowWidth]);
   return (
     <>
       <Router>
