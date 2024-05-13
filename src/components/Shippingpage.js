@@ -21,7 +21,7 @@ const LocationSelector = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [windowWidth]);
   var shippingdet = "";
   const a = localStorage.getItem("shippingdetails");
   if (a !== "" || a !== null) {

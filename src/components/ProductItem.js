@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import ReactStars from 'react-rating-stars-component';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 function ProductItem({ product, innerWidth }) {
 

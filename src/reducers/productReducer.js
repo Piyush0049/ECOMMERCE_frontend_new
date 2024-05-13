@@ -1,4 +1,4 @@
-import { ALL_PRODUCT_FAIL, ALL_PRODUCT_SUCCESS, ALL_PRODUCT_REQUEST, CLEAR_ALL_ERRORS, PRODUCT_DETAIL_REQUEST, PRODUCT_DETAIL_FAIL, PRODUCT_DETAIL_SUCCESS, PRODUCT_REVIEW_REQUEST, PRODUCT_REVIEW_SUCCESS, PRODUCT_REVIEW_FAIL, PRODUCT_UPDATE_REQUEST,PRODUCT_UPDATE_FAIL,PRODUCT_UPDATE_SUCCESS } from "../components/constants/productConstants";
+import { ALL_PRODUCT_FAIL, ALL_PRODUCT_SUCCESS, ALL_PRODUCT_REQUEST, CLEAR_ALL_ERRORS, PRODUCT_DETAIL_REQUEST, PRODUCT_DETAIL_FAIL, PRODUCT_DETAIL_SUCCESS, PRODUCT_REVIEW_REQUEST, PRODUCT_REVIEW_SUCCESS, PRODUCT_REVIEW_FAIL, PRODUCT_UPDATE_REQUEST,PRODUCT_UPDATE_FAIL } from "../components/constants/productConstants";
 
 export const productreducer = (state = { products: [] }, action) => {
     switch (action.type) {
@@ -46,7 +46,7 @@ export const productreducer = (state = { products: [] }, action) => {
         };
       case PRODUCT_DETAIL_SUCCESS:
       case PRODUCT_REVIEW_SUCCESS:
-      case PRODUCT_UPDATE_REQUEST:
+      case PRODUCT_UPDATE_SUCCESS:
         return {
           ...state,
           loading: false,

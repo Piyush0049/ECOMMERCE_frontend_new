@@ -29,7 +29,7 @@ function Prodpage() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [windowWidth]);
 
 
   const subreview = () => {
@@ -218,11 +218,11 @@ function Prodpage() {
               {product.images &&
                 product.images.map((item, i) => (
                   <img
-                    key={item.url}
-                    src={item.url}
-                    alt={`Product Image ${i + 1}`}
-                    style={styles.image} // Product image
-                  />
+                  key={item.url}
+                  src={item.url}
+                  alt={`Product ${i + 1}`} // Provide a concise and descriptive alternative text
+                  style={styles.image} // Product image
+                />                
                 ))}
             </Carousal>
           </div>

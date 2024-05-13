@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as  Link } from 'react-router-dom';
 import profilepic from "./snap--shop-high-resolution-logo.png"
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -23,7 +23,6 @@ function Headers() {
   const { cartitems } = useSelector((state) => state.cart)
   const { isAuthenticated, user } = useSelector((state) => state.userdetails);
   const [showMessage, setShowMessage] = useState(false);
-  const [showLogoutPrompt, setShowLogoutPrompt] = useState(false);
   
 
 
@@ -40,16 +39,6 @@ function Headers() {
       dispatch(deleteuser());
     }
   }
-  const modalStyle = {
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: 'white',
-    padding: '20px',
-    borderRadius: '5px',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.3)',
-  };
 
   const { _id } = useSelector((state) => state.userdetails.user);
   let selectedproducts = cartitems.filter((item) => item.user_id === _id);
@@ -70,13 +59,13 @@ function Headers() {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [windowWidth]);
   const a =  windowWidth >= 692 ? "0" : '2' ;
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark" style={headerStyle}>
         <div className="container-fluid">
-          <a className="navbar-brand" href="#" style={{ fontSize: windowWidth >= 692 ? "20px" : '60px' }}>Snap & Shop</a>
+          <a className="navbar-brand" style={{ fontSize: windowWidth >= 692 ? "20px" : '60px' }}>Snap & Shop</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -97,7 +86,7 @@ function Headers() {
 
 
               <li className="nav-item">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>
+                <a className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>
                   Your Account<i className="fa-solid fa-user" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}></i>
                 </a>
                 <ul className="dropdown-menu" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px', position:  'absolute', top: '100%', left: windowWidth > 768 ? "32%" : "190px", transform: 'translateX(-50%)' }}>

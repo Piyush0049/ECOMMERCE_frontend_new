@@ -25,10 +25,9 @@ const MyCart = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [windowWidth]);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { id } = useParams();
     const { cartitems } = useSelector((state) => state.cart);
     const { _id } = useSelector((state) => state.userdetails.user);
     const { isAuthenticated } = useSelector((state) => state.userdetails);

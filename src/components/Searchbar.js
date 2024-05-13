@@ -39,7 +39,7 @@ const SearchBar = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [windowWidth]);
     return (
         <div style={{ backgroundImage: `url(${backimage})`, backgroundSize: 'cover', minHeight: windowWidth >= 692 ? '1200px' : '3000px', height : "auto",
         width : "auto",// Adjusted height based on window width

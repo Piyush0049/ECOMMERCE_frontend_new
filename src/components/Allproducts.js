@@ -17,7 +17,7 @@ function Allproducts() {
     const params = useParams();
     useEffect(() => {
         dispatch(allproducts(params.keyword, pagenum, range[0], range[1], categ));
-    }, [dispatch, pagenum, params.keyword, range[0], range[1], categ]);
+    }, [dispatch, pagenum, params, categ, range]);
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -33,7 +33,7 @@ function Allproducts() {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [windowWidth]);
 
     const { products, resultperpage, productcount } = useSelector((state) => state.products);
     const containerStyle = {
@@ -55,8 +55,7 @@ function Allproducts() {
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundRepeat: 'repeat', // Set background image to repeat
-        minHeight: '100vh',
+        backgroundRepeat: 'repeat', 
         minHeight: windowWidth >= 692 ? '1200px' : '3000px', // Adjusted height based on window width
         minWidth: windowWidth >= 692 ? '1540px' : '1540px',
         height : "auto",
@@ -86,11 +85,11 @@ function Allproducts() {
     return (
         <Fragment>
             <div style={pageStyle}>
-                <h3 style={{ fontFamily: "revert", position: "absolute", left: '40%', color: "black", textAlign: "center", fontSize: windowWidth >= 692 ? '60px' : '80px', marginTop: windowWidth >= 692 ? '80px' : '120px', fontFamily: "fantasy", whiteSpace : "nowrap" }}>All Products</h3>
+                <h3 style={{ fontFamily: "revert", position: "absolute", left: '40%', color: "black", textAlign: "center", fontSize: windowWidth >= 692 ? '60px' : '80px', marginTop: windowWidth >= 692 ? '80px' : '120px', whiteSpace : "nowrap" }}>All Products</h3>
                 <hr style={{ position: "absolute", top: "140px", borderWidth: "2px", marginLeft: "300px", marginRight: "300px", zIndex: 2 }} />
                 <div style={{ width: 250, position: "relative", top: "200px", left: "50px", zIndex: 4 }}>
                     <Typography id="range-slider" gutterBottom style={{ color: "#333", marginBottom: "5px", fontSize: windowWidth >= 692 ? '20px' : '40px', fontWeight: "bold", background: 'rgba(255, 255, 255, 0.7)', padding: '10px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.9)' }}>
-                        Amount <i class="fa-solid fa-filter"></i>
+                        Amount <i className="fa-solid fa-filter"></i>
                     </Typography>
                     <Slider
                         value={range}

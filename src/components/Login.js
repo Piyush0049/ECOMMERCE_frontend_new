@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import backgroundImage from './snapedit_1710097319045.jpeg';
 import { Link } from 'react-router-dom';
 import { IconButton, makeStyles } from '@material-ui/core';
-import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { userlogin } from './actions/useractions';
 import { usersignup } from './actions/useractions';
 import { useNavigate } from 'react-router-dom';
@@ -24,12 +23,10 @@ const LoginPage = () => {
     const [username, setusername] = useState('');
     const [cpassword, setcpassword] = useState('');
     const [login, setlogin] = useState("login");
-    const [image, setImage] = useState(null);
     const dispatch = useDispatch();
     const [showloginPassword, setShowloginPassword] = useState(true);
     const [showsignupPassword, setShowsignupPassword] = useState(true);
     const [showsignupcPassword, setShowsignupcPassword] = useState(true);
-    const { isAuthenticated, user } = useSelector((state) => state.userdetails);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
@@ -44,7 +41,7 @@ const LoginPage = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [windowWidth]);
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

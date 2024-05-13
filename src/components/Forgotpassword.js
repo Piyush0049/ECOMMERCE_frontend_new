@@ -31,7 +31,7 @@ const Forgotpassword = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [windowWidth]);
     return (
         <div style={{
             display: 'flex',

@@ -21,14 +21,13 @@ const Payment = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [windowWidth]);
   const [paymentError, setPaymentError] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
   const totalprice = Number(localStorage.getItem("totalprice"));
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.userdetails);
   const dispatch = useDispatch();
   const totalmoney = totalprice;
   const { cartitems } = useSelector((state) => state.cart)
@@ -43,15 +42,6 @@ const Payment = () => {
     postal_code: "125001",
   };
 
-
-  const shippinginfo = {
-    address: shippingdet.userDetails.address,
-    city: JSON.parse(localStorage.getItem("shippingdetails")).selectedCity.label,
-    state: JSON.parse(localStorage.getItem("shippingdetails")).selectedState.value,
-    country: "US",
-    pincode: 125001,
-    phoneno: shippingdet.userDetails.phone,
-  };
 
 
   const orderdis = {

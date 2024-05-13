@@ -20,9 +20,8 @@ const ConfirmOrder = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [windowWidth]);
     const navigate = useNavigate();
-    const { id } = useParams();
     const { cartitems } = useSelector((state) => state.cart);
     useEffect(() => {
         // Scroll to the top when the component mounts

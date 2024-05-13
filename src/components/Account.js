@@ -7,21 +7,6 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 
 const Account = () => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-        
-        console.log(windowWidth);
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup function to remove event listener
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
     const dispatch = useDispatch();
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
@@ -321,12 +306,10 @@ const styles = {
         zIndex: 2
     },
     label1: {
-        fontWeight: 'bold',
         marginBottom: '5px',
         color: '#555',
         zIndex: 2,
         fontSize: window.innerWidth >= 692 ? '35px' : '50px',
-        marginBottom: '30px',
         textAlign: "center",
         fontWeight: "bold",
     },

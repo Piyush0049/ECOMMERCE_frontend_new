@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import backgrd from "./snapedit_1711285995245.jpeg";
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -8,7 +7,6 @@ const Myorders = () => {
     const { orderdet } = useSelector((state) => state.myorders);
     console.log("knsonono", orderdet)
     const { user } = useSelector((state) => state.userdetails);
-    const a = localStorage.getItem("myorder");
     const userid = user._id;
     var filteredOrders = [];
     if(orderdet[0] !==null){
@@ -29,10 +27,10 @@ const Myorders = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, []);
+    }, [windowWidth]);
     return (<>
             <div>
-                {filteredOrders.length != 0 && orderdet[0] !==null ? filteredOrders.map((order) => (
+                {filteredOrders.length !== 0 && orderdet[0] !==null ? filteredOrders.map((order) => (
                     <div key={order._id} style={{ position: 'relative', minHeight: '1450px' }}>
                         <div style={{
                             minHeight: windowWidth >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
@@ -141,10 +139,6 @@ const styles = {
         borderRadius: '5px',
         padding: '10px',
     },
-    productList: {
-        marginTop: '10px',
-    },
-
     hr2: {
         borderWidth: "2px",
         opacity: 0.6,

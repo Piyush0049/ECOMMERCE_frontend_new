@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getallorders, updatestatus } from "./actions/orderactions"
 import { getallusers } from './actions/useractions';
 import axios from 'axios';
-import { updateproduct } from './actions/productActions';
 const Dashboard = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -19,12 +18,11 @@ const Dashboard = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [windowWidth]);
   const dispatch = useDispatch();
   const { orderdets } = useSelector((state) => state.allorders)
   const { work } = useSelector((state) => state.userdetails.user);
   const [opt, setopt] = useState("");
-  const { orderdet } = useSelector((state) => state.myorders);
   const [selectedorder, setselectedorder] = useState("");
   const [theproduct, settheproduct] = useState("");
   const { user } = useSelector((state) => state.userdetails);
@@ -41,12 +39,12 @@ const Dashboard = () => {
   })
   useEffect(() => {
     dispatch(getallorders())
-  }, [getallorders]);
+  }, [dispatch]);
 
 
   useEffect(() => {
     dispatch(getallusers())
-  }, [dispatch, getallusers]);
+  }, [dispatch]);
 
   const [selectedStatus, setSelectedStatus] = useState("");
   const handleSelectChange = (event) => {
@@ -221,9 +219,69 @@ const Dashboard = () => {
               <h1 style={{ position: "relative", top: windowWidth >= 692 ? '50px' : '100px', fontFamily: "monospace", textDecoration: "underline", fontSize: windowWidth >= 692 ? null : '70px', whiteSpace: 'nowrap' }}><b>Admin Dashboard: </b></h1>
               <nav style={navStyle}>
                 <ul style={{ display: "flex", textDecoration: "none", listStyle: 'none', position: "relative", left: windowWidth >= 692 ? "160px" : '220px', marginTop: windowWidth >= 692 ? '15px' : '150px', marginBottom: "15px" }}>
-                  <li><a style={{ cursor: "pointer", textDecoration: "underline", marginRight: "30px", fontSize: windowWidth >= 692 ? '21px' : '50px', fontFamily: "monospace", color: "gray", transition: "color 0.3s ease", ":hover": { color: "black" }, whiteSpace: 'nowrap' }} onMouseEnter={(e) => e.target.style.color = 'black'} onMouseLeave={(e) => e.target.style.color = 'gray'} t onClick={() => { setopt("orders") }}>All Orders</a></li>
-                  <li><a style={{ cursor: "pointer", textDecoration: "underline", marginRight: "30px", fontSize: windowWidth >= 692 ? '21px' : '50px', fontFamily: "monospace", color: "gray", transition: "color 0.3s ease", ":hover": { color: "black" }, whiteSpace: 'nowrap' }} onMouseEnter={(e) => e.target.style.color = 'black'} onMouseLeave={(e) => e.target.style.color = 'gray'} t onClick={() => { setopt("products") }}>All Products</a></li>
-                  <li><a style={{ cursor: "pointer", textDecoration: "underline", marginRight: "30px", fontSize: windowWidth >= 692 ? '21px' : '50px', fontFamily: "monospace", color: "gray", transition: "color 0.3s ease", ":hover": { color: "black" }, whiteSpace: 'nowrap' }} onMouseEnter={(e) => e.target.style.color = 'black'} onMouseLeave={(e) => e.target.style.color = 'gray'} t onClick={() => { setopt("customers") }}>All Users</a></li>
+                  import {Link} from "react-router-dom";
+
+                  // Inside your component...
+                  <li>
+                    <Link
+                      to="/orders"
+                      style={{
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                        marginRight: "30px",
+                        fontSize: windowWidth >= 692 ? '21px' : '50px',
+                        fontFamily: "monospace",
+                        color: "gray",
+                        transition: "color 0.3s ease",
+                        whiteSpace: 'nowrap'
+                      }}
+                      onMouseEnter={(e) => e.target.style.color = 'black'}
+                      onMouseLeave={(e) => e.target.style.color = 'gray'}
+                      onClick={() => { setopt("orders") }}
+                    >
+                      All Orders
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/products"
+                      style={{
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                        marginRight: "30px",
+                        fontSize: windowWidth >= 692 ? '21px' : '50px',
+                        fontFamily: "monospace",
+                        color: "gray",
+                        transition: "color 0.3s ease",
+                        whiteSpace: 'nowrap'
+                      }}
+                      onMouseEnter={(e) => e.target.style.color = 'black'}
+                      onMouseLeave={(e) => e.target.style.color = 'gray'}
+                      onClick={() => { setopt("products") }}
+                    >
+                      All Products
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/customers"
+                      style={{
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                        marginRight: "30px",
+                        fontSize: windowWidth >= 692 ? '21px' : '50px',
+                        fontFamily: "monospace",
+                        color: "gray",
+                        transition: "color 0.3s ease",
+                        whiteSpace: 'nowrap'
+                      }}
+                      onMouseEnter={(e) => e.target.style.color = 'black'}
+                      onMouseLeave={(e) => e.target.style.color = 'gray'}
+                      onClick={() => { setopt("customers") }}
+                    >
+                      All Users
+                    </Link>
+                  </li>
                 </ul>
               </nav>
             </header>
@@ -696,20 +754,6 @@ const navStyle = {
   right: "870px",
   top: "100px",
   display: "flex"
-};
-
-const mainSectionStyle = {
-  marginBottom: '40px',
-};
-
-const orderListStyle = {
-  border: '1px solid #ccc',
-  padding: '10px',
-};
-
-const footerStyle = {
-  textAlign: 'center',
-  marginTop: '40px',
-};
+}
 
 export default Dashboard;
