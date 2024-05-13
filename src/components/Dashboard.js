@@ -79,12 +79,12 @@ const Dashboard = () => {
     };
     let data;
     if (w === "admin") {
-      const response = await axios.put("/auth/changerole", { email: e, work: "user" }, config);
+      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "user" }, config);
       data = response.data;
       window.alert(`The role of the user with email : ${e} has been changed to ADMIN`);
     }
     if (w === "user") {
-      const response = await axios.put("/auth/changerole", { email: e, work: "admin" }, config);
+      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "admin" }, config);
       data = response.data;
       window.alert(`The role of the user with email : ${e} has been changed to ADMIN.`);
     }
@@ -129,7 +129,7 @@ const Dashboard = () => {
 
   const deleteprod = async (id) => {
     if (window.confirm("Are you sure want to delete the product?")) {
-      await axios.delete(`/api/v1/product/${id}`);
+      await axios.delete(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${id}`);
       window.alert('Product has been deleted successfully!');
     }
   }
@@ -166,7 +166,7 @@ const Dashboard = () => {
       "Content-type": "application/json"
     }
     console.log(editimageurl)
-    const { data } = await axios.put(`/api/v1/product/${editedProduct[0]._id}`, {
+    const { data } = await axios.put(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${editedProduct[0]._id}`, {
       name: editedProduct[0].name, description: editedProduct[0].description, price: editedProduct[0].price, category: editedProduct[0].category, stock: editedProduct[0].stock, images: {
         public_id: "public",
         url: editimageurl
@@ -187,7 +187,7 @@ const Dashboard = () => {
         }
       };
       try {
-        const { data } = await axios.post("/api/v1/product/create", {
+        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/create", {
           name: newproduct.name,
           description: newproduct.description,
           price: newproduct.price,

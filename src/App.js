@@ -31,7 +31,7 @@ function App() {
 
   const getsapikey = async () => {
     try {
-      const { data } = await axios.get("/api/v1/stripeapikey");
+      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey");
       setStripeapikey(data.stripeapikey);
     } catch (error) {
       console.error("Error fetching Stripe API key:", error);

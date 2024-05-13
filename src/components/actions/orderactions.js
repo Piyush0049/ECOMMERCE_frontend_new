@@ -6,7 +6,7 @@ export const createorder = (order) => async (dispatch, getState) => {
         const config = {
             "Content-Type": "application/json"
         }
-        const { data } = await axios.post("/api/v1/order/create", order, config)
+        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/order/create", order, config)
         dispatch({
             type: USER_ORDER_SUCCESS,
             payload: data
@@ -28,7 +28,7 @@ export const updatestatus = (orderid, orderStatus) => async (dispatch, getState)
         const config = {
             "Content-Type": "application/json"
         }
-        const { data } = await axios.put(`/api/v1/updateorder/${orderid}`, {orderStatus} , config);
+        const { data } = await axios.put(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/updateorder/${orderid}`, {orderStatus} , config);
         console.log(data)
         dispatch({
             type: USER_ORDERSTAT_SUCCESS,
@@ -50,7 +50,7 @@ export const updatestatus = (orderid, orderStatus) => async (dispatch, getState)
 export const getallorders = () => async (dispatch, getState) => {
     try {
         dispatch({ type: ALL_ORDERS_REQUEST })
-        const { data } = await axios.get("/api/v1/allorders")
+        const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/allorders")
         dispatch({
             type: ALL_ORDERS_SUCCESS,
             payload: data
