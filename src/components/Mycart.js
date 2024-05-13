@@ -2,7 +2,6 @@ import React from 'react';
 import backgroundimg from "./snapedit_1710779459498.jpeg";
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { addtocart } from './actions/cartactions';
 import { removefromcart } from './actions/cartactions';
 import { useNavigate } from 'react-router-dom';
