@@ -1,39 +1,34 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { BrowserRouter as Link } from 'react-router-dom';
-import profilepic from "./snap--shop-high-resolution-logo.png"
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import profilepic from "./snap--shop-high-resolution-logo.png";
+import { useState, useEffect } from 'react';
 import { deleteuser, userlogout } from './actions/useractions';
-import {
-  useEffect
 
-} from 'react';
 function Headers() {
   const dispatch = useDispatch();
   const headerStyle = {
-    position: 'fixed', // Fix the header position
-    top: 0, // Place at the top
-    width: '100%', // Make it span the entire width
-    zIndex: 999, // Ensure it appears above other content
+    position: 'fixed',
+    top: 0,
+    width: '100%',
+    zIndex: 999,
     backgroundColor: 'black',
     opacity: 0.7,
     color: '#ffffff',
   };
-  const { cartitems } = useSelector((state) => state.cart)
+
+  const { cartitems } = useSelector((state) => state.cart);
   const { isAuthenticated, user } = useSelector((state) => state.userdetails);
   const [showMessage, setShowMessage] = useState(false);
-
-
 
   const logout = () => {
     if (window.confirm("Are you sure you want to log out?")) {
       localStorage.setItem("cartitem", "");
       localStorage.setItem("shippingdetails", null);
       dispatch(userlogout());
-
     }
   }
+
   const deleteaccount = () => {
     if (window.confirm("Are you sure you want to DELETE your Account?")) {
       dispatch(deleteuser());
@@ -44,7 +39,6 @@ function Headers() {
   let selectedproducts = cartitems.filter((item) => item.user_id === _id);
   console.log(selectedproducts);
 
-  console.log(selectedproducts)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -60,72 +54,69 @@ function Headers() {
       window.removeEventListener('resize', handleResize);
     };
   }, [windowWidth]);
+
   const a = windowWidth >= 692 ? "0" : '2';
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark" style={headerStyle}>
         <div className="container-fluid">
-          <a href="/" className="navbar-brand" style={{ fontSize: windowWidth >= 692 ? "20px" : '60px' }}>Snap & Shop</a>
+          <Link to="/" className="navbar-brand" style={{ fontSize: windowWidth >= 692 ? "20px" : '60px' }}>Snap & Shop</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="/Home" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>Home</Link>
+                <Link to="/Home" className="nav-link" aria-current="page" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>Home</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/products" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>Products</Link>
+                <Link to="/products" className="nav-link" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>Products</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/myorders" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>My Orders</Link>
+                <Link to="/myorders" className="nav-link" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>My Orders</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/search" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>Search<i className="fa-solid fa-magnifying-glass" style={{ fontSize: windowWidth >= 692 ? "17px" : '45px' }}></i></Link>
+                <Link to="/search" className="nav-link" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>Search<i className="fa-solid fa-magnifying-glass" style={{ fontSize: windowWidth >= 692 ? "17px" : '45px' }}></i></Link>
               </li>
 
-
               <li className="nav-item">
-                <a href="#" className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>
+                <div className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>
                   Your Account<i className="fa-solid fa-user" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}></i>
-                </a>
+                </div>
                 <ul className="dropdown-menu" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px', position: 'absolute', top: '100%', left: windowWidth > 768 ? "32%" : "190px", transform: 'translateX(-50%)' }}>
                   {isAuthenticated && user.work === "admin" &&
-                    (<li><Link className="dropdown-item" to="/dashboard"><b>Dashboard</b></Link></li>)
+                    (<li><Link to="/dashboard" className="dropdown-item"><b>Dashboard</b></Link></li>)
                   }
 
                   {!isAuthenticated ?
-                    (<li><Link className="dropdown-item" to="/login">Log In</Link></li>)
+                    (<li><Link to="/login" className="dropdown-item">Log In</Link></li>)
                     :
                     (null)
                   }
 
-                  <li><Link className="dropdown-item" to="/account">My Account</Link></li>
-                  {isAuthenticated ?
+                  <li><Link to="/account" className="dropdown-item">My Account</Link></li>
+                  {isAuthenticated &&
                     (<>
-                      <li><a href="#" className="dropdown-item" onClick={() => logout()}>Log Out</a></li>
-                      <li><a href="#" className="dropdown-item" onClick={() => deleteaccount()}>Delete Account</a></li>
+                      <li><button className="dropdown-item" onClick={() => logout()}>Log Out</button></li>
+                      <li><button className="dropdown-item" onClick={() => deleteaccount()}>Delete Account</button></li>
                     </>)
-                    :
-                    (null)
                   }
                 </ul>
               </li>
 
-
               <li className="nav-item">
                 {isAuthenticated && (
                   <li className="nav-item" >
-                    <Link className="nav-link" to="/mycart" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>My Cart<i className="fa-solid fa-cart-shopping" style={{ fontSize: windowWidth >= 692 ? "20px" : '45px', marginTop: "3px" }}></i>
+                    <Link to="/mycart" className="nav-link" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>My Cart<i className="fa-solid fa-cart-shopping" style={{ fontSize: windowWidth >= 692 ? "20px" : '45px', marginTop: "3px" }}></i>
                       <span className={`position-absolute top-${a} start-45 translate-middle badge rounded-pill bg-danger`} style={{ width: windowWidth >= 692 ? "17px" : '30px', height: windowWidth >= 692 ? "17px" : '30px', fontSize: windowWidth >= 692 ? "10px" : '25px', textAlign: "center", marginTop: windowWidth > 768 ? "18px" : null, marginBottom: windowWidth > 768 ? null : "25px", marginLeft: "5px", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <p style={{ margin: "0" }}>
-                          {cartitems.length}</p>
+                        <p style={{ margin: "0" }}>{cartitems.length}</p>
                       </span>
                     </Link>
-
                   </li>
                 )}
               </li>
+
               <li className="nav-item">
                 {isAuthenticated && (
                   <>
@@ -134,7 +125,6 @@ function Headers() {
                       <div
                         style={{
                           position: 'absolute',
-
                           top: '100%',
                           left: windowWidth > 768 ? "50%" : "350px",
                           transform: 'translateX(-50%)',
@@ -148,21 +138,17 @@ function Headers() {
                         }}
                       >
                         Welcome, {user.username}. You are currently logged in.
-                      </div>)}
+                      </div>
+                    )}
                   </>
                 )}
               </li>
-
-
-
-
             </ul>
           </div>
         </div>
       </nav>
     </div>
   );
-
 }
-export default Headers;
 
+export default Headers;
