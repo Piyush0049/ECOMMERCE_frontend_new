@@ -46,7 +46,7 @@ function App() {
       store.dispatch(userdataaccess());
       getsapikey();
     }
-  }, [dispatch, isAuthenticated, getsapikey]);
+  }, [dispatch, isAuthenticated, getsapikey,user ]);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
