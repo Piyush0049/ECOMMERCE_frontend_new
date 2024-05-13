@@ -65,7 +65,7 @@ function Headers() {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark" style={headerStyle}>
         <div className="container-fluid">
-        <a href="/" className="navbar-brand" style={{ fontSize: windowWidth >= 692 ? "20px" : '60px' }}>Snap & Shop</a>
+          <a href="/" className="navbar-brand" style={{ fontSize: windowWidth >= 692 ? "20px" : '60px' }}>Snap & Shop</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
@@ -102,14 +102,16 @@ function Headers() {
 
                   <li><Link className="dropdown-item" to="/account">My Account</Link></li>
                   {isAuthenticated ?
-                    (<><li><Link className="dropdown-item" to="#" onClick={() => logout()}>Log Out</Link></li>
-                      <li><Link className="dropdown-item" to="#" onClick={() => deleteaccount()}>Delete Account</Link></li>
+                    (<>
+                      <li><a href="#" className="dropdown-item" onClick={() => logout()}>Log Out</a></li>
+                      <li><a href="#" className="dropdown-item" onClick={() => deleteaccount()}>Delete Account</a></li>
                     </>)
                     :
                     (null)
                   }
                 </ul>
               </li>
+
 
               <li className="nav-item">
                 {isAuthenticated && (
