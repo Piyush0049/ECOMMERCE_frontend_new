@@ -36,7 +36,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "serve -s build", 
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -59,8 +59,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://snap-n-shop-fullmernstack-ecommerce.onrender.com", 
-  "devDependencies": {
-    "serve": "^12.0.2"
+  "proxy": "https://snap-n-shop-fullmernstack-ecommerce.onrender.com",
+  "resolutions": {
+    "@types/react": "18.2.61"
   }
 }
