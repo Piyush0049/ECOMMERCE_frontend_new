@@ -26,7 +26,7 @@ import { userdataaccess } from "./components/actions/useractions";
 
 function App() {
   const dispatch = useDispatch();
-  const { user, isAuthenticated } = useSelector((state) => state.userdetails);
+  const { isAuthenticated } = useSelector((state) => state.userdetails);
   const [Stripeapikey, setStripeapikey] = useState("");
 
   const getsapikey = async () => {

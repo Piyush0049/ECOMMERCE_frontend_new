@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import backimg from "./snapedit_1710434121810.jpeg";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateuser, updateuserpassword } from './actions/useractions';

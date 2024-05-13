@@ -220,9 +220,6 @@ const Dashboard = () => {
               <h1 style={{ position: "relative", top: windowWidth >= 692 ? '50px' : '100px', fontFamily: "monospace", textDecoration: "underline", fontSize: windowWidth >= 692 ? null : '70px', whiteSpace: 'nowrap' }}><b>Admin Dashboard: </b></h1>
               <nav style={navStyle}>
                 <ul style={{ display: "flex", textDecoration: "none", listStyle: 'none', position: "relative", left: windowWidth >= 692 ? "160px" : '220px', marginTop: windowWidth >= 692 ? '15px' : '150px', marginBottom: "15px" }}>
-                  import {Link} from "react-router-dom";
-
-                  // Inside your component...
                   <li>
                     <Link
                       to="/orders"

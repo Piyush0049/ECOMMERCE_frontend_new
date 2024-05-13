@@ -1,6 +1,6 @@
 import React from 'react';
 import backimage from "./snapedit_1710779459498.jpeg";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
