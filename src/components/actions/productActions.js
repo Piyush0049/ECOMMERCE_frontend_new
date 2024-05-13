@@ -8,7 +8,7 @@ export const allproducts = (keyword = "", page = "", gt = 0, lt = 50000, categ =
         if (categ) {
             link = `https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/products?keyword=${keyword}&page=${page}&price[gt]=${gt}&price[lt]=${lt}&category=${categ}`;
         }
-        const { data } = await axios.get(link);
+        const { data } = await axios.get(link, { withCredentials: true});
         console.log(data + "oijsdoj")
         console.log("recieved value of keyword : " + keyword)
         dispatch({
@@ -33,7 +33,7 @@ export const resolveerror = async (dispatch) => {
 export const productdetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_DETAIL_REQUEST })
-        const { data } = await axios.get(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${id}`);
+        const { data } = await axios.get(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${id}`, { withCredentials: true});
         dispatch({
             type: PRODUCT_DETAIL_SUCCESS,
             payload: data.product
@@ -54,7 +54,7 @@ export const productreview = (productid, rating, comment) => async (dispatch) =>
         const config = {
             "Content-type": "application/json"
         }
-        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/addreview", { productid, rating, comment }, config);
+        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/addreview", { productid, rating, comment }, config, { withCredentials: true});
         dispatch({
             type: PRODUCT_REVIEW_SUCCESS,
             payload: data.product
@@ -80,7 +80,7 @@ export const updateproduct = (id, n, d, p, c, s, u) => async (dispatch) => {
                 public_id: "public",
                 url: u
             }
-        }, config);
+        }, config, { withCredentials: true});
         console.log(data);
         dispatch({
             type: PRODUCT_UPDATE_SUCCESS,

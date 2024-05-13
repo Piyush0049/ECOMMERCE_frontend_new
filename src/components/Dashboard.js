@@ -79,12 +79,12 @@ const Dashboard = () => {
     };
     let data;
     if (w === "admin") {
-      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "user" }, config);
+      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "user" }, config, { withCredentials: true});
       data = response.data;
       window.alert(`The role of the user with email : ${e} has been changed to ADMIN`);
     }
     if (w === "user") {
-      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "admin" }, config);
+      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "admin" }, config, { withCredentials: true});
       data = response.data;
       window.alert(`The role of the user with email : ${e} has been changed to ADMIN.`);
     }
@@ -129,7 +129,7 @@ const Dashboard = () => {
 
   const deleteprod = async (id) => {
     if (window.confirm("Are you sure want to delete the product?")) {
-      await axios.delete(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${id}`);
+      await axios.delete(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${id}`, { withCredentials: true});
       window.alert('Product has been deleted successfully!');
     }
   }
@@ -171,7 +171,7 @@ const Dashboard = () => {
         public_id: "public",
         url: editimageurl
       }
-    }, config);
+    }, config, { withCredentials: true});
     console.log(data);
     setopt("products");
     settheproduct("");
@@ -197,7 +197,7 @@ const Dashboard = () => {
             public_id: newproduct.images.public_id,
             url: newproduct.images.url
           }
-        }, config);
+        }, config, { withCredentials: true});
         console.log(data);
         console.log(newproduct + "smsmps");
       } catch (error) {

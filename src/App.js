@@ -36,7 +36,7 @@ function App() {
 
   useEffect(() => {
     const getsapikey = async () => {
-      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey");
+      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true});
       setstripeapikey(data.stripeapikey);
       console.log(Stripeapikey + "zmozpnp")
     }

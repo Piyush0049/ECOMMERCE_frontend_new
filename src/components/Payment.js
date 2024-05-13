@@ -82,7 +82,7 @@ const Payment = () => {
         const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/payment/process", {
           description: "Description of the export transaction goes here",
           amount: Math.round(totalprice * 100),
-        }, config);
+        }, config, { withCredentials: true});
 
         const clientSecret = data.client_secret;
         const result = await stripe.confirmCardPayment(clientSecret, {
