@@ -209,7 +209,7 @@ const MyCart = () => {
                     Total: ₹{getTotal().toFixed(2)}
                 </div>
 
-                {cartitems.length !== 0 && (
+                {cartitems.length !== 0 && cartitems !== null && (
                     <div style={{ textAlign: 'center', marginTop: '30px' }}>
                         <button style={styles.checkoutButton} onClick={navtoship}>Proceed</button>
                     </div>
