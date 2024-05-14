@@ -4,11 +4,12 @@ import { USER_LOGIN_FAIL, USER_LOGIN_SUCCESS, USER_LOGIN_REQUEST, USER_SIGNUP_FA
 export const userlogin = (email, password) => async (dispatch) => {
     try {
         dispatch({ type: USER_LOGIN_REQUEST });
-        const config = {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "https://main--golden-custard-15c962.netlify.app"
-        };
-        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/login", { email, password }, config, { withCredentials: true});
+        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/login", { email, password }, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          });
         dispatch({
             type: USER_LOGIN_SUCCESS,
             payload: data
@@ -24,10 +25,12 @@ export const userlogin = (email, password) => async (dispatch) => {
 export const usersignup = (userdata) => async (dispatch) => {
     try {
         dispatch({ type: USER_SIGNUP_REQUEST });
-        const config = {
-            "Content-Type": "application/json"
-        };
-        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/createuser", userdata, config, { withCredentials: true});
+        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/createuser", userdata, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          });
         dispatch({
             type: USER_SIGNUP_SUCCESS,
             payload: data
@@ -75,10 +78,12 @@ export const userlogout = () => async (dispatch) => {
 export const updateuser = (username, email) => async (dispatch) => {
     try {
         dispatch({ type: USER_UPDATE_REQUEST });
-        const config = {
-            "Content-Type": "application/json"
-        };
-        const { data } = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/updateprofile", { username, email }, config, { withCredentials: true});
+        const { data } = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/updateprofile", { username, email }, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          });
         dispatch({
             type: USER_UPDATE_SUCCESS,
             payload: data
@@ -95,10 +100,12 @@ export const updateuser = (username, email) => async (dispatch) => {
 export const updateuserpassword = (oldpassword, newpassword, confirmpassword) => async (dispatch) => {
     try {
         dispatch({ type: USER_UPDATEPASS_REQUEST });
-        const config = {
-            "Content-Type": "application/json"
-        };
-        const { data } = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/updatepassword", { oldpassword, newpassword, confirmpassword }, config, { withCredentials: true});
+        const { data } = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/updatepassword", { oldpassword, newpassword, confirmpassword },{
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          });
         dispatch({
             type: USER_UPDATEPASS_SUCCESS,
             payload: data
@@ -130,10 +137,12 @@ export const deleteuser = () => async (dispatch) => {
 export const forgotuserpassword = (email) => async (dispatch) => {
     try {
         dispatch({ type: USER_FORGOT_REQUEST });
-        const config = {
-            "Content-Type": "application/json"
-        };
-        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/password/forgot", { email }, config, { withCredentials: true});
+        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/password/forgot", { email }, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          });
         dispatch({
             type: USER_FORGOT_SUCCESS,
             payload: data
@@ -150,10 +159,12 @@ export const forgotuserpassword = (email) => async (dispatch) => {
 export const forgotpasswordreset = (token, newpassword, confirmpassword) => async (dispatch) => {
     try {
         dispatch({ type: FORGOT_RESET_REQUEST });
-        const config = {
-            "Content-Type": "application/json"
-        };
-        const { data } = await axios.put(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/password/reset/${token}`, { newpassword, confirmpassword }, config, { withCredentials: true});
+        const { data } = await axios.put(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/password/reset/${token}`, { newpassword, confirmpassword }, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          });
         dispatch({
             type: FORGOT_RESET_SUCCESS,
             payload: data

@@ -51,10 +51,12 @@ export const productdetails = (id) => async (dispatch) => {
 export const productreview = (productid, rating, comment) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_REVIEW_REQUEST })
-        const config = {
-            "Content-type": "application/json"
-        }
-        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/addreview", { productid, rating, comment }, config, { withCredentials: true});
+        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/addreview", { productid, rating, comment }, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          });
         dispatch({
             type: PRODUCT_REVIEW_SUCCESS,
             payload: data.product
@@ -71,16 +73,18 @@ export const productreview = (productid, rating, comment) => async (dispatch) =>
 export const updateproduct = (id, n, d, p, c, s, u) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_UPDATE_REQUEST })
-        const config = {
-            "Content-type": "application/json"
-        }
         console.log(u)
         const { data } = await axios.put(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${id}`, {
             name: n, description: d, price: p, category: c, stock: s, images: {
                 public_id: "public",
                 url: u
             }
-        }, config, { withCredentials: true});
+        }, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          });
         console.log(data);
         dispatch({
             type: PRODUCT_UPDATE_SUCCESS,

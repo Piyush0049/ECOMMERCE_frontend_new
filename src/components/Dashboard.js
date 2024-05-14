@@ -73,17 +73,24 @@ const Dashboard = () => {
       }
     }
     console.log("changing")
-    const config = {
-      "Content-Type": "application/json"
-    };
     let data;
     if (w === "admin") {
-      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "user" }, config, { withCredentials: true});
+      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "user" }, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
       data = response.data;
       window.alert(`The role of the user with email : ${e} has been changed to ADMIN`);
     }
     if (w === "user") {
-      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "admin" }, config, { withCredentials: true});
+      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "admin" }, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      });
       data = response.data;
       window.alert(`The role of the user with email : ${e} has been changed to ADMIN.`);
     }
@@ -161,16 +168,18 @@ const Dashboard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     window.alert('Product has been updated successfully!');
-    const config = {
-      "Content-type": "application/json"
-    }
     console.log(editimageurl)
     const { data } = await axios.put(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${editedProduct[0]._id}`, {
       name: editedProduct[0].name, description: editedProduct[0].description, price: editedProduct[0].price, category: editedProduct[0].category, stock: editedProduct[0].stock, images: {
         public_id: "public",
         url: editimageurl
       }
-    }, config, { withCredentials: true});
+    }, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    },);
     console.log(data);
     setopt("products");
     settheproduct("");
@@ -180,11 +189,6 @@ const Dashboard = () => {
     console.log(newproduct);
     if (window.confirm("Do you really want to create a new product?")) {
       e.preventDefault();
-      const config = {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      };
       try {
         const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/create", {
           name: newproduct.name,
@@ -196,7 +200,12 @@ const Dashboard = () => {
             public_id: newproduct.images.public_id,
             url: newproduct.images.url
           }
-        }, config, { withCredentials: true});
+        },{
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
         console.log(data);
         console.log(newproduct + "smsmps");
       } catch (error) {
