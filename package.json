@@ -62,7 +62,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://snap-n-shop-fullmernstack-ecommerce.onrender.com",
   "resolutions": {
     "@types/react": "18.2.61"
   }
