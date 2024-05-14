@@ -12,14 +12,13 @@ const Dashboard = () => {
       setWindowWidth(window.innerWidth);
     };
 
-    console.log(windowWidth)
     window.addEventListener('resize', handleResize);
 
     // Cleanup function to remove event listener
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [windowWidth]);
+  }, []);
   const dispatch = useDispatch();
   const { orderdets } = useSelector((state) => state.allorders)
   const { work } = useSelector((state) => state.userdetails.user);

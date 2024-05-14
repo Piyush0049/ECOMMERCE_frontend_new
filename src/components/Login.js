@@ -33,15 +33,13 @@ const LoginPage = () => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
         };
-        
-        console.log(windowWidth)
         window.addEventListener('resize', handleResize);
 
         // Cleanup function to remove event listener
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, [windowWidth]);
+    }, []);
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

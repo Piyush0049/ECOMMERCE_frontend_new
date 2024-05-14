@@ -14,14 +14,14 @@ const Payment = () => {
       setWindowWidth(window.innerWidth);
     };
 
-    console.log(windowWidth)
     window.addEventListener('resize', handleResize);
 
     // Cleanup function to remove event listener
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [windowWidth]);
+  }, []);
+  
   const [paymentError, setPaymentError] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const stripe = useStripe();

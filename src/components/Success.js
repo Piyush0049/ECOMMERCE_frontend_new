@@ -10,15 +10,13 @@ const Success = () => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
-    console.log(windowWidth)
     window.addEventListener('resize', handleResize);
 
     // Cleanup function to remove event listener
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [windowWidth]);
+  }, []);
   return (
     <div style={styles.container}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop : windowWidth >= 692 ? '60px' : '90px', paddingBottom : windowWidth >= 692 ? null : '90px' }}>

@@ -14,14 +14,14 @@ const LocationSelector = () => {
       setWindowWidth(window.innerWidth);
     };
 
-    console.log(windowWidth)
     window.addEventListener('resize', handleResize);
 
     // Cleanup function to remove event listener
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [windowWidth]);
+  }, []);
+  
   var shippingdet = "";
   const a = localStorage.getItem("shippingdetails");
   if (a !== "" || a !== null) {

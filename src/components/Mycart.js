@@ -17,14 +17,13 @@ const MyCart = () => {
             setWindowWidth(window.innerWidth);
         };
         
-        console.log(windowWidth)
         window.addEventListener('resize', handleResize);
 
         // Cleanup function to remove event listener
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, [windowWidth]);
+    }, []);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { cartitems } = useSelector((state) => state.cart);

@@ -32,36 +32,19 @@ import Dashboard from "./components/Dashboard";
 function App() {
   const dispatch = useDispatch();
   const [Stripeapikey, setstripeapikey] = useState("");
-  const { user, isAuthenticated } = useSelector((state) => state.userdetails);
+  const { isAuthenticated } = useSelector((state) => state.userdetails);
 
   useEffect(() => {
     const getsapikey = async () => {
       const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true});
       setstripeapikey(data.stripeapikey);
-      console.log(Stripeapikey + "zmozpnp")
     }
-
-    console.log(JSON.stringify(user))
     getsapikey();
     if (isAuthenticated) {
       store.dispatch(userdataaccess());
       getsapikey();
     }
-  }, [dispatch, isAuthenticated, user, Stripeapikey]); 
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    console.log(windowWidth);
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [windowWidth]);
+  }, [dispatch, isAuthenticated]); 
   return (
     <>
       <Router>

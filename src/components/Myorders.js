@@ -20,14 +20,13 @@ const Myorders = () => {
             setWindowWidth(window.innerWidth);
         };
         
-        console.log(windowWidth)
         window.addEventListener('resize', handleResize);
 
         // Cleanup function to remove event listener
         return () => {
             window.removeEventListener('resize', handleResize);
         };
-    }, [windowWidth]);
+    }, []);
     return (<>
             <div>
                 {filteredOrders.length !== 0 && orderdet[0] !==null ? filteredOrders.map((order) => (
