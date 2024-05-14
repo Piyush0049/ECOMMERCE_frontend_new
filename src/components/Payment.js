@@ -102,7 +102,8 @@ const Payment = () => {
           if (result.paymentIntent.status === "succeeded") {
             const paymentId = result.paymentIntent.id;
             orderdis.paymentInfo.id = paymentId;
-            dispatch(createorder(orderdis))
+            console.log("order placed");
+            dispatch(createorder(orderdis));
             navigate("/success");
           } else {
             setPaymentError("There's some issue while processing payment");
