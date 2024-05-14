@@ -146,7 +146,12 @@ const MyCart = () => {
     };
 
     const getTotal = () => {
+        if(cartitems!==null){
         return cartitems.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+        else{
+            return 0;
+        }
     };
 
     const deleteprod = (productId, quantity, stock) => {
@@ -209,7 +214,7 @@ const MyCart = () => {
                     Total: ₹{getTotal().toFixed(2)}
                 </div>
 
-                {cartitems.length !== 0 && cartitems !== null && (
+                { cartitems !== null && (
                     <div style={{ textAlign: 'center', marginTop: '30px' }}>
                         <button style={styles.checkoutButton} onClick={navtoship}>Proceed</button>
                     </div>
