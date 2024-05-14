@@ -9,6 +9,7 @@ function Home() {
     useEffect(() => {
         dispatch(allproducts())
     }, [dispatch]);
+    
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
