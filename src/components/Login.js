@@ -2,20 +2,31 @@ import React, { useState } from 'react';
 import backgroundImage from './snapedit_1710097319045.jpeg';
 import { Link } from 'react-router-dom';
 import { IconButton, makeStyles } from '@material-ui/core';
-import { useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { userlogin } from './actions/useractions';
 import { usersignup } from './actions/useractions';
 import { useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { userdataaccess } from './actions/useractions';
+import store from '../store';
 const useStyles = makeStyles((theme) => ({
     input: { display: 'none' },
     iconButton: { marginLeft: theme.spacing(1) },
     icon: { fontSize: 48 }
 }));
 
+
 const LoginPage = () => {
+    const dispatch = useDispatch();
+    const { isAuthenticated } = useSelector((state) => state.userdetails);
+    useEffect(() => {
+        if (isAuthenticated) {
+            store.dispatch(userdataaccess());
+        }
+    }, [dispatch, isAuthenticated]);
     const navigate = useNavigate();
     const classes = useStyles();
     const [email, setEmail] = useState('');
@@ -23,7 +34,6 @@ const LoginPage = () => {
     const [username, setusername] = useState('');
     const [cpassword, setcpassword] = useState('');
     const [login, setlogin] = useState("login");
-    const dispatch = useDispatch();
     const [showloginPassword, setShowloginPassword] = useState(true);
     const [showsignupPassword, setShowsignupPassword] = useState(true);
     const [showsignupcPassword, setShowsignupcPassword] = useState(true);
@@ -91,10 +101,10 @@ const LoginPage = () => {
             backgroundPosition: 'center',
             minHeight: windowWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
             minWidth: windowWidth >= 692 ? '1540px' : '1540px',
-            height : "auto",
-            width : "auto",
-            padding : "0",
-            margin : "0"
+            height: "auto",
+            width: "auto",
+            padding: "0",
+            margin: "0"
         }}>
             {login === "login" ? (
                 <>
@@ -135,10 +145,10 @@ const LoginPage = () => {
                             onMouseLeave={() => setIsHovered(false)}>
                             Login
                         </button>
-                        <p style={{ marginTop: '10px', textAlign: 'center', fontSize:  windowWidth >= 692 ? '16px' : '40px', }}>
+                        <p style={{ marginTop: '10px', textAlign: 'center', fontSize: windowWidth >= 692 ? '16px' : '40px', }}>
                             Do not have an account? <Link onClick={() => setlogin("signup")}>Sign up now!</Link>
                         </p>
-                        <p style={{ textAlign: 'center',  fontSize: windowWidth >= 692 ? '16px' : '40px', }}>
+                        <p style={{ textAlign: 'center', fontSize: windowWidth >= 692 ? '16px' : '40px', }}>
                             Forgot Password? <Link to="/password/forgot">Set new password</Link>
                         </p>
                     </form>
@@ -253,7 +263,7 @@ const styles = {
         marginBottom: '15px',
         borderRadius: '5px',
         border: '1px solid #ccc',
-        fontSize:  window.innerWidth >= 692 ? '16px' : '55px',
+        fontSize: window.innerWidth >= 692 ? '16px' : '55px',
         outline: 'none',
     },
     button: {
@@ -261,7 +271,7 @@ const styles = {
         padding: '10px',
         borderRadius: '5px',
         border: 'none',
-        fontSize:  window.innerWidth >= 692 ? '16px' : '50px',
+        fontSize: window.innerWidth >= 692 ? '16px' : '50px',
         cursor: 'pointer',
         transition: 'background-color 0.3s ease',
         marginTop: '10px',

@@ -14,9 +14,7 @@ import LoginPage from "./components/Login";
 import Account from "./components/Account";
 import Getnewpassword from "./components/Getnewpassword";
 import { useDispatch, useSelector } from "react-redux";
-import store from "./store";
 import { useEffect, useState } from "react"; 
-import { userdataaccess } from "./components/actions/useractions";
 import React from "react";
 import Forgotpassword from "./components/Forgotpassword";
 import Mycart from "./components/Mycart";
@@ -40,10 +38,7 @@ function App() {
       setstripeapikey(data.stripeapikey);
     }
     getsapikey();
-    if (isAuthenticated) {
-      store.dispatch(userdataaccess());
-    }
-  }, [dispatch, isAuthenticated]); 
+  }, [dispatch]);
   return (
     <>
       <Router>
