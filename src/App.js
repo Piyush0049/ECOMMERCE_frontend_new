@@ -28,7 +28,6 @@ import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
 import { userdataaccess } from "./components/actions/useractions";
-import store from "./store";
 function App() {
   const dispatch = useDispatch();
   const [Stripeapikey, setstripeapikey] = useState("");
@@ -45,7 +44,7 @@ function App() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      store.dispatch(userdataaccess());
+      dispatch(userdataaccess());
     }
   }, [dispatch, isAuthenticated]); 
   return (
