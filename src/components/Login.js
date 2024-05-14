@@ -9,9 +9,6 @@ import { useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { userdataaccess } from './actions/useractions';
-import store from '../store';
 const useStyles = makeStyles((theme) => ({
     input: { display: 'none' },
     iconButton: { marginLeft: theme.spacing(1) },
@@ -21,12 +18,6 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginPage = () => {
     const dispatch = useDispatch();
-    const { isAuthenticated } = useSelector((state) => state.userdetails);
-    useEffect(() => {
-        if (isAuthenticated) {
-            store.dispatch(userdataaccess());
-        }
-    }, [dispatch, isAuthenticated]);
     const navigate = useNavigate();
     const classes = useStyles();
     const [email, setEmail] = useState('');
