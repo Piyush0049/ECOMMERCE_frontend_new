@@ -42,7 +42,6 @@ function App() {
     getsapikey();
     if (isAuthenticated) {
       store.dispatch(userdataaccess());
-      getsapikey();
     }
   }, [dispatch, isAuthenticated]); 
   return (
