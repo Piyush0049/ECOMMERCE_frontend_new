@@ -40,13 +40,6 @@ function App() {
     }
     getsapikey();
   }, [dispatch]);
-  
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(userdataaccess());
-    }
-  }, [dispatch, isAuthenticated]); 
   return (
     <>
       <Router>
