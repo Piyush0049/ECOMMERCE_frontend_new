@@ -5,7 +5,8 @@ export const userlogin = (email, password) => async (dispatch) => {
     try {
         dispatch({ type: USER_LOGIN_REQUEST });
         const config = {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "https://main--golden-custard-15c962.netlify.app"
         };
         const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/login", { email, password }, config, { withCredentials: true});
         dispatch({
