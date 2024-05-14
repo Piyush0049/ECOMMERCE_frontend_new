@@ -174,7 +174,7 @@ const MyCart = () => {
             </div>
             <div style={styles.cartContainer}>
                 <h1 style={{ textAlign: 'center', marginBottom: '30px', fontSize: windowWidth >= 692 ? '45px' : '80px' }}><b>Your Cart : </b></h1>
-                {cartitems.length === 0 || cartitems === null ? (
+                {cartitems === null ? (
                     <div style={{ textAlign: 'center', marginTop: '50px', marginBottom: '50px' }}>
                         <h2 style={{ fontSize:  windowWidth >= 692 ? '25px' : '60px', fontWeight: 'bold', color: '#333' }}>Your cart is empty</h2>
                     </div>
