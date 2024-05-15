@@ -228,8 +228,8 @@ const styles = {
         textAlign: 'center',
         fontSize: '50px',
         color: '#666',
-        minHeight: windowWidth >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
-        minWidth: windowWidth >= 692 ? '1540px' : '1540px',
+        minHeight: window.innerWidth >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
+        minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
         height: "auto",
         width: "auto",
         backgroundColor: "#A0E1FC",
