@@ -36,9 +36,9 @@ function Headers() {
   }
 
   const { _id } = useSelector((state) => state.userdetails.user);
-  if(isAuthenticated && cartitems!== null){
-  let selectedproducts = cartitems.filter((item) => item.user_id === _id);
-  console.log(selectedproducts);
+  if (isAuthenticated && cartitems !== null) {
+    let selectedproducts = cartitems.filter((item) => item.user_id === _id);
+    console.log(selectedproducts);
   }
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -111,6 +111,10 @@ function Headers() {
                   <li className="nav-item" >
                     <Link to="/mycart" className="nav-link" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>My Cart<i className="fa-solid fa-cart-shopping" style={{ fontSize: windowWidth >= 692 ? "20px" : '45px', marginTop: "3px" }}></i>
                       <span className={`position-absolute top-${a} start-45 translate-middle badge rounded-pill bg-danger`} style={{ width: windowWidth >= 692 ? "17px" : '30px', height: windowWidth >= 692 ? "17px" : '30px', fontSize: windowWidth >= 692 ? "10px" : '25px', textAlign: "center", marginTop: windowWidth > 768 ? "18px" : null, marginBottom: windowWidth > 768 ? null : "25px", marginLeft: "5px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        {cartitems !== null && (
+                          cartitems.length > 0 && (
+                            cartitems.length
+                          ))}
                       </span>
                     </Link>
                   </li>
