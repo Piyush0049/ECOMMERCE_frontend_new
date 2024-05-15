@@ -40,7 +40,7 @@ const Forgotpassword = () => {
             height : "auto",
             width : "auto",
             flexDirection: 'column',
-            backgroundImage: `url(${backgroundImage}`,
+            backgroundColor : "#83DBFF",
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center'

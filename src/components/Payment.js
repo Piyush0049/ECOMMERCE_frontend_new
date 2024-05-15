@@ -155,8 +155,6 @@ const Payment = () => {
 const cardElementOptions = {
   style: {
     base: {
-
-      marginBottom: "15px",
       fontSize: window.innerWidth >= 692 ? "25px" : '45px',
       color: 'green',
       '::placeholder': {

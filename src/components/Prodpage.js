@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { productdetails, productreview } from './actions/productActions';
 import { useParams } from 'react-router-dom';
-import backimage from './snapedit_1709804086088.jpeg';
 import ReactStars from 'react-rating-stars-component';
 import Carousal from "react-material-ui-carousel"
 import { useNavigate } from 'react-router-dom';
@@ -92,7 +91,7 @@ function Prodpage() {
     container: {
       fontFamily: 'Arial, sans-serif',
       color: '#333',
-      background: `url(${backimage}) center/cover`,
+      backgroundColor : "#A6E5FF",
       minHeight: windowWidth >= 692 ? '1000px' : '2700px',  // Adjusted height based on window width
       minWidth: windowWidth >= 692 ? '1540px' : '1540px',
       height: "auto",
