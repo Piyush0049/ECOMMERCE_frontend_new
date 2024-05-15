@@ -68,7 +68,7 @@ const Dashboard = () => {
       }
     }
     if (w === "admin") {
-      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "user" }, {
+      await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "user" }, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -77,7 +77,7 @@ const Dashboard = () => {
       window.alert(`The role of the user with email : ${e} has been changed to ADMIN`);
     }
     if (w === "user") {
-      const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "admin" }, {
+      await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "admin" }, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -156,7 +156,7 @@ const Dashboard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     window.alert('Product has been updated successfully!');
-    const { data } = await axios.put(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${editedProduct[0]._id}`, {
+    await axios.put(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${editedProduct[0]._id}`, {
       name: editedProduct[0].name, description: editedProduct[0].description, price: editedProduct[0].price, category: editedProduct[0].category, stock: editedProduct[0].stock, images: {
         public_id: "public",
         url: editimageurl
