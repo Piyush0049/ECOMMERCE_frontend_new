@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getallorders, updatestatus } from "./actions/orderactions"
 import { getallusers } from './actions/useractions';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 const Dashboard = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -13,12 +12,11 @@ const Dashboard = () => {
     };
 
     window.addEventListener('resize', handleResize);
-
-    // Cleanup function to remove event listener
     return () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
   const dispatch = useDispatch();
   const { orderdets } = useSelector((state) => state.allorders)
   const { work } = useSelector((state) => state.userdetails.user);
@@ -229,8 +227,7 @@ const Dashboard = () => {
               <nav style={navStyle}>
                 <ul style={{ display: "flex", textDecoration: "none", listStyle: 'none', position: "relative", left: windowWidth >= 692 ? "160px" : '220px', marginTop: windowWidth >= 692 ? '15px' : '150px', marginBottom: "15px" }}>
                   <li>
-                    <Link
-                      to="/orders"
+                    <span
                       style={{
                         cursor: "pointer",
                         textDecoration: "underline",
@@ -246,11 +243,10 @@ const Dashboard = () => {
                       onClick={() => { setopt("orders") }}
                     >
                       All Orders
-                    </Link>
+                    </span>
                   </li>
                   <li>
-                    <Link
-                      to="/products"
+                    <span
                       style={{
                         cursor: "pointer",
                         textDecoration: "underline",
@@ -266,11 +262,10 @@ const Dashboard = () => {
                       onClick={() => { setopt("products") }}
                     >
                       All Products
-                    </Link>
+                    </span>
                   </li>
                   <li>
-                    <Link
-                      to="/customers"
+                    <span
                       style={{
                         cursor: "pointer",
                         textDecoration: "underline",
@@ -286,7 +281,7 @@ const Dashboard = () => {
                       onClick={() => { setopt("customers") }}
                     >
                       All Users
-                    </Link>
+                    </span>
                   </li>
                 </ul>
               </nav>
