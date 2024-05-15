@@ -7,6 +7,12 @@ import { useState } from 'react';
 function Home() {
     const dispatch = useDispatch();
     useEffect(() => {
+        dispatch(allproducts())
+    }, [dispatch]);
+    
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
         const handleResize = async () => {
             // Perform any asynchronous operation here
             await new Promise(resolve => setTimeout(resolve, 1000)); // Example asynchronous operation
