@@ -9,8 +9,6 @@ export const allproducts = (keyword = "", page = "", gt = 0, lt = 50000, categ =
             link = `https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/products?keyword=${keyword}&page=${page}&price[gt]=${gt}&price[lt]=${lt}&category=${categ}`;
         }
         const { data } = await axios.get(link, { withCredentials: true});
-        console.log(data + "oijsdoj")
-        console.log("recieved value of keyword : " + keyword)
         dispatch({
             type: ALL_PRODUCT_SUCCESS,
             payload: data
@@ -73,7 +71,6 @@ export const productreview = (productid, rating, comment) => async (dispatch) =>
 export const updateproduct = (id, n, d, p, c, s, u) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_UPDATE_REQUEST })
-        console.log(u)
         const { data } = await axios.put(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${id}`, {
             name: n, description: d, price: p, category: c, stock: s, images: {
                 public_id: "public",
@@ -85,7 +82,6 @@ export const updateproduct = (id, n, d, p, c, s, u) => async (dispatch) => {
             },
             withCredentials: true,
           });
-        console.log(data);
         dispatch({
             type: PRODUCT_UPDATE_SUCCESS,
             payload: data.product

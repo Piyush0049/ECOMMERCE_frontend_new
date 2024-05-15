@@ -37,7 +37,6 @@ function Prodpage() {
       } if (!addrev) {
         setaddrev(true);
       }
-      console.log("you can add review")
     }
     else {
       navigate("/login")
@@ -184,7 +183,6 @@ function Prodpage() {
 
   const handleCommentChange = (e) => {
     setComment(e.target.value);
-    console.log(comment)
   };
 
   const handleRatingChange = (e) => {
@@ -194,10 +192,6 @@ function Prodpage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Review added")
-    console.log(id)
-    console.log(rating)
-    console.log(comment)
     dispatch(productreview(id, rating, comment))
     setShowReviews(!showReviews)
   };

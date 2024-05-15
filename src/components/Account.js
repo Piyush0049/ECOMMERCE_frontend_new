@@ -63,7 +63,6 @@ const Account = () => {
     const toggleconfirmPasswordVisibility = () => {
         setShowcPassword(!showcPassword);
     };
-    console.log(oldpassword + "   " + newpassword + "    " + cpassword)
 
     const { isAuthenticated } = useSelector((state) => state.userdetails)
     

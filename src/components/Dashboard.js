@@ -47,13 +47,10 @@ const Dashboard = () => {
   const [selectedStatus, setSelectedStatus] = useState("");
   const handleSelectChange = (event) => {
     const selectedValue = event.target.value;
-    console.log(selectedValue)
     setSelectedStatus(selectedValue);
   }
   const update = () => {
-    console.log(selectedStatus + "done")
     dispatch(updatestatus(selectedorder[0]._id, selectedStatus))
-    setopt("orders");
   }
 
   const { allUsers } = useSelector((state) => state.AllUsers);
@@ -70,7 +67,6 @@ const Dashboard = () => {
         return;
       }
     }
-    console.log("changing")
     let data;
     if (w === "admin") {
       const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "user" }, {
@@ -93,7 +89,6 @@ const Dashboard = () => {
       window.alert(`The role of the user with email : ${e} has been changed to ADMIN.`);
     }
 
-    console.log(data);
   };
   const { allProducts } = useSelector((state) => state.products)
   const thepro = () => {
@@ -102,7 +97,6 @@ const Dashboard = () => {
       setEditedProduct(theproduct)
       seteditimageurl(theproduct[0].images[0].url)
     }
-    console.log(theproduct)
   }
   const [editedProduct, setEditedProduct] = useState(null);
   const [editimageurl, seteditimageurl] = useState(editedProduct !== null ? editedProduct[0].images[0].url : "");
@@ -111,7 +105,6 @@ const Dashboard = () => {
   const handleeditimage = (e) => {
     seteditimageurl(e.target.value);
 
-    console.log(editimageurl)
   };
 
 
@@ -166,7 +159,6 @@ const Dashboard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     window.alert('Product has been updated successfully!');
-    console.log(editimageurl)
     const { data } = await axios.put(`https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/${editedProduct[0]._id}`, {
       name: editedProduct[0].name, description: editedProduct[0].description, price: editedProduct[0].price, category: editedProduct[0].category, stock: editedProduct[0].stock, images: {
         public_id: "public",
@@ -178,13 +170,11 @@ const Dashboard = () => {
       },
       withCredentials: true,
     },);
-    console.log(data);
     setopt("products");
     settheproduct("");
   };
 
   const handlecreatenewprod = async (e) => {
-    console.log(newproduct);
     if (window.confirm("Do you really want to create a new product?")) {
       e.preventDefault();
       try {
@@ -204,8 +194,6 @@ const Dashboard = () => {
           },
           withCredentials: true,
         });
-        console.log(data);
-        console.log(newproduct + "smsmps");
       } catch (error) {
         console.error("Error creating new product:", error);
       }

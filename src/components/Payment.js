@@ -102,7 +102,6 @@ const Payment = () => {
           if (result.paymentIntent.status === "succeeded") {
             const paymentId = result.paymentIntent.id;
             orderdis.paymentInfo.id = paymentId;
-            console.log("order placed");
             dispatch(createorder(orderdis));
             navigate("/success");
           } else {

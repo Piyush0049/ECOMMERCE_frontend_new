@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 function ProductItem({ product, innerWidth }) {
-
-  console.log(innerWidth + "kspksp");
   const cardStyle = {
     width: innerWidth >= 692 ? null : '370px', // Full width for smaller screens
     height: innerWidth >= 692 ? null : "600px",

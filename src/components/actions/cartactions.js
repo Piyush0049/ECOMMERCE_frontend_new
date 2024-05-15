@@ -16,7 +16,6 @@ export const addtocart = (id, quantity, userid) => async (dispatch, getState) =>
         }
     });
     const state = getState();
-    console.log(state)
     localStorage.setItem("cartitem", JSON.stringify(state.cart.cartitems));
 };
 
@@ -37,7 +36,6 @@ export const removefromcart = (id, quantity, userid) => async (dispatch, getStat
 
     // Retrieve the updated cart items from the action payload
     const state = getState();
-    console.log(state);
 
     // Store the updated cart items in local storage
     localStorage.setItem("cartitem", JSON.stringify(state.cart.cartitems));

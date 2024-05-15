@@ -32,8 +32,7 @@ export const updatestatus = (orderid, orderStatus) => async (dispatch, getState)
               "Content-Type": "application/json",
             },
             withCredentials: true,
-          },);
-        console.log(data)
+          });
         dispatch({
             type: USER_ORDERSTAT_SUCCESS,
             payload: data

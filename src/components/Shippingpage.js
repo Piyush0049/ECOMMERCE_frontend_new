@@ -163,7 +163,6 @@ const LocationSelector = () => {
 
   }
 
-  console.log(userDetails.phone)
   return (
     <div style={{
       backgroundImage: `url(${backimage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: windowWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width

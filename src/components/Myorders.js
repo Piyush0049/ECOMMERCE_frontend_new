@@ -5,14 +5,12 @@ import { useEffect } from 'react';
 
 const Myorders = () => {
     const { orderdet } = useSelector((state) => state.myorders);
-    console.log("knsonono", orderdet)
     const { user } = useSelector((state) => state.userdetails);
     const userid = user._id;
     var filteredOrders = [];
     if (orderdet[0] !== null) {
         filteredOrders = orderdet.filter((order) => (order.user === userid));
     }
-    console.log("soospsjpp", filteredOrders)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {

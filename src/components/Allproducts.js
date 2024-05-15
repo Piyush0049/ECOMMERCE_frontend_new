@@ -67,17 +67,14 @@ function Allproducts() {
 
     const handlePageChange = (event, p) => {
         setPagenum(p);
-        console.log(p)
     };
 
     const handleChange = (event, newValue) => {
         setRange(newValue);
-        console.log(range)
     };
 
     const onClickcateg = (e) => {
         setcateg(e.target.innerText);
-        console.log(categ);
 
     }
 
