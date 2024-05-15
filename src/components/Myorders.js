@@ -9,8 +9,8 @@ const Myorders = () => {
     const { user } = useSelector((state) => state.userdetails);
     const userid = user._id;
     var filteredOrders = [];
-    if(orderdet[0] !==null){
-    filteredOrders = orderdet.filter((order) => (order.user === userid));
+    if (orderdet[0] !== null) {
+        filteredOrders = orderdet.filter((order) => (order.user === userid));
     }
     console.log("soospsjpp", filteredOrders)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -19,7 +19,7 @@ const Myorders = () => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
         };
-        
+
         window.addEventListener('resize', handleResize);
 
         // Cleanup function to remove event listener
@@ -28,24 +28,24 @@ const Myorders = () => {
         };
     }, []);
     return (<>
-            <div>
-                {filteredOrders.length !== 0 && orderdet[0] !==null ? filteredOrders.map((order) => (
-                    <div key={order._id} style={{ position: 'relative', minHeight: '1450px' }}>
-                        <div style={{
-                            minHeight: windowWidth >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
-                            minWidth: windowWidth >= 692 ? '1540px' : '1540px',
-                            height : "auto",
-                            width : "auto",
-                            backgroundColor : "#A7F7FE",
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center',
-                            zIndex: 0,
-                        }}>
+        <div>
+            {filteredOrders.length !== 0 && orderdet[0] !== null ? filteredOrders.map((order) => (
+                <div key={order._id} style={{ position: 'relative', minHeight: '1450px' }}>
+                    <div style={{
+                        minHeight: windowWidth >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
+                        minWidth: windowWidth >= 692 ? '1540px' : '1540px',
+                        height: "auto",
+                        width: "auto",
+                        backgroundColor: "#A7F7FE",
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        zIndex: 0,
+                    }}>
                         <div style={styles.ordersContainer}>
                             <div style={styles.container}>
                                 <h1 style={styles.header}><b>My Order Summary : </b></h1>
                                 <div style={styles.grandTotalContainer3}>
-                                    <div style={{ fontSize :  window.innerWidth >= 692 ? "20px" : '40px',}}>Placed On:</div>
+                                    <div style={{ fontSize: window.innerWidth >= 692 ? "20px" : '40px', }}>Placed On:</div>
                                     <div style={{ fontSize: window.innerWidth >= 692 ? "20px" : '40px' }}>{order.createdAt.toString().slice(0, 10)}</div>
                                 </div>
                                 <ul style={styles.productList}>
@@ -53,10 +53,10 @@ const Myorders = () => {
                                         <div key={p._id} style={styles.product}>
                                             <img style={styles.image} src={p.image} alt={p.name} />
                                             <div style={styles.details}>
-                                                <h3 style={{ marginBottom: '10px', fontSize :  window.innerWidth >= 692 ? "20px" : '50px', fontWeight: 'bold' }}>{p.name}</h3>
-                                                <p style={{ marginBottom: '5px', color: '#666', fontSize :  window.innerWidth >= 692 ? "20px" : '45px', }}>Price: ₹{p.price}</p>
-                                                <p style={{ marginBottom: '5px', color: '#666', fontSize :  window.innerWidth >= 692 ? "20px" : '45px', }}>Quantity: {p.quantity}</p>
-                                                <p style={{ marginBottom: '5px', color: '#666', fontSize :  window.innerWidth >= 692 ? "20px" : '45px', }}>Total: ₹{p.price * p.quantity}</p>
+                                                <h3 style={{ marginBottom: '10px', fontSize: window.innerWidth >= 692 ? "20px" : '50px', fontWeight: 'bold' }}>{p.name}</h3>
+                                                <p style={{ marginBottom: '5px', color: '#666', fontSize: window.innerWidth >= 692 ? "20px" : '45px', }}>Price: ₹{p.price}</p>
+                                                <p style={{ marginBottom: '5px', color: '#666', fontSize: window.innerWidth >= 692 ? "20px" : '45px', }}>Quantity: {p.quantity}</p>
+                                                <p style={{ marginBottom: '5px', color: '#666', fontSize: window.innerWidth >= 692 ? "20px" : '45px', }}>Total: ₹{p.price * p.quantity}</p>
                                             </div>
                                         </div>
                                     ))}
@@ -64,7 +64,7 @@ const Myorders = () => {
 
                                 <div style={{ display: "flex" }}>
                                     <div style={{ marginLeft: "70px" }}>
-                                        <h2 style={{ marginBottom: "40px", fontSize : windowWidth >= 692 ? null : '50px', }}><b>Shipping Address : </b></h2>
+                                        <h2 style={{ marginBottom: "40px", fontSize: windowWidth >= 692 ? null : '50px', }}><b>Shipping Address : </b></h2>
                                         <div style={styles.grandTotalContainer2}>
                                             <div>Address :</div>
                                             <div>{order.shippinginfo.address}</div>
@@ -110,14 +110,14 @@ const Myorders = () => {
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
-                )) : <div style={styles.noOrderMessage}><h1 style={styles.textMessage}><b>No orders to display!</b></h1></div> }
-            </div>
-        
-            
-                
-                </>
+                </div>
+            )) : <div style={styles.noOrderMessage}><h1 style={styles.textMessage}><b>No orders to display!</b></h1></div>}
+        </div>
+
+
+
+    </>
     );
 };
 
@@ -154,14 +154,14 @@ const styles = {
         position: "relative",
         top: "10px",
         minHeight: "1100px",
-        width : "auto",
-        height : "auto"
+        width: "auto",
+        height: "auto"
     },
     header: {
         textAlign: 'center',
         marginBottom: '40px',
         marginTop: "20px",
-        fontSize :  window.innerWidth >= 692 ? null : '50px',
+        fontSize: window.innerWidth >= 692 ? null : '50px',
     },
     productList: {
         listStyleType: 'none',
@@ -174,7 +174,7 @@ const styles = {
         justifyContent: 'space-between',
         fontWeight: 'bold',
         width: "300px",
-        fontSize :  window.innerWidth >= 692 ? null : '25px',
+        fontSize: window.innerWidth >= 692 ? null : '25px',
     },
     grandTotalContainer3: {
         marginTop: '40px',
@@ -182,7 +182,7 @@ const styles = {
         justifyContent: 'space-between',
         fontWeight: 'bold',
         width: "300px",
-        position: "relative", 
+        position: "relative",
         left: "750px"
     },
     grandTotalContainer2: {
@@ -191,7 +191,7 @@ const styles = {
         justifyContent: 'space-between',
         fontWeight: 'bold',
         width: "300px",
-        fontSize :  window.innerWidth >= 692 ? null : '25px',
+        fontSize: window.innerWidth >= 692 ? null : '25px',
     },
     checkoutButton: {
         marginTop: '80px',
@@ -226,9 +226,12 @@ const styles = {
     },
     noOrderMessage: {
         textAlign: 'center',
-        fontSize: '45px',
+        fontSize: '50px',
         color: '#666',
-        height: "800px",
+        minHeight: windowWidth >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
+        minWidth: windowWidth >= 692 ? '1540px' : '1540px',
+        height: "auto",
+        width: "auto",
         backgroundColor: "#A0E1FC",
     },
     textMessage: {
