@@ -215,7 +215,7 @@ const MyCart = () => {
                 </div>
 
                 { cartitems !== null && (
-                    cartitems.length() > 0 && (
+                    cartitems.length > 0 && (
                     <div style={{ textAlign: 'center', marginTop: '30px' }}>
                         <button style={styles.checkoutButton} onClick={navtoship}>Proceed</button>
                     </div>
