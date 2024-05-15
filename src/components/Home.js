@@ -105,7 +105,7 @@ function Home() {
                 </div>
             </div>
             <div style={containerStyle2}>
-                <h3 style={{ fontFamily: "revert", position: "absolute", left: '50%', transform: 'translateX(-50%)', color: "black", textAlign: "center", fontSize:windowWidth >= 692 ? '35px' : '100px', marginTop: windowWidth >= 692 ? '80px' : '40px', whiteSpace: 'nowrap'}}>Featured Products : </h3>
+                <h3 style={{ fontFamily: "revert", position: "absolute", left: '50%', transform: 'translateX(-50%)', color: "black", textAlign: "center", fontSize:windowWidth >= 692 ? '50px' : '100px', marginTop: windowWidth >= 692 ? '80px' : '40px', whiteSpace: 'nowrap'}}>Featured Products : </h3>
                 <hr style={{ position: "relative", top: "140px", borderWidth: "2px", opacity: 0.9, marginLeft: "300px", marginRight: "300px" }} />
                 <div style={productsContainerStyle}>
                     {products.map(product => (
