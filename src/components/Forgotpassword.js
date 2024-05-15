@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import backgroundImage from './snapedit_1710097319045.jpeg';
 import { useDispatch } from 'react-redux';
 import { forgotuserpassword } from './actions/useractions';
 import { useEffect } from 'react';
