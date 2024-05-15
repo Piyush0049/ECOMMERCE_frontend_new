@@ -67,7 +67,6 @@ const Dashboard = () => {
         return;
       }
     }
-    let data;
     if (w === "admin") {
       const response = await axios.put("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/auth/changerole", { email: e, work: "user" }, {
         headers: {
@@ -75,7 +74,6 @@ const Dashboard = () => {
         },
         withCredentials: true,
       });
-      data = response.data;
       window.alert(`The role of the user with email : ${e} has been changed to ADMIN`);
     }
     if (w === "user") {
@@ -85,7 +83,6 @@ const Dashboard = () => {
         },
         withCredentials: true,
       });
-      data = response.data;
       window.alert(`The role of the user with email : ${e} has been changed to ADMIN.`);
     }
 
@@ -178,7 +175,7 @@ const Dashboard = () => {
     if (window.confirm("Do you really want to create a new product?")) {
       e.preventDefault();
       try {
-        const { data } = await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/create", {
+         await axios.post("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/product/create", {
           name: newproduct.name,
           description: newproduct.description,
           price: newproduct.price,
