@@ -38,11 +38,14 @@ const Account = () => {
     }
     const handleUpdate = () => {
         dispatch(updateuser(userName, email));
+        navigate("/");
+        window.alert(`Your profile has been successfully updated!`);
     }
 
     const handlepasswordUpdate = () => {
         dispatch(updateuserpassword(oldpassword, newpassword, cpassword));
         navigate("/");
+        window.alert(`Your password has been successfully updated!`);
     }
 
     const changepass = () => {
