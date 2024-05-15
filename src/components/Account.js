@@ -5,6 +5,7 @@ import { updateuser, updateuserpassword } from './actions/useractions';
 import { IconButton, makeStyles } from '@material-ui/core';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import { useNavigate } from 'react-router-dom';
 
 const Account = () => {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ const Account = () => {
     const [showoldPassword, setShowoldPassword] = useState(true);
     const [shownewPassword, setShownewPassword] = useState(true);
     const [showcPassword, setShowcPassword] = useState(true);
+    const navigate = useNavigate();
     const useStyles = makeStyles((theme) => ({
         input: {
             display: 'none',
@@ -40,6 +42,7 @@ const Account = () => {
 
     const handlepasswordUpdate = () => {
         dispatch(updateuserpassword(oldpassword, newpassword, cpassword));
+        navigate("/");
     }
 
     const changepass = () => {
