@@ -7,22 +7,23 @@ import { useState } from 'react';
 function Home() {
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(allproducts())
-    }, [dispatch]);
+        const handleResize = async () => {
+            // Perform any asynchronous operation here
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Example asynchronous operation
     
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => {
+            // Update state or perform other operations
+    
             setWindowWidth(window.innerWidth);
         };
+    
         window.addEventListener('resize', handleResize);
-
+    
         // Cleanup function to remove event listener
         return () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+    
 
     const { products } = useSelector((state) => state.products)
     const containerStyle1 = {
