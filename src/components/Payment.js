@@ -22,7 +22,7 @@ const Payment = () => {
   const [cardDetails, setCardDetails] = useState({
     cardNumber: '',
     expiry: '',
-    cvc: ''
+    cvc: '' 
   });
   const [paymentError, setPaymentError] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
