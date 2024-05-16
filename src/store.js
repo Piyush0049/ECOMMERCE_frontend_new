@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk'; // Correct import statement
+import thunk from 'redux-thunk'; // Import as named export
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { productreducer } from './reducers/productReducer';
 import { alluserreducer, profilereducer, userreducer } from './reducers/usereducer';
