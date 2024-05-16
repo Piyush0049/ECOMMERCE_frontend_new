@@ -35,7 +35,6 @@ const store = createStore(
     reducer,
     initstate,
     composeWithDevTools(applyMiddleware(...middleware),
-    window.__REDUX_DEVTOOLS_EXTENSION__&& window.__REDUX_DEVTOOLS_EXTENSION__()
 ),
 
 );
