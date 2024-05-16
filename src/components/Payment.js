@@ -160,6 +160,7 @@ const cardElementOptions = {
       '::placeholder': {
         color: 'gray',
       },
+      fontFamily: 'Mulish, sans-serif',
       textAlign: "center",
     },
     invalid: {

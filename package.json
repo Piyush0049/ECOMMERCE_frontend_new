@@ -33,9 +33,10 @@
     "redux": "^5.0.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^3.1.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "webfontloader": "^1.6.28"
   },
-   "devDependencies": {
+  "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.16.7"
   },
   "scripts": {

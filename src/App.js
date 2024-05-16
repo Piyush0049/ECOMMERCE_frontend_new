@@ -27,11 +27,17 @@ import { loadStripe } from "@stripe/stripe-js";
 import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
+import store from "./store"
 function App() {
   const dispatch = useDispatch();
   const [Stripeapikey, setstripeapikey] = useState("");
   const { isAuthenticated } = useSelector((state) => state.userdetails);
-
+  useEffect(() => {
+    if (isAuthenticated) {
+      store.dispatch(userdataaccess());
+      getsapikey();
+    }
+  }, [dispatch]);
   useEffect(() => {
     const getsapikey = async () => {
       const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true});
@@ -39,6 +45,13 @@ function App() {
     }
     getsapikey();
   }, [dispatch]);
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Mulish:200,300,400,500,600,700,800,900']
+      }
+    });
+  }, []);
   return (
     <>
       <Router>
