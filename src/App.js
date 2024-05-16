@@ -27,18 +27,11 @@ import { loadStripe } from "@stripe/stripe-js";
 import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
-import store from "./store";
 import WebFont from "webfontloader";
-import { userdataaccess } from "./components/actions/useractions";
 function App() {
   const dispatch = useDispatch();
   const [Stripeapikey, setstripeapikey] = useState("");
   const { isAuthenticated } = useSelector((state) => state.userdetails);
-  useEffect(() => {
-    if (isAuthenticated) {
-      store.dispatch(userdataaccess());
-    }
-  }, [dispatch, isAuthenticated]);
   useEffect(() => {
     const getsapikey = async () => {
       const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true});

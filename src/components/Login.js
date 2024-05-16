@@ -86,7 +86,7 @@ const LoginPage = () => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundImage: `url(${backgroundImage})`,
+            backgroundColor: "#A4C9D8",
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
