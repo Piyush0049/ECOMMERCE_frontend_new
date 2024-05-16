@@ -38,7 +38,7 @@ function App() {
     if (isAuthenticated) {
       store.dispatch(userdataaccess());
     }
-  }, [dispatch]);
+  }, [dispatch, isAuthenticated]);
   useEffect(() => {
     const getsapikey = async () => {
       const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true});
