@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import backgroundImage from './snapedit_1710097319045.jpeg';
 import { Link } from 'react-router-dom';
 import { IconButton, makeStyles } from '@material-ui/core';
 import { useDispatch } from 'react-redux';

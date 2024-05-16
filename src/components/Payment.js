@@ -8,6 +8,17 @@ import { useStripe } from '@stripe/react-stripe-js';
 const Payment = () => {
   const stripe = useStripe();
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   const [cardDetails, setCardDetails] = useState({
     cardNumber: '',
     expiry: '',
