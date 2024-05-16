@@ -7,7 +7,7 @@ import { createorder } from './actions/orderactions';
 import { useStripe } from '@stripe/react-stripe-js';
 const Payment = () => {
   const stripe = useStripe();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth); 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
