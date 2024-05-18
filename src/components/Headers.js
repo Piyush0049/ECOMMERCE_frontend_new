@@ -33,12 +33,14 @@ useEffect(() => {
     if (window.confirm("Are you sure you want to log out?")) {
       localStorage.setItem("cartitem", "");
       localStorage.setItem("shippingdetails", null);
+      localStorage.removeItem('width');
       dispatch(userlogout());
     }
   }
 
   const deleteaccount = () => {
     if (window.confirm("Are you sure you want to DELETE your Account?")) {
+      localStorage.removeItem('width');
       dispatch(deleteuser());
     }
   }
