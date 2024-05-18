@@ -8,7 +8,7 @@ useEffect(() => {
     if(localStorage.getItem("width") !== null){
         setx(localStorage.getItem("width"));
     }else{
-        setx(window,innerWidth);
+        setx(window.innerWidth);
     }
   }, []);
   const footerStyle = {
