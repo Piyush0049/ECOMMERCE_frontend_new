@@ -11,13 +11,13 @@ import Typography from '@mui/material/Typography';
 
 function Allproducts() {
     const [x, setx] = useState("");
-useEffect(() => {
-    if(localStorage.getItem("width") !== null){
-        setx(localStorage.getItem("width"));
-    }else{
-        setx(window.innerWidth);
-    }
-  }, []);
+    useEffect(() => {
+        if (localStorage.getItem("width") !== null) {
+            setx(localStorage.getItem("width"));
+        } else {
+            setx(window.innerWidth);
+        }
+    }, []);
     const [categ, setcateg] = useState(""); // Initial range values
     const [range, setRange] = useState([0, 90000]); // Initial range values
     const [pagenum, setPagenum] = useState("");
@@ -74,7 +74,7 @@ useEffect(() => {
     return (
         <Fragment>
             <div style={pageStyle}>
-                <h3 style={{ fontFamily: "revert", position: "absolute", left: '40%', color: "black", textAlign: "center", fontSize: x >= 692 ? '60px' : '80px', marginTop: x >= 692 ? '80px' : '120px', whiteSpace: "nowrap" }}>All Products</h3>
+                <h3 style={{ fontFamily: "revert", position: "absolute", left: '40%', color: "black", textAlign: "center", fontSize: x >= 692 ? '60px' : '80px', marginTop: x >= 692 ? '80px' : '120px', whiteSpace: "nowrap", paddingBottom :  x >= 692 ? null : '50px'  }}>All Products</h3>
                 <hr style={{ position: "absolute", top: "140px", borderWidth: "2px", marginLeft: "300px", marginRight: "300px", zIndex: 2 }} />
                 <div style={{ width: 250, position: "relative", top: "200px", left: "50px", zIndex: 4 }}>
                     <Typography id="range-slider" gutterBottom style={{ color: "#333", marginBottom: "5px", fontSize: x >= 692 ? '20px' : '40px', fontWeight: "bold", background: 'rgba(255, 255, 255, 0.7)', padding: '10px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.9)' }}>
@@ -87,7 +87,7 @@ useEffect(() => {
                         min={0}
                         max={50000}
                         step={1}
-                        marks={[{ value: 0, label: '₹0' }, { value: 50000, label: '₹50000' }]}
+                        marks={[{ value: 0, label: <span style={{ fontSize: x >= 692 ? null : '15px' }}>₹0</span> }, { value: 50000, label: <span style={{ fontSize: x >= 692 ? null : '15px' }}>₹50000</span> }]}
                         valueLabelDisplay="auto"
                         sx={{
                             color: '#0d47a1', // Darker primary color
@@ -103,6 +103,7 @@ useEffect(() => {
                         }}
                         style={{ padding: '10px' }}
                     />
+
                     <Typography id="range-slider" gutterBottom style={{ color: "#333", marginBottom: "5px", fontSize: x >= 692 ? '20px' : '30px', fontWeight: "bold", marginTop: "15px", background: 'rgba(255, 255, 255, 0.7)', padding: '10px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.9)' }}>
                         <h5 style={{ fontSize: x >= 692 ? '30px' : '40px', fontWeight: "bold" }}> <i className="fa-solid fa-list"></i>  Categories </h5>
                         <ul>

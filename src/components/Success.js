@@ -34,9 +34,9 @@ useEffect(() => {
     },
     image : {
       paddingTop : x >= 692 ? null : '100px',
-      paddingBottom : x >= 692 ? null : '50px',
-      height : x >= 692 ? null : '900px',
-      width : x >= 692 ? null : '900px',
+      paddingBottom : x >= 692 ? null : '100px',
+      height : x >= 692 ? null : '1200px',
+      width : x >= 692 ? null : '1200px',
     }
   };
   return (

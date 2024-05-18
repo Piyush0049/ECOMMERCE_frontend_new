@@ -85,7 +85,7 @@ useEffect(() => {
             backgroundImage: `url(${backimg})`,
         },
         heading: {
-            fontSize: x >= 692 ? '40px' : '65px',
+            fontSize: x >= 692 ? '40px' : '85px',
             marginBottom: '30px',
             color: '#333',
             fontWeight: 'bold',
@@ -125,7 +125,7 @@ useEffect(() => {
         editButton: {
             position: "relative",
             left: "95%",
-            fontSize: x >= 692 ? "18px" : '40px',
+            fontSize: x >= 692 ? "18px" : '55px',
             cursor: "pointer",
             transition: "opacity 0.3s ease",
         },
@@ -133,7 +133,7 @@ useEffect(() => {
             cursor: "pointer",
             position: "relative",
             left: x >= 692 ? "660px" : '1000px',
-            fontSize: x >= 692 ? "18px" : '40px',
+            fontSize: x >= 692 ? "18px" : '55px',
             transition: "opacity 0.3s ease",
             "&:hover": {
                 opacity: 0.7,

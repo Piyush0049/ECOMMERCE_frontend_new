@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 const Myorders = () => {
     const [x, setx] = useState("");
-useEffect(() => {
-    if(localStorage.getItem("width") !== null){
-        setx(localStorage.getItem("width"));
-    }else{
-        setx(window.innerWidth);
-    }
-  }, []);
+    useEffect(() => {
+        if (localStorage.getItem("width") !== null) {
+            setx(localStorage.getItem("width"));
+        } else {
+            setx(window.innerWidth);
+        }
+    }, []);
     const { orderdet } = useSelector((state) => state.myorders);
     const { user } = useSelector((state) => state.userdetails);
     const userid = user._id;
@@ -42,7 +42,7 @@ useEffect(() => {
         },
         container: {
             fontFamily: 'Arial, sans-serif',
-            minWidth: '1300px',
+            minWidth: '1360px',
             margin: '0 auto',
             border: '1px solid #ccc',
             borderRadius: '5px',
@@ -154,7 +154,10 @@ useEffect(() => {
                             <div style={styles.container}>
                                 <h1 style={styles.header}><b>My Order Summary : </b></h1>
                                 <div style={styles.grandTotalContainer3}>
-                                <div style={{ fontSize: x >= 692 ? "20px" : '37px' }}>Placed On: {order.createdAt.toString().slice(0, 10)}</div>
+                                    <div style={{ fontSize: x >= 692 ? "20px" : '37px', whiteSpace: 'nowrap' }}>
+                                        Placed On: {order.createdAt.toString().slice(0, 10)}
+                                    </div>
+
                                 </div>
                                 <ul style={styles.productList}>
                                     {order.orderitems.map((p) => (

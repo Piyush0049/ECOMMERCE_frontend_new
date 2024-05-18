@@ -41,7 +41,7 @@ const ConfirmOrder = () => {
         },
         header: {
             textAlign: 'center',
-            marginBottom: '40px',
+            marginBottom: '80px',
             marginTop: "20px",
             fontSize: x >= 692 ? null : '50px',
         },
@@ -118,11 +118,11 @@ const ConfirmOrder = () => {
             width: "auto", opacity: 0.9, paddingTop: '80px',
         }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? null : '150px', paddingBottom: x >= 692 ? null : '50px', }}>
-                <Link to="/" style={{ fontSize: "25px", color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
+                <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
                 <hr style={styles.hr2} />
-                <Link to="/confirmorder" style={{ fontSize: "25px", color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
+                <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
                 <hr style={styles.hr2} />
-                <Link to="/payment" style={{ fontSize: "25px", color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
+                <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
             </div>
             <div style={styles.container}>
                 <h1 style={styles.header}><b>Order Summary : </b></h1>
@@ -172,7 +172,7 @@ const ConfirmOrder = () => {
                     </div>
 
                     <div style={{ marginLeft: "450px" }}>
-                        <h2 style={{fontSize: x >= 692 ? null : '35px',}}><b>Invoice Details : </b></h2>
+                        <h2 style={{ fontSize: x >= 692 ? null : '35px', }}><b>Invoice Details : </b></h2>
                         <div style={styles.grandTotalContainer}>
                             <div>Sub Total:</div>
                             <div>₹{getTotal().toFixed(2)}</div>
