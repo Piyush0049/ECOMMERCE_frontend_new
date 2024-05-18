@@ -134,7 +134,7 @@ useEffect(() => {
                                 <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? "20px" : '50px', fontWeight: 'bold' }}>{p.name}</h3>
                                 <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}>Price: ₹{p.price}</p>
                                 <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}>Quantity: {p.quantity}</p>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}>Total: ₹{p.price * p.quantity}</p>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '55px' }}><b>Total: ₹{p.price * p.quantity}</b></p>
                             </div>
                         </div>
                     ))}
