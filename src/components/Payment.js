@@ -114,7 +114,7 @@ useEffect(() => {
   const cardElementOptions = {
     style: {
       base: {
-        fontSize: x >= 692 ? "25px" : '45px',
+        fontSize: x >= 692 ? "25px" : '60px',
         color: 'green',
         '::placeholder': {
           color: 'gray',
@@ -163,11 +163,11 @@ useEffect(() => {
         <div style={styles.cardForm}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
             <div>
-              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: x >= 692 ? "45px" : '70px', }}>Card Info.</h1>
-              <b><hr style={{ width: "200px", backgroundColor: "black", position: "relative", bottom: "14px" }} /></b>
+              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: x >= 692 ? "45px" : '90px', }}>Card Info.</h1>
+              <b><hr style={{ width:  x >= 692 ? "200px" : null, backgroundColor: "black", position: "relative", bottom: "14px" }} /></b>
             </div>
           </div>
-          <div style={{ justifyContent: "center", position: "relative", top: "40px" }}>
+          <div style={{ justifyContent: "center", position: "relative", top: "40px", minWidth: x >= 692 ? null : '1540px',minHeight: x >= 692 ? null : '1500px',n  }}>
             <CardNumberElement options={cardElementOptions} />
             <CardExpiryElement options={cardElementOptions} />
             <CardCvcElement options={cardElementOptions} />

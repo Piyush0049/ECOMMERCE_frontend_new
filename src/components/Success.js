@@ -24,7 +24,8 @@ useEffect(() => {
     content: {
       textAlign: "center",
       position: "relative",
-  
+      minHeight :  x >= 692 ? null : '1800px',
+      height : x >= 692 ? null : "auto",
     },
     hr2: {
       borderWidth: "2px",
@@ -32,13 +33,15 @@ useEffect(() => {
       width: "300px",
     },
     image : {
-      height : x >= 692 ? null : '100px',
-      width : x >= 692 ? null : '100px',
+      paddingTop : x >= 692 ? null : '100px',
+      paddingBottom : x >= 692 ? null : '50px',
+      height : x >= 692 ? null : '900px',
+      width : x >= 692 ? null : '900px',
     }
   };
   return (
     <div style={styles.container}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop : x >= 692 ? '60px' : '90px', paddingBottom : x >= 692 ? null : '90px' }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop : x >= 692 ? '60px' : '200px', paddingBottom : x >= 692 ? null : '150px' }}>
         <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
         <hr style={styles.hr2} />
         <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
@@ -47,8 +50,8 @@ useEffect(() => {
       </div>
       <div style={styles.content}>
         <img src={successful} alt="Animated GIF" style={styles.image} />
-        <h2 style={{ position: "relative", bottom: "130px", fontSize: x >= 692 ? null : "50px"}}>Payment Successful!</h2>
-        <Link style={{ position: "relative", bottom: "115px", fontSize: x >= 692 ? '22px' : '45px', textDecoration: "none" }} to="/myorders">See Your Orders...</Link>
+        <h2 style={{ position: "relative", bottom: "130px", fontSize: x >= 692 ? null : "75px"}}>Payment Successful!</h2>
+        <Link style={{ position: "relative", bottom: "115px", fontSize: x >= 692 ? '22px' : '70px', textDecoration: "none" }} to="/myorders">See Your Orders...</Link>
       </div>
     </div>
   );

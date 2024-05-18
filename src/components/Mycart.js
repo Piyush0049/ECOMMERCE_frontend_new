@@ -162,7 +162,7 @@ useEffect(() => {
 
     return (
         <div style={styles.container}>
-            <div style={{ display: "flex", marginLeft : x >= 692 ? "220px" : null, position : x >= 692 ? "relative" : null, top : "80px", paddingTop: x >= 692 ? null : '130px', paddingBottom: x >= 692 ? null : '70px', }}>
+            <div style={{ display: "flex", marginLeft : x >= 692 ? "220px" : "60px", position : x >= 692 ? "relative" : null, top : "80px", paddingTop: x >= 692 ? null : '180px', paddingBottom: x >= 692 ? null : '70px', }}>
                 <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
                 <hr style={styles.hr2} />
                 <Link style={{ fontSize:  x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>

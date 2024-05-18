@@ -58,7 +58,7 @@ useEffect(() => {
             textAlign: 'center',
             marginBottom: '40px',
             marginTop: "20px",
-            fontSize: x >= 692 ? null : '50px',
+            fontSize: x >= 692 ? null : '60px',
         },
         productList: {
             listStyleType: 'none',
@@ -123,7 +123,7 @@ useEffect(() => {
         },
         noOrderMessage: {
             textAlign: 'center',
-            fontSize: '50px',
+            fontSize: x >= 692 ? '50px' : '100px',
             color: '#666',
             minHeight: x >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
             minWidth: x >= 692 ? '1540px' : "1540px",
@@ -142,7 +142,7 @@ useEffect(() => {
                 <div key={order._id} style={{ position: 'relative', minHeight: '1450px' }}>
                     <div style={{
                         minHeight: x >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
-                        maxWidth: x >= 692 ? '1540px' : '1540px',
+                        minWidth: x >= 692 ? '1540px' : '1540px',
                         height: "auto",
                         width: "auto",
                         backgroundColor: "#A7F7FE",
@@ -154,8 +154,7 @@ useEffect(() => {
                             <div style={styles.container}>
                                 <h1 style={styles.header}><b>My Order Summary : </b></h1>
                                 <div style={styles.grandTotalContainer3}>
-                                    <div style={{ fontSize: x >= 692 ? "20px" : '40px', }}>Placed On:</div>
-                                    <div style={{ fontSize: x >= 692 ? "20px" : '40px' }}>{order.createdAt.toString().slice(0, 10)}</div>
+                                <div style={{ fontSize: x >= 692 ? "20px" : '37px' }}>Placed On: {order.createdAt.toString().slice(0, 10)}</div>
                                 </div>
                                 <ul style={styles.productList}>
                                     {order.orderitems.map((p) => (
@@ -197,7 +196,7 @@ useEffect(() => {
                                     </div>
 
                                     <div style={{ marginLeft: "450px" }}>
-                                        <h2><b>Invoice Details : </b></h2>
+                                        <h2 style={{ marginBottom: "40px", fontSize: x >= 692 ? null : '50px', }}><b>Invoice Details : </b></h2>
                                         <div style={styles.grandTotalContainer}>
                                             <div>Sub Total:</div>
                                             <div>₹{order.itemsPrice}</div>
@@ -212,8 +211,8 @@ useEffect(() => {
                                         </div>
                                         <hr style={{ marginTop: '30px', borderWidth: "3px", borderColor: "black" }} />
                                         <div style={styles.grandTotalContainer}>
-                                            <div>Grand Total:</div>
-                                            <div>₹{order.totalPrice}</div>
+                                            <div style={{ fontSize: x >= 692 ? null : '35px' }}><b>Grand Total:</b></div>
+                                            <div style={{ fontSize: x >= 692 ? null : '35px' }}><b>₹{order.totalPrice}</b></div>
                                         </div>
                                     </div>
                                 </div>

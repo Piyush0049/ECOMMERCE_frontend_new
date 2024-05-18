@@ -608,14 +608,14 @@ useEffect(() => {
                     <img style={styles.image} src={product.images[0].url} alt={product.name} />
                     <div style={styles.details}>
                       <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? '17px' : '43px', fontWeight: 'bold' }}>Product Name: {product.name}</h3>
-                      <h3 style={{ marginBottom: '10px', fontSize: "16px", fontWeight: 'bold' }}>Product_id : {product._id}</h3>
+                      <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? '17px' : '38px', fontWeight: 'bold' }}>Product_id : {product._id}</h3>
                       <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '38px', }}>Description: {product.description}</p>
                       <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '38px', }}>Stock: <b>{product.stock}</b></p>
                       <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '38px', }}>Created/Updated By: <b>{product.user}</b></p>
                       <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '38px', }}>Created On: <b>{product.createdAt.slice(0, 10)}</b></p>
                     </div>
                     <button type="button" className="btn btn-success" onClick={() => { settheproduct(allProducts.filter(prod => prod._id === product._id)); thepro() }} style={{ fontSize: x >= 692 ? null : '40px', }}>Edit Product</button>
-                    <i className="fa-solid fa-trash ml-4" style={{ position: "relative", left: "10px", fontSize: x >= 692 ? null : '25px', }} onClick={() => deleteprod(product._id)}></i>
+                    <i className="fa-solid fa-trash ml-4" style={{ position: "relative", left: "10px", fontSize: x >= 692 ? null : '40px', }} onClick={() => deleteprod(product._id)}></i>
                   </div>
                 ))}
               </div>
