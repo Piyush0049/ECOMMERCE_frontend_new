@@ -5,12 +5,19 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 const ConfirmOrder = () => {
-    
+    const [x, setx] = useState("");
+useEffect(() => {
+    if(localStorage.getItem("width") !== null){
+        setx(localStorage.getItem("width"));
+    }else{
+        setx(window.innerWidth);
+    }
+  }, []);
     const navigate = useNavigate();
     const { cartitems } = useSelector((state) => state.cart);
+
     useEffect(() => {
-        // Scroll to the top when the component mounts
-        window.scrollTo(0, 0); // or document.documentElement.scrollTo(0, 0);
+        window.scrollTo(0, 0); 
     }, []);
     const styles = {
 
@@ -36,7 +43,7 @@ const ConfirmOrder = () => {
             textAlign: 'center',
             marginBottom: '40px',
             marginTop: "20px",
-            fontSize: window.innerWidth >= 692 ? null : '50px',
+            fontSize: x >= 692 ? null : '50px',
         },
         productList: {
             listStyleType: 'none',
@@ -49,7 +56,7 @@ const ConfirmOrder = () => {
             justifyContent: 'space-between',
             fontWeight: 'bold',
             width: "300px",
-            fontSize: window.innerWidth >= 692 ? null : '25px',
+            fontSize: x >= 692 ? null : '25px',
         },
         grandTotalContainer2: {
             marginTop: '18px',
@@ -57,12 +64,12 @@ const ConfirmOrder = () => {
             justifyContent: 'space-between',
             fontWeight: 'bold',
             width: "300px",
-            fontSize: window.innerWidth >= 692 ? null : '25px',
+            fontSize: x >= 692 ? null : '25px',
         },
         checkoutButton: {
             marginTop: '80px',
             padding: '15px 30px',
-            fontSize: window.innerWidth >= 692 ? '18px' : '60px',
+            fontSize: x >= 692 ? '18px' : '60px',
             backgroundColor: '#007bff',
             color: '#fff',
             border: 'none',
@@ -73,8 +80,8 @@ const ConfirmOrder = () => {
             margin: '0 auto',
         },
         image: {
-            width: window.innerWidth >= 692 ? "100px" : '150px',
-            height: window.innerWidth >= 692 ? "100px" : '150px',
+            width: x >= 692 ? "100px" : '150px',
+            height: x >= 692 ? "100px" : '150px',
             borderRadius: '10px',
             marginRight: '20px',
         },
@@ -105,8 +112,8 @@ const ConfirmOrder = () => {
 
     return (
         <div style={{
-            backgroundImage: `url(${backimage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-            minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
+            backgroundImage: `url(${backimage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
+            minWidth: x >= 692 ? '1540px' : '1540px',
             height: "auto",
             width: "auto", opacity: 0.9, paddingTop: '80px',
         }}>
@@ -124,10 +131,10 @@ const ConfirmOrder = () => {
                         <div key={p} style={styles.product}>
                             <img style={styles.image} src={p.image} alt={p.name} />
                             <div style={styles.details}>
-                                <h3 style={{ marginBottom: '10px', fontSize: window.innerWidth >= 692 ? "20px" : '50px', fontWeight: 'bold' }}>{p.name}</h3>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize: window.innerWidth >= 692 ? "20px" : '45px' }}>Price: ₹{p.price}</p>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize: window.innerWidth >= 692 ? "20px" : '45px' }}>Quantity: {p.quantity}</p>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize: window.innerWidth >= 692 ? "20px" : '45px' }}>Total: ₹{p.price * p.quantity}</p>
+                                <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? "20px" : '50px', fontWeight: 'bold' }}>{p.name}</h3>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}>Price: ₹{p.price}</p>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}>Quantity: {p.quantity}</p>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}>Total: ₹{p.price * p.quantity}</p>
                             </div>
                         </div>
                     ))}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import backgroundImage from './snapedit_1710097319045.jpeg';
 import { useDispatch } from 'react-redux';
 import VisibilityIcon from '@material-ui/icons/Visibility';
@@ -7,6 +7,14 @@ import { IconButton} from '@material-ui/core';
 import { useNavigate, useParams } from 'react-router-dom';
 import { forgotpasswordreset } from './actions/useractions'
 const Getnewpassword = () => {
+    const [x, setx] = useState("");
+useEffect(() => {
+    if(localStorage.getItem("width") !== null){
+        setx(localStorage.getItem("width"));
+    }else{
+        setx(window.innerWidth);
+    }
+  }, []);
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -49,10 +57,13 @@ const Getnewpassword = () => {
 
     return (
         <div style={{
+            minHeight: x >= 692 ? '1000px' : '3000px', 
+            maxWidth: x >= 692 ? '1540px' : '1540px',
+            height : "auto",
+            width : "auto",
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            height: '100vh',
             flexDirection: 'column',
             backgroundImage: `url(${backgroundImage}`,
             backgroundSize: 'cover',

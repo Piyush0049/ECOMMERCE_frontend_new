@@ -6,6 +6,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createorder } from './actions/orderactions';
 import { useStripe } from '@stripe/react-stripe-js';
 const Payment = () => {
+  const [x, setx] = useState("");
+useEffect(() => {
+    if(localStorage.getItem("width") !== null){
+        setx(localStorage.getItem("width"));
+    }else{
+        setx(window.innerWidth);
+    }
+  }, []);
   const stripe = useStripe(); 
   const [cardDetails, setCardDetails] = useState({
     cardNumber: '',
@@ -110,21 +118,44 @@ const Payment = () => {
     }
 
   };
+  const styles = {
+    container: {
+      minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
+      minWidth: x >= 692 ? '1540px' : '1540px',
+      height: "auto",
+      width: "auto",
+      alignItems: 'center',
+      background: '#f0f0f0',
+      backgroundImage: `url(${backimage})`, backgroundSize: 'cover'
+    },
+    cardForm: {
+      width: '500px',
+      padding: '20px',
+      borderRadius: '10px',
+      boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+      background: '#fff',
+    },
+    hr2: {
+      borderWidth: "2px",
+      opacity: 0.6,
+      width: "300px",
+    },
+  };
 
   return (
     <div style={styles.container}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: window.innerWidth >= 692 ? "60px" : '110px', paddingBottom: window.innerWidth >= 692 ? null : '70px', }}>
-        <Link to="/mycart" style={{ fontSize: window.innerWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? "60px" : '110px', paddingBottom: x >= 692 ? null : '70px', }}>
+        <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: window.innerWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
+        <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: window.innerWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
+        <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
       </div>
       <div style={{ minHeight: "500px", height: "auto", opacity: 0.9, paddingTop: '80px', display: 'flex', justifyContent: 'center' }}>
         <div style={styles.cardForm}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
             <div>
-              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: window.innerWidth >= 692 ? "45px" : '70px', }}>Card Info.</h1>
+              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: x >= 692 ? "45px" : '70px', }}>Card Info.</h1>
               <b><hr style={{ width: "200px", backgroundColor: "black", position: "relative", bottom: "14px" }} /></b>
             </div>
           </div>
@@ -165,28 +196,6 @@ const Payment = () => {
   );
 };
 
-const styles = {
-  container: {
-    minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-    minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
-    height: "auto",
-    width: "auto",
-    alignItems: 'center',
-    background: '#f0f0f0',
-    backgroundImage: `url(${backimage})`, backgroundSize: 'cover'
-  },
-  cardForm: {
-    width: '500px',
-    padding: '20px',
-    borderRadius: '10px',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
-    background: '#fff',
-  },
-  hr2: {
-    borderWidth: "2px",
-    opacity: 0.6,
-    width: "300px",
-  },
-};
+
 
 export default Payment;

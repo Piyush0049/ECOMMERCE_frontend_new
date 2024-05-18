@@ -4,8 +4,14 @@ import { getallorders, updatestatus } from "./actions/orderactions"
 import { getallusers } from './actions/useractions';
 import axios from 'axios';
 const Dashboard = () => {
-  
-
+  const [x, setx] = useState("");
+useEffect(() => {
+    if(localStorage.getItem("width") !== null){
+        setx(localStorage.getItem("width"));
+    }else{
+        setx(window.innerWidth);
+    }
+  }, []);
   const dispatch = useDispatch();
   const { orderdets } = useSelector((state) => state.allorders)
   const { work } = useSelector((state) => state.userdetails.user);
@@ -186,6 +192,227 @@ const Dashboard = () => {
     }
   };
 
+  const styles = {
+    grandTotalContainer: {
+      marginTop: '40px',
+      display: 'flex',
+      justifyContent: 'space-between',
+      fontWeight: 'bold',
+      width: "300px",
+      fontSize: window.innerWidth >= 692 ? null : '25px'
+    },
+    grandTotalContainer3: {
+      marginTop: '40px',
+      display: 'flex',
+      justifyContent: 'space-between',
+      fontWeight: 'bold',
+      width: "300px",
+      position: "relative",
+      left: "750px"
+    },
+    grandTotalContainer2: {
+      marginTop: '18px',
+      display: 'flex',
+      justifyContent: 'space-between',
+      fontWeight: 'bold',
+      width: "300px",
+      fontSize: window.innerWidth >= 692 ? null : '25px',
+      whiteSpace: "nowrap"
+    },
+    hr2: {
+      borderWidth: "2px",
+      opacity: 0.6,
+      width: "300px",
+    },
+    cartContainer: {
+      maxWidth: window.innerWidth >= 692 ? '900px' : '1540px',
+      width: '100%',
+      padding: '30px',
+      borderRadius: '20px',
+      background: 'rgba(255, 255, 255, 0.9)',
+      boxShadow: '0px 20px 20px rgba(0, 0, 0, 0.1)',
+    },
+    product: {
+      marginBottom: '30px',
+      padding: '20px',
+      borderRadius: '10px',
+      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+      position: 'relative',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    image: {
+      width: window.innerWidth >= 692 ? '120px' : '140px',
+      height: window.innerWidth >= 692 ? '120px' : '140px',
+      borderRadius: '10px',
+      marginRight: '20px',
+    },
+    details: {
+      flex: '1',
+    },
+    quantityContainer: {
+      display: 'flex',
+      alignItems: 'center',
+    },
+    quantityButton: {
+      backgroundColor: '#5ABCE6',
+      color: '#fff',
+      padding: '5px',
+      borderRadius: '5px',
+      border: 'none',
+      fontSize: '20px',
+      cursor: 'pointer',
+      transition: 'background-color 0.3s',
+      marginRight: '5px',
+      boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
+      width: "21px",
+    },
+    quantityButton2: {
+      backgroundColor: 'gray',
+      color: '#fff',
+      padding: '5px',
+      borderRadius: '5px',
+      border: 'none',
+      fontSize: '20px',
+      transition: 'background-color 0.3s',
+      marginRight: '5px',
+      boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
+      width: "21px",
+    },
+    quantityText: {
+      fontSize: '20px',
+      color: '#333',
+      margin: '0 5px',
+      marginRight: "10px"
+    },
+    checkoutButton: {
+      marginTop: '30px',
+      padding: '15px 30px',
+      fontSize: '16px',
+      backgroundColor: '#007bff',
+      color: '#fff',
+      border: 'none',
+      borderRadius: '5px',
+      cursor: 'pointer',
+      transition: 'background-color 0.3s ease',
+      outline: 'none',
+    },
+    grandTotal: {
+      marginTop: '30px',
+      fontSize: '24px',
+      fontWeight: 'bold',
+      textAlign: 'center',
+    },
+  
+  };
+  
+  const style = {
+    editProductContainer: {
+      position: "relative",
+      top: "80px",
+      opacity: "0.9",
+      backgroundColor: "#D2F1FE",
+      height: window.innerWidth >= 692 ? '600px' : '1700px',
+      alignItems: "center",
+      justifyContent: "center",
+      overflowY: "auto",
+    },
+    editProductHeader: {
+      position: "relative",
+      top: "20px",
+      left: "30px",
+      fontSize: window.innerWidth >= 692 ? '35px' : '43px',
+      fontWeight: "bold",
+      textAlign: "center",
+      paddingBottom: "25px"
+    },
+    product: {
+      display: "flex",
+      flexDirection: "row",
+      margin: "20px",
+    },
+    image: {
+      width: "600px",
+      height: "600px",
+      marginRight: "20px",
+      borderRadius: "10px",
+    },
+    details: {
+      display: "flex",
+      flexDirection: "column",
+      textAlign: "center"
+    },
+    label: {
+      marginTop: "20px",
+      color: "#666",
+      fontSize: window.innerWidth >= 692 ? '21px' : '35px',
+      textAlign: "center"
+    },
+    input: {
+      marginBottom: "10px",
+      padding: "10px 120px",
+      fontSize: window.innerWidth >= 692 ? '16px' : '32px',
+      borderRadius: "10px",
+      border: "2px solid #ccc",
+      textAlign: "center"
+    },
+    textarea: {
+      marginBottom: "10px",
+      padding: "8px",
+      fontSize: "16px",
+      borderRadius: "5px",
+      border: "1px solid #ccc",
+      minHeight: "50px",
+      textAlign: "center"
+    },
+    disabledInput: {
+      marginBottom: "10px",
+      padding: "8px",
+      fontSize: window.innerWidth >= 692 ? '16px' : '32px',
+      borderRadius: "5px",
+      border: "1px solid #ccc",
+      backgroundColor: "#f3f3f3",
+      color: "#666",
+      textAlign: "center"
+    },
+    button: {
+      marginTop: "20px",
+      padding: "15px 20px",
+      fontSize: window.innerWidth >= 692 ? '16px' : '40px',
+      backgroundColor: "#28a745",
+      color: "#fff",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      transition: "background-color 0.3s",
+      boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
+    },
+  };
+  
+  
+  // Inline CSS Styles
+  const dashboardStyle = {
+    fontFamily: 'Arial, sans-serif',
+    maxWidth:window.innerWidth >= 692 ? '1200px' : '1540px',
+    margin: '0 auto',
+    padding: '20px',
+    width: '100%',
+    height: '100% auto',
+  };
+  
+  const headerStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '20px',
+  };
+  
+  const navStyle = {
+    position: "relative",
+    right: "870px",
+    top: "100px",
+    display: "flex"
+  }
   return (
     <div>
       {work === "admin" ? (
@@ -509,226 +736,6 @@ const Dashboard = () => {
   );
 };
 
-const styles = {
-  grandTotalContainer: {
-    marginTop: '40px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    fontWeight: 'bold',
-    width: "300px",
-    fontSize: window.innerWidth >= 692 ? null : '25px'
-  },
-  grandTotalContainer3: {
-    marginTop: '40px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    fontWeight: 'bold',
-    width: "300px",
-    position: "relative",
-    left: "750px"
-  },
-  grandTotalContainer2: {
-    marginTop: '18px',
-    display: 'flex',
-    justifyContent: 'space-between',
-    fontWeight: 'bold',
-    width: "300px",
-    fontSize: window.innerWidth >= 692 ? null : '25px',
-    whiteSpace: "nowrap"
-  },
-  hr2: {
-    borderWidth: "2px",
-    opacity: 0.6,
-    width: "300px",
-  },
-  cartContainer: {
-    maxWidth: window.innerWidth >= 692 ? '900px' : '1540px',
-    width: '100%',
-    padding: '30px',
-    borderRadius: '20px',
-    background: 'rgba(255, 255, 255, 0.9)',
-    boxShadow: '0px 20px 20px rgba(0, 0, 0, 0.1)',
-  },
-  product: {
-    marginBottom: '30px',
-    padding: '20px',
-    borderRadius: '10px',
-    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-    position: 'relative',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  image: {
-    width: window.innerWidth >= 692 ? '120px' : '140px',
-    height: window.innerWidth >= 692 ? '120px' : '140px',
-    borderRadius: '10px',
-    marginRight: '20px',
-  },
-  details: {
-    flex: '1',
-  },
-  quantityContainer: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  quantityButton: {
-    backgroundColor: '#5ABCE6',
-    color: '#fff',
-    padding: '5px',
-    borderRadius: '5px',
-    border: 'none',
-    fontSize: '20px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s',
-    marginRight: '5px',
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
-    width: "21px",
-  },
-  quantityButton2: {
-    backgroundColor: 'gray',
-    color: '#fff',
-    padding: '5px',
-    borderRadius: '5px',
-    border: 'none',
-    fontSize: '20px',
-    transition: 'background-color 0.3s',
-    marginRight: '5px',
-    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
-    width: "21px",
-  },
-  quantityText: {
-    fontSize: '20px',
-    color: '#333',
-    margin: '0 5px',
-    marginRight: "10px"
-  },
-  checkoutButton: {
-    marginTop: '30px',
-    padding: '15px 30px',
-    fontSize: '16px',
-    backgroundColor: '#007bff',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
-    outline: 'none',
-  },
-  grandTotal: {
-    marginTop: '30px',
-    fontSize: '24px',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
 
-};
-
-const style = {
-  editProductContainer: {
-    position: "relative",
-    top: "80px",
-    opacity: "0.9",
-    backgroundColor: "#D2F1FE",
-    height: window.innerWidth >= 692 ? '600px' : '1700px',
-    alignItems: "center",
-    justifyContent: "center",
-    overflowY: "auto",
-  },
-  editProductHeader: {
-    position: "relative",
-    top: "20px",
-    left: "30px",
-    fontSize: window.innerWidth >= 692 ? '35px' : '43px',
-    fontWeight: "bold",
-    textAlign: "center",
-    paddingBottom: "25px"
-  },
-  product: {
-    display: "flex",
-    flexDirection: "row",
-    margin: "20px",
-  },
-  image: {
-    width: "600px",
-    height: "600px",
-    marginRight: "20px",
-    borderRadius: "10px",
-  },
-  details: {
-    display: "flex",
-    flexDirection: "column",
-    textAlign: "center"
-  },
-  label: {
-    marginTop: "20px",
-    color: "#666",
-    fontSize: window.innerWidth >= 692 ? '21px' : '35px',
-    textAlign: "center"
-  },
-  input: {
-    marginBottom: "10px",
-    padding: "10px 120px",
-    fontSize: window.innerWidth >= 692 ? '16px' : '32px',
-    borderRadius: "10px",
-    border: "2px solid #ccc",
-    textAlign: "center"
-  },
-  textarea: {
-    marginBottom: "10px",
-    padding: "8px",
-    fontSize: "16px",
-    borderRadius: "5px",
-    border: "1px solid #ccc",
-    minHeight: "50px",
-    textAlign: "center"
-  },
-  disabledInput: {
-    marginBottom: "10px",
-    padding: "8px",
-    fontSize: window.innerWidth >= 692 ? '16px' : '32px',
-    borderRadius: "5px",
-    border: "1px solid #ccc",
-    backgroundColor: "#f3f3f3",
-    color: "#666",
-    textAlign: "center"
-  },
-  button: {
-    marginTop: "20px",
-    padding: "15px 20px",
-    fontSize: window.innerWidth >= 692 ? '16px' : '40px',
-    backgroundColor: "#28a745",
-    color: "#fff",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-    transition: "background-color 0.3s",
-    boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
-  },
-};
-
-
-// Inline CSS Styles
-const dashboardStyle = {
-  fontFamily: 'Arial, sans-serif',
-  maxWidth:window.innerWidth >= 692 ? '1200px' : '1540px',
-  margin: '0 auto',
-  padding: '20px',
-  width: '100%',
-  height: '100% auto',
-};
-
-const headerStyle = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginBottom: '20px',
-};
-
-const navStyle = {
-  position: "relative",
-  right: "870px",
-  top: "100px",
-  display: "flex"
-}
 
 export default Dashboard;

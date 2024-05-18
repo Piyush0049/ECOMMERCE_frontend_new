@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { forgotuserpassword } from './actions/useractions';
 const Forgotpassword = () => {
+    const [x, setx] = useState("");
+useEffect(() => {
+    if(localStorage.getItem("width") !== null){
+        setx(localStorage.getItem("width"));
+    }else{
+        setx(window.innerWidth);
+    }
+  }, []);
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
     const dispatch = useDispatch();
@@ -20,8 +28,8 @@ const Forgotpassword = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', 
-            maxWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
+            minHeight: x >= 692 ? '1000px' : '3000px', 
+            maxWidth: x >= 692 ? '1540px' : '1540px',
             height : "auto",
             width : "auto",
             flexDirection: 'column',
@@ -30,7 +38,7 @@ const Forgotpassword = () => {
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center'
         }}>
-            <h2 style={{ marginBottom: '20px', fontSize: window.innerWidth >= 692 ? '40px' : '100px', fontFamily : "sans-serif" }}><b>Forgot Your Password?</b></h2>
+            <h2 style={{ marginBottom: '20px', fontSize: x >= 692 ? '40px' : '100px', fontFamily : "sans-serif" }}><b>Forgot Your Password?</b></h2>
             <form onSubmit={handleSubmit} style={{ width: '400px', textAlign: 'center' }}>
                 <input
                     type="email"
@@ -39,12 +47,12 @@ const Forgotpassword = () => {
                     onChange={handleEmailChange}
                     style={{
                         width: '100%',
-                        padding:  window.innerWidth >= 692 ? '10px' : '30px',
+                        padding:  x >= 692 ? '10px' : '30px',
                         marginBottom: '15px',
                         borderRadius: '5px',
                         border: '1px solid #ccc',
                         textAlign : "center",
-                        fontSize : window.innerWidth >= 692 ? '18px' : '35px',
+                        fontSize : x >= 692 ? '18px' : '35px',
                     }}
                     required
                 />
@@ -58,7 +66,7 @@ const Forgotpassword = () => {
                         border: 'none',
                         cursor: 'pointer',
                         marginTop : "10px",
-                        fontSize : window.innerWidth >= 692 ? '18px' : '35px',
+                        fontSize : x >= 692 ? '18px' : '35px',
                     }}
                 >
                     Send Reset Link
