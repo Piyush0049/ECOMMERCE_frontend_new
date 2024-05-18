@@ -3,13 +3,16 @@ import backgroundImage from './background-5.jpeg';
 import ProductItem from './ProductItem';
 import { allproducts } from './actions/productActions';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { useState } from 'react';
 function Home() {
-    if(window.innerWidth > 1541){
-        var x = window.innerWidth;
+    const [x, setx] = useState("");
+useEffect(() => {
+    if(localStorage.getItem("width") !== null){
+        setx(localStorage.getItem("width"));
     }else{
-        var x = localStorage.getItem();
+        setx(window.innerWidth);
     }
+  }, []);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(allproducts())
@@ -18,8 +21,8 @@ function Home() {
 
     const { products } = useSelector((state) => state.products)
     const containerStyle1 = {
-        minHeight: window.innerWidth >= 692 ? '800px' : '1600px', // Adjusted height based on window width
-        maxWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
+        minHeight: x >= 692 ? '800px' : '1600px', // Adjusted height based on window width
+        maxWidth: x >= 692 ? '1540px' : x,
         height : "auto",
         width : "auto",
         overflowX: 'hidden', // Prevent horizontal overflow
@@ -29,8 +32,8 @@ function Home() {
     };
 
     const containerStyle2 = {
-        minHeight: window.innerWidth >= 692 ? '800px' : '1500px', // Adjusted height based on window width
-        maxWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
+        minHeight: x >= 692 ? '800px' : '1500px', // Adjusted height based on window width
+        maxWidth: x >= 692 ? '1540px' : x,
         height : "auto",
         width : "auto",
         overflowX: 'hidden', // Prevent horizontal overflow
@@ -78,16 +81,16 @@ function Home() {
                 <div style={textStyle}>
                     <h1 style={{
                         fontFamily: "fantasy",
-                        fontSize: window.innerWidth >= 692 ? '50px' : '130px',
-                        marginLeft: window.innerWidth >= 692 ? '70px' : '00px',
+                        fontSize: x >= 692 ? '50px' : '130px',
+                        marginLeft: x >= 692 ? '70px' : '00px',
                         whiteSpace: 'nowrap' // Ensure text stays on one line
                     }}>
                         WELCOME TO SNAP & SHOP
                     </h1>
                     <h1 style={{
                         fontFamily: "fantasy",
-                        fontSize: window.innerWidth >= 692 ? '35px' : '80px',
-                        marginLeft: window.innerWidth >= 692 ? '180px' : '290px',
+                        fontSize: x >= 692 ? '35px' : '80px',
+                        marginLeft: x >= 692 ? '180px' : '290px',
                         marginTop: "30px",
                         whiteSpace: 'nowrap' // Ensure text stays on one line
                     }}>
@@ -97,7 +100,7 @@ function Home() {
                 </div>
             </div>
             <div style={containerStyle2}>
-                <h3 style={{ fontFamily: "revert", position: "absolute", left: '50%', transform: 'translateX(-50%)', color: "black", textAlign: "center", fontSize:window.innerWidth >= 692 ? '50px' : '100px', marginTop: window.innerWidth >= 692 ? '80px' : '40px', whiteSpace: 'nowrap'}}>Featured Products : </h3>
+                <h3 style={{ fontFamily: "revert", position: "absolute", left: '50%', transform: 'translateX(-50%)', color: "black", textAlign: "center", fontSize:x >= 692 ? '50px' : '100px', marginTop: x >= 692 ? '80px' : '40px', whiteSpace: 'nowrap'}}>Featured Products : </h3>
                 <hr style={{ position: "relative", top: "140px", borderWidth: "2px", opacity: 0.9, marginLeft: "300px", marginRight: "300px" }} />
                 <div style={productsContainerStyle}>
                     {products.map(product => (
