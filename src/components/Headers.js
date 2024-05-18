@@ -97,7 +97,7 @@ useEffect(() => {
                 {isAuthenticated && (
                   <li className="nav-item" >
                     <Link to="/mycart" className="nav-link" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>My Cart<i className="fa-solid fa-cart-shopping" style={{ fontSize: x >= 692 ? "20px" : '45px', marginTop: "3px" }}></i>
-                      <span className={`position-absolute top-${a} start-45 translate-middle badge rounded-pill bg-danger`} style={{ width: x >= 692 ? "17px" : '30px', height: x >= 692 ? "17px" : '30px', fontSize: x >= 692 ? "10px" : '25px', textAlign: "center", marginTop: x > 768 ? "18px" : null, marginBottom: x > 768 ? null : "25px", marginLeft: "5px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                      <span className={`position-absolute top-${a} start-45 translate-middle badge rounded-pill bg-danger`} style={{ width: x >= 692 ? "17px" : '30px', height: x >= 692 ? "17px" : '30px', fontSize: x >= 692 ? "10px" : '25px', textAlign: "center", marginTop: x > 768 ? "30px" : null, marginBottom: x > 768 ? null : "25px", marginLeft: "5px", display: "flex", justifyContent: "center", alignItems: "center" }}>
                         {cartitems !== null && (
                           cartitems.length > 0 && (
                             cartitems.length
@@ -111,7 +111,7 @@ useEffect(() => {
               <li className="nav-item">
                 {isAuthenticated && (
                   <>
-                    <img onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)} src={profilepic} alt="Uploaded" style={{ width: x > 768 ? "40px" : "75px", height: x > 768 ? "40px" : "75px", borderRadius: "100%", marginLeft: x > 768 ? "10px" : null }} />
+                    <img onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)} src={profilepic} alt="Uploaded" style={{ width: x > 768 ? "30px" : "75px", height: x > 768 ? "30px" : "75px", borderRadius: "100%", marginLeft: x > 768 ? "10px" : null }} />
                     {showMessage && (
                       <div
                         style={{
@@ -124,7 +124,7 @@ useEffect(() => {
                           padding: '10px 20px',
                           whiteSpace: "nowrap",
                           borderRadius: '5px',
-                          fontSize: x > 768 ? "13px" : "30px",
+                          fontSize: x > 768 ? "9px" : "30px",
                           zIndex: '999',
                         }}
                       >

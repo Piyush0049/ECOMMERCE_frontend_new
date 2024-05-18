@@ -162,7 +162,7 @@ useEffect(() => {
 
     return (
         <div style={styles.container}>
-            <div style={{ display: "flex", marginLeft : x >= 692 ? "220px" : null, position : x >= 692 ? "relative" : null, top : "120px" }}>
+            <div style={{ display: "flex", marginLeft : x >= 692 ? "220px" : null, position : x >= 692 ? "relative" : null, top : "80px", paddingTop: x >= 692 ? null : '110px', paddingBottom: x >= 692 ? null : '70px', }}>
                 <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
                 <hr style={styles.hr2} />
                 <Link style={{ fontSize:  x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
@@ -193,7 +193,7 @@ useEffect(() => {
                             </div>
                             <i
                                 className="fa-solid fa-trash"
-                                style={{ marginTop: x >= 692 ? '110px' : '120px', marginRight: "10px", cursor: "pointer", fontSize : x >= 692 ? null : '50px', }}
+                                style={{ marginTop: x >= 692 ? '110px' : '130px', marginRight: "10px", cursor: "pointer", fontSize : x >= 692 ? null : '50px', }}
                                 onClick={() => deleteprod(p.product, p.quantity, p.stock)}
                                 // Add hover effect
                                 onMouseEnter={(e) => { e.target.style.color = "blue"; }}

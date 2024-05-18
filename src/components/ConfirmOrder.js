@@ -6,18 +6,18 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 const ConfirmOrder = () => {
     const [x, setx] = useState("");
-useEffect(() => {
-    if(localStorage.getItem("width") !== null){
-        setx(localStorage.getItem("width"));
-    }else{
-        setx(window.innerWidth);
-    }
-  }, []);
+    useEffect(() => {
+        if (localStorage.getItem("width") !== null) {
+            setx(localStorage.getItem("width"));
+        } else {
+            setx(window.innerWidth);
+        }
+    }, []);
     const navigate = useNavigate();
     const { cartitems } = useSelector((state) => state.cart);
 
     useEffect(() => {
-        window.scrollTo(0, 0); 
+        window.scrollTo(0, 0);
     }, []);
     const styles = {
 
@@ -117,7 +117,7 @@ useEffect(() => {
             height: "auto",
             width: "auto", opacity: 0.9, paddingTop: '80px',
         }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? null : '170px', paddingBottom: x >= 692 ? null : '50px',}}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? null : '150px', paddingBottom: x >= 692 ? null : '50px', }}>
                 <Link to="/" style={{ fontSize: "25px", color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
                 <hr style={styles.hr2} />
                 <Link to="/confirmorder" style={{ fontSize: "25px", color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
@@ -134,7 +134,7 @@ useEffect(() => {
                                 <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? "20px" : '50px', fontWeight: 'bold' }}>{p.name}</h3>
                                 <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}>Price: ₹{p.price}</p>
                                 <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}>Quantity: {p.quantity}</p>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '55px' }}><b>Total: ₹{p.price * p.quantity}</b></p>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}><b>Total: ₹{p.price * p.quantity}</b></p>
                             </div>
                         </div>
                     ))}
@@ -144,7 +144,7 @@ useEffect(() => {
                 <div style={{ display: "flex" }}>
 
                     <div style={{ marginLeft: "70px" }}>
-                        <h2 style={{ marginBottom: "40px" }}><b>Shipping Address : </b></h2>
+                        <h2 style={{ marginBottom: "40px", fontSize: x >= 692 ? null : '35px' }}><b>Shipping Address : </b></h2>
                         <div style={styles.grandTotalContainer2}>
                             <div>Name :</div>
                             <div>{shippingdet.userDetails.name}</div>
@@ -172,7 +172,7 @@ useEffect(() => {
                     </div>
 
                     <div style={{ marginLeft: "450px" }}>
-                        <h2><b>Invoice Details : </b></h2>
+                        <h2 style={{fontSize: x >= 692 ? null : '35px',}}><b>Invoice Details : </b></h2>
                         <div style={styles.grandTotalContainer}>
                             <div>Sub Total:</div>
                             <div>₹{getTotal().toFixed(2)}</div>
@@ -182,7 +182,14 @@ useEffect(() => {
                             <div>₹{(getTotal() * 0.18).toFixed(2)}</div>
                         </div>
                         <hr style={{ marginTop: '30px', borderWidth: "3px", borderColor: "black" }} />
-                        <div style={styles.grandTotalContainer}>
+                        <div style={{
+                            marginTop: '40px',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            fontWeight: 'bold',
+                            width: "300px",
+                            fontSize: x >= 692 ? null : '35px',
+                        }}>
                             <div>Grand Total:</div>
                             <div>₹{(getTotal() * 1.18).toFixed(2)}</div>
                         </div>
