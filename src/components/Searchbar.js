@@ -36,12 +36,15 @@ useEffect(() => {
         container: {
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center', // Add this line to center horizontally
+            flexDirection: 'column', // Adjust to column layout
             maxWidth: x >= 692 ? '500px' : "250px",
             margin: 'auto',
             position: 'relative',
             top: x >= 692 ? '350px' : '500px',
             right : x >= 692 ? null : '170px',
         },
+        
         input: {
             flex: '1',
             padding: x >= 692 ? '12px' : '40px',

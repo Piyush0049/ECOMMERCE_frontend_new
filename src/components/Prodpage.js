@@ -86,7 +86,7 @@ useEffect(() => {
       fontFamily: 'Arial, sans-serif',
       color: '#333',
       backgroundColor : "#A6E5FF",
-      minHeight: x >= 692 ? '1000px' : '2700px',  // Adjusted height based on window width
+      minHeight: x >= 692 ? '1000px' : '3000px',  // Adjusted height based on window width
       minWidth: x >= 692 ? '1540px' : '1540px',
       height: "auto",
       width: "auto",
@@ -400,7 +400,7 @@ useEffect(() => {
           {addrev ? (
             <>
               <div style={{
-                maxWidth: x >= 692 ? '1200px' : "300px",
+                maxWidth: x >= 692 ? '1200px' : "400px",
                 margin: "auto",
                 textAlign: "center",
                 marginTop: "140px",
@@ -429,7 +429,7 @@ useEffect(() => {
                         borderRadius: "5px",
                         border: "1px solid #ccc",
                         boxSizing: "border-box",
-                        fontSize: "1rem"
+                        fontSize:  x >= 692 ? "15px" : '40px',
                       }}
                       required
                     />
