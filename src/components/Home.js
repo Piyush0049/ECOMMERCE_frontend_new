@@ -22,18 +22,19 @@ useEffect(() => {
     const { products } = useSelector((state) => state.products)
     const containerStyle1 = {
         minHeight: x >= 692 ? '800px' : '1600px', // Adjusted height based on window width
-        maxWidth: x >= 692 ? '1540px' : '1540px',
+        minWidth: x >= 692 ? '1540px' : '1540px',
         height : "auto",
         width : "auto",
         overflowX: 'hidden', // Prevent horizontal overflow
         zIndex: -1, // Ensure the image is behind other content
         position: 'relative', // Add position relative for positioning children
-        backgroundColor: "#7CE2F0"
+        backgroundColor: "#7CE2F0",
+        display: 'flex'
     };
 
     const containerStyle2 = {
         minHeight: x >= 692 ? '800px' : '1500px', // Adjusted height based on window width
-        maxWidth: x >= 692 ? '1540px' : '1540px',
+        minWidth: x >= 692 ? '1540px' : '1540px',
         height : "auto",
         width : "auto",
         overflowX: 'hidden', // Prevent horizontal overflow
