@@ -1,6 +1,8 @@
 import React from 'react';
 import successful from "./1cbd3594bb5e8d90924a105d4aae924c.gif";
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useState } from 'react';
 const Success = () => {
   const [x, setx] = useState("");
 useEffect(() => {

@@ -3,7 +3,7 @@ import backimage from "./snapedit_1710779459498.jpeg";
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 const ConfirmOrder = () => {
     const [x, setx] = useState("");
 useEffect(() => {
