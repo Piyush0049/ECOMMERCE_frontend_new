@@ -111,6 +111,44 @@ useEffect(() => {
     }
 
   };
+  const cardElementOptions = {
+    style: {
+      base: {
+        fontSize: x >= 692 ? "25px" : '45px',
+        color: 'green',
+        '::placeholder': {
+          color: 'gray',
+        },
+        textAlign: "center",
+      },
+      invalid: {
+        color: 'red',
+      },
+    },
+  };
+  const styles = {
+    container: {
+      minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
+      minWidth: x >= 692 ? '1540px' : '1540px',
+      height: "auto",
+      width: "auto",
+      alignItems: 'center',
+      background: '#f0f0f0',
+      backgroundImage: `url(${backimage})`, backgroundSize: 'cover'
+    },
+    cardForm: {
+      width: '500px',
+      padding: '20px',
+      borderRadius: '10px',
+      boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+      background: '#fff',
+    },
+    hr2: {
+      borderWidth: "2px",
+      opacity: 0.6,
+      width: "300px",
+    },
+  };
 
   return (
     <div style={styles.container}>
@@ -146,43 +184,6 @@ useEffect(() => {
     </div>
   );
 };
-const cardElementOptions = {
-  style: {
-    base: {
-      fontSize: x >= 692 ? "25px" : '45px',
-      color: 'green',
-      '::placeholder': {
-        color: 'gray',
-      },
-      textAlign: "center",
-    },
-    invalid: {
-      color: 'red',
-    },
-  },
-};
-const styles = {
-  container: {
-    minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-    minWidth: x >= 692 ? '1540px' : '1540px',
-    height: "auto",
-    width: "auto",
-    alignItems: 'center',
-    background: '#f0f0f0',
-    backgroundImage: `url(${backimage})`, backgroundSize: 'cover'
-  },
-  cardForm: {
-    width: '500px',
-    padding: '20px',
-    borderRadius: '10px',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
-    background: '#fff',
-  },
-  hr2: {
-    borderWidth: "2px",
-    opacity: 0.6,
-    width: "300px",
-  },
-};
+
 
 export default Payment;
