@@ -101,7 +101,8 @@ useEffect(() => {
               name: shippingdet.userDetails.name,
               email: shippingdet.userDetails.email,
               address: userAddress
-            }
+            },
+            payment_method: "pm_1PGwhhSHcH5kC6C6P8gjGcXk",
           }
         });
 
