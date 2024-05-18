@@ -117,7 +117,7 @@ useEffect(() => {
             height: "auto",
             width: "auto", opacity: 0.9, paddingTop: '80px',
         }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? null : '170px', paddingBottom: x >= 692 ? null : '50px',}}>
                 <Link to="/" style={{ fontSize: "25px", color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
                 <hr style={styles.hr2} />
                 <Link to="/confirmorder" style={{ fontSize: "25px", color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import backimage from "./snapedit_1711040704089.jpeg";
 import { Link, useNavigate } from 'react-router-dom';
+import { useStripe, CardNumberElement, CardCvcElement, CardExpiryElement, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { createorder } from './actions/orderactions';
-import { useStripe } from '@stripe/react-stripe-js';
+
 const Payment = () => {
   const [x, setx] = useState("");
 useEffect(() => {
@@ -14,14 +15,10 @@ useEffect(() => {
         setx(window.innerWidth);
     }
   }, []);
-  const stripe = useStripe(); 
-  const [cardDetails, setCardDetails] = useState({
-    cardNumber: '',
-    expiry: '',
-    cvc: '' 
-  });
   const [paymentError, setPaymentError] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const stripe = useStripe();
+  const elements = useElements();
   const totalprice = Number(localStorage.getItem("totalprice"));
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,6 +35,8 @@ useEffect(() => {
     postal_code: "125001",
   };
 
+
+
   const orderdis = {
     shippinginfo: {
       address: shippingdet.userDetails.address,
@@ -52,6 +51,7 @@ useEffect(() => {
       id: "",
       status: "succeeded"
     },
+
     itemsPrice: (totalprice * 100) / 118,
     taxPrice: (totalprice * 18) / 118,
     shippingPrice: 0,
@@ -62,14 +62,6 @@ useEffect(() => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setCardDetails({
-      ...cardDetails,
-      [name]: value
-    });
-  };
 
   const handlePayment = async (e) => {
     e.preventDefault();
@@ -88,7 +80,7 @@ useEffect(() => {
         const clientSecret = data.client_secret;
         const result = await stripe.confirmCardPayment(clientSecret, {
           payment_method: {
-            card: cardDetails.cardNumber,
+            card: elements.getElement(CardNumberElement),
             billing_details: {
               name: shippingdet.userDetails.name,
               email: JSON.parse(localStorage.getItem("shippingdetails")).userDetails.email,
@@ -118,6 +110,22 @@ useEffect(() => {
     }
 
   };
+  const cardElementOptions = {
+    style: {
+      base: {
+        fontSize: x >= 692 ? "25px" : '45px',
+        color: 'green',
+        '::placeholder': {
+          color: 'gray',
+        },
+        fontFamily: 'Mulish, sans-serif',
+        textAlign: "center",
+      },
+      invalid: {
+        color: 'red',
+      },
+    },
+  };
   const styles = {
     container: {
       minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
@@ -144,58 +152,76 @@ useEffect(() => {
 
   return (
     <div style={styles.container}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? "60px" : '110px', paddingBottom: x >= 692 ? null : '70px', }}>
-        <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: windowWidth >= 692 ? "60px" : '110px', paddingBottom: windowWidth >= 692 ? null : '70px', }}>
+        <Link to="/mycart" style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
+        <Link style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
+        <Link style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
       </div>
       <div style={{ minHeight: "500px", height: "auto", opacity: 0.9, paddingTop: '80px', display: 'flex', justifyContent: 'center' }}>
         <div style={styles.cardForm}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
             <div>
-              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: x >= 692 ? "45px" : '70px', }}>Card Info.</h1>
+              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: windowWidth >= 692 ? "45px" : '70px', }}>Card Info.</h1>
               <b><hr style={{ width: "200px", backgroundColor: "black", position: "relative", bottom: "14px" }} /></b>
             </div>
           </div>
-          <form onSubmit={handlePayment}>
-            <div style={{ justifyContent: "center", position: "relative", top: "40px" }}>
-              <input
-                type="text"
-                name="cardNumber"
-                value={cardDetails.cardNumber}
-                placeholder="Card Number"
-                onChange={handleInputChange}
-              />
-              <input
-                type="text"
-                name="expiry"
-                value={cardDetails.expiry}
-                placeholder="MM/YY"
-                onChange={handleInputChange}
-              />
-              <input
-                type="text"
-                name="cvc"
-                value={cardDetails.cvc}
-                placeholder="CVC"
-                onChange={handleInputChange}
-              />
-            </div>
-            {paymentError && <div style={{ color: 'red' }}>{paymentError}</div>}
-            <div style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}>
-              <button type="submit" className="btn btn-warning" disabled={isProcessing}>
-                {isProcessing ? "Processing..." : `Pay ₹${totalprice}`}
-              </button>
-            </div>
-          </form>
+          <div style={{ justifyContent: "center", position: "relative", top: "40px" }}>
+            <CardNumberElement options={cardElementOptions} />
+            <CardExpiryElement options={cardElementOptions} />
+            <CardCvcElement options={cardElementOptions} />
+          </div>
+          {paymentError && <div style={{ color: 'red' }}>{paymentError}</div>}
+          <div style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}>
+            <button onClick={handlePayment} type="button" className="btn btn-warning" style={{ padding: "10px", paddingInline: "40px", fontSize: windowWidth >= 692 ? "20px" : '55px', position: "relative", top: "80px" }} disabled={isProcessing}>
+              {isProcessing ? "Processing..." : `Pay ₹${totalprice}`}
+            </button>
+          </div>
+
         </div>
       </div>
     </div>
   );
 };
-
-
+const cardElementOptions = {
+  style: {
+    base: {
+      fontSize: x >= 692 ? "25px" : '45px',
+      color: 'green',
+      '::placeholder': {
+        color: 'gray',
+      },
+      fontFamily: 'Mulish, sans-serif',
+      textAlign: "center",
+    },
+    invalid: {
+      color: 'red',
+    },
+  },
+};
+const styles = {
+  container: {
+    minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
+    minWidth: x >= 692 ? '1540px' : '1540px',
+    height: "auto",
+    width: "auto",
+    alignItems: 'center',
+    background: '#f0f0f0',
+    backgroundImage: `url(${backimage})`, backgroundSize: 'cover'
+  },
+  cardForm: {
+    width: '500px',
+    padding: '20px',
+    borderRadius: '10px',
+    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+    background: '#fff',
+  },
+  hr2: {
+    borderWidth: "2px",
+    opacity: 0.6,
+    width: "300px",
+  },
+};
 
 export default Payment;

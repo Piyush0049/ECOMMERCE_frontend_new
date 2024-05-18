@@ -162,7 +162,7 @@ useEffect(() => {
       height: "auto",
       width: "auto", paddingTop : x >= 692 ? "90px" : null
     }}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? null : '150px', paddingBottom: x >= 692 ? null : '50px', }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? null : '170px', paddingBottom: x >= 692 ? null : '50px', }}>
         <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
         <hr style={styles.hr2} />
         <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>

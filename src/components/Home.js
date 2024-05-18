@@ -82,7 +82,7 @@ useEffect(() => {
                 <div style={textStyle}>
                     <h1 style={{
                         fontFamily: "fantasy",
-                        fontSize: x >= 692 ? '50px' : '130px',
+                        fontSize: x >= 692 ? '50px' : '105px',
                         marginLeft: x >= 692 ? '70px' : '00px',
                         whiteSpace: 'nowrap' // Ensure text stays on one line
                     }}>
@@ -90,7 +90,7 @@ useEffect(() => {
                     </h1>
                     <h1 style={{
                         fontFamily: "fantasy",
-                        fontSize: x >= 692 ? '35px' : '80px',
+                        fontSize: x >= 692 ? '35px' : '70px',
                         marginLeft: x >= 692 ? '180px' : '290px',
                         marginTop: "30px",
                         whiteSpace: 'nowrap' // Ensure text stays on one line
