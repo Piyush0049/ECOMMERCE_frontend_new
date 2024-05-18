@@ -7,6 +7,7 @@ import { usersignup } from './actions/useractions';
 import { useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import { useEffect } from 'react';
 const useStyles = makeStyles((theme) => ({
     input: { display: 'none' },
     iconButton: { marginLeft: theme.spacing(1) },
@@ -15,6 +16,15 @@ const useStyles = makeStyles((theme) => ({
 
 
 const LoginPage = () => {
+
+    const [x, setx] = useState("");
+    useEffect(() => {
+        if (localStorage.getItem("width") !== null) {
+            setx(localStorage.getItem("width"));
+        } else {
+            setx(window.innerWidth);
+        }
+    }, []);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const classes = useStyles();
@@ -75,8 +85,8 @@ const LoginPage = () => {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-            minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
+            minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
+            minWidth: x >= 692 ? '1540px' : '1540px',
             height: "auto",
             width: "auto",
             padding: "0",
@@ -121,10 +131,10 @@ const LoginPage = () => {
                             onMouseLeave={() => setIsHovered(false)}>
                             Login
                         </button>
-                        <p style={{ marginTop: '10px', textAlign: 'center', fontSize: window.innerWidth >= 692 ? '16px' : '40px', }}>
+                        <p style={{ marginTop: '10px', textAlign: 'center', fontSize: x >= 692 ? '16px' : '40px', }}>
                             Do not have an account? <Link onClick={() => setlogin("signup")}>Sign up now!</Link>
                         </p>
-                        <p style={{ textAlign: 'center', fontSize: window.innerWidth >= 692 ? '16px' : '40px', }}>
+                        <p style={{ textAlign: 'center', fontSize: x >= 692 ? '16px' : '40px', }}>
                             Forgot Password? <Link to="/password/forgot">Set new password</Link>
                         </p>
                     </form>
@@ -191,7 +201,7 @@ const LoginPage = () => {
                             onMouseLeave={() => setIsHovered(false)}>
                             Signup
                         </button>
-                        <p style={{ allproducts: '10px', textAlign: 'center', fontSize: window.innerWidth >= 692 ? '16px' : '40px', }}>
+                        <p style={{ allproducts: '10px', textAlign: 'center', fontSize: x >= 692 ? '16px' : '40px', }}>
                             Already have an account? <Link onClick={() => setlogin("login")}>Log in now!</Link>
                         </p>
                     </form>
@@ -214,19 +224,19 @@ const styles = {
     },
     title1: {
         marginBottom: '20px',
-        fontSize: window.innerWidth >= 692 ? '45px' : '100px',
+        fontSize: x >= 692 ? '45px' : '100px',
         fontWeight: 'bold',
         color: '#333',
     },
     title2: {
         marginBottom: '40px',
-        fontSize: window.innerWidth >= 692 ? '20px' : '60px',
+        fontSize: x >= 692 ? '20px' : '60px',
         whiteSpace: 'nowrap',
         fontWeight: 'bold',
         color: '#333',
     },
     form: {
-        width: window.innerWidth >= 692 ? '400px' : '1000px',
+        width: x >= 692 ? '400px' : '1000px',
         display: 'flex',
         flexDirection: 'column',
         background: 'rgba(255, 255, 255, 0.5)',
@@ -239,7 +249,7 @@ const styles = {
         marginBottom: '15px',
         borderRadius: '5px',
         border: '1px solid #ccc',
-        fontSize: window.innerWidth >= 692 ? '16px' : '55px',
+        fontSize: x >= 692 ? '16px' : '55px',
         outline: 'none',
     },
     button: {
@@ -247,7 +257,7 @@ const styles = {
         padding: '10px',
         borderRadius: '5px',
         border: 'none',
-        fontSize: window.innerWidth >= 692 ? '16px' : '50px',
+        fontSize: x >= 692 ? '16px' : '50px',
         cursor: 'pointer',
         transition: 'background-color 0.3s ease',
         marginTop: '10px',
