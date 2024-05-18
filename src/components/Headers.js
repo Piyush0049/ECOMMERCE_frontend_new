@@ -50,9 +50,10 @@ useEffect(() => {
       <nav className="navbar navbar-expand-lg navbar-dark" style={headerStyle}>
         <div className="container-fluid">
           <Link to="/" className="navbar-brand" style={{ fontSize: x >= 692 ? "20px" : '60px' }}>Snap & Shop</Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style={{ fontSize: x >= 692 ? '30px' : '60px', padding: x >= 692 ? '5px 10px' : '10px 20px' }}>
+  <span className="navbar-toggler-icon"></span>
+</button>
+
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
