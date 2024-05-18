@@ -36,8 +36,7 @@ useEffect(() => {
         container: {
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center', // Add this line to center horizontally
-            flexDirection: 'column', // Adjust to column layout
+            justifyContent: 'center', // Adjust to column layout
             maxWidth: x >= 692 ? '500px' : "250px",
             margin: 'auto',
             position: 'relative',

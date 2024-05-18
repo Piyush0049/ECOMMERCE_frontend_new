@@ -8,7 +8,7 @@ import { createorder } from './actions/orderactions';
 
 const Payment = () => {
   const [x, setx] = useState("");
-useEffect(() => {
+  useEffect(() => {
     if(localStorage.getItem("width") !== null){
         setx(localStorage.getItem("width"));
     }else{
@@ -24,7 +24,7 @@ useEffect(() => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const totalmoney = totalprice;
-  const { cartitems } = useSelector((state) => state.cart)
+  const { cartitems } = useSelector((state) => state.cart);
   const shippingdet = JSON.parse(localStorage.getItem("shippingdetails"));
 
   const userAddress = {
@@ -35,8 +35,6 @@ useEffect(() => {
     country: "US",
     postal_code: "125001",
   };
-
-
 
   const orderdis = {
     shippinginfo: {
@@ -52,13 +50,12 @@ useEffect(() => {
       id: "",
       status: "succeeded"
     },
-
     itemsPrice: (totalprice * 100) / 118,
     taxPrice: (totalprice * 18) / 118,
     shippingPrice: 0,
     totalPrice: totalmoney,
     orderStatus: "pending"
-  }
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -66,6 +63,10 @@ useEffect(() => {
 
   const handlePayment = async (e) => {
     e.preventDefault();
+    if (!stripe || !elements) {
+      return;
+    }
+
     if (window.confirm("Are you sure you want to complete the payment?")) {
       setIsProcessing(true);
 
@@ -109,8 +110,8 @@ useEffect(() => {
         setIsProcessing(false);
       }
     }
-
   };
+
   const cardElementOptions = {
     style: {
       base: {
@@ -126,6 +127,7 @@ useEffect(() => {
       },
     },
   };
+
   const styles = {
     container: {
       minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
@@ -134,7 +136,8 @@ useEffect(() => {
       width: "auto",
       alignItems: 'center',
       background: '#f0f0f0',
-      backgroundImage: `url(${backimage})`, backgroundSize: 'cover'
+      backgroundImage: `url(${backimage})`, 
+      backgroundSize: 'cover'
     },
     cardForm: {
       width: '500px',
@@ -149,9 +152,10 @@ useEffect(() => {
       width: "300px",
     },
   };
+
   return (
     <div style={styles.container}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? "60px" : '110px', paddingBottom: x >= 692 ? null : '70px', }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? "60px" : '110px', paddingBottom: x >= 692 ? null : '70px' }}>
         <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
         <hr style={styles.hr2} />
         <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
@@ -160,29 +164,29 @@ useEffect(() => {
       </div>
       <div style={{ minHeight: "500px", height: "auto", opacity: 0.9, paddingTop: '80px', display: 'flex', justifyContent: 'center' }}>
         <div style={styles.cardForm}>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <div>
-              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: x >= 692 ? "45px" : '70px', }}>Card Info.</h1>
+              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: x >= 692 ? "45px" : '70px' }}>Card Info.</h1>
               <b><hr style={{ width: "200px", backgroundColor: "black", position: "relative", bottom: "14px" }} /></b>
             </div>
           </div>
-          <div style={{ justifyContent: "center", position: "relative", top: "40px" }}>
-            <CardNumberElement options={cardElementOptions} />
-            <CardExpiryElement options={cardElementOptions} />
-            <CardCvcElement options={cardElementOptions} />
-          </div>
-          {paymentError && <div style={{ color: 'red' }}>{paymentError}</div>}
-          <div style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}>
-            <button onClick={handlePayment} type="button" className="btn btn-warning" style={{ padding: "10px", paddingInline: "40px", fontSize: x >= 692 ? "20px" : '55px', position: "relative", top: "80px" }} disabled={isProcessing}>
-              {isProcessing ? "Processing..." : `Pay ₹${totalprice}`}
-            </button>
-          </div>
-
+          <form onSubmit={handlePayment}>
+            <div style={{ justifyContent: "center", position: "relative", top: "40px" }}>
+              <CardNumberElement options={cardElementOptions} />
+              <CardExpiryElement options={cardElementOptions} />
+              <CardCvcElement options={cardElementOptions} />
+            </div>
+            {paymentError && <div style={{ color: 'red' }}>{paymentError}</div>}
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}>
+              <button type="submit" className="btn btn-warning" style={{ padding: "10px", paddingInline: "40px", fontSize: x >= 692 ? "20px" : '55px', position: "relative", top: "80px" }} disabled={isProcessing || !stripe || !elements}>
+                {isProcessing ? "Processing..." : `Pay ₹${totalprice}`}
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
   );
 };
-
 
 export default Payment;
