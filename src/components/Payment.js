@@ -6,23 +6,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createorder } from './actions/orderactions';
 
 const Payment = () => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [x, setx] = useState("");
+useEffect(() => {
+    if(localStorage.getItem("width") !== null){
+        setx(localStorage.getItem("width"));
+    }else{
+        setx(window.innerWidth);
+    }
+  }, []);
   const [cardNumber, setCardNumber] = useState('');
   const [cardExpiry, setCardExpiry] = useState('');
   const [cardCvc, setCardCvc] = useState('');
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup function to remove event listener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
   
   const [paymentError, setPaymentError] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -32,15 +26,6 @@ const Payment = () => {
   const totalmoney = totalprice;
   const { cartitems } = useSelector((state) => state.cart);
   const shippingdet = JSON.parse(localStorage.getItem("shippingdetails"));
-
-  const userAddress = {
-    line1: shippingdet.userDetails.address,
-    line2: shippingdet.userDetails.address,
-    city: JSON.parse(localStorage.getItem("shippingdetails")).selectedCity.label,
-    state: JSON.parse(localStorage.getItem("shippingdetails")).selectedState.value,
-    country: "US",
-    postal_code: "125001",
-  };
 
   const orderdis = {
     shippinginfo: {
@@ -110,20 +95,53 @@ const Payment = () => {
     }
   };
 
+  const styles = {
+    container: {
+      minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
+      minWidth: x >= 692 ? '1540px' : '1540px',
+      height: "auto",
+      width: "auto",
+      alignItems: 'center',
+      background: '#f0f0f0',
+      backgroundImage: `url(${backimage})`, backgroundSize: 'cover'
+    },
+    cardForm: {
+      width: '500px',
+      padding: '20px',
+      borderRadius: '10px',
+      boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+      background: '#fff',
+    },
+    hr2: {
+      borderWidth: "2px",
+      opacity: 0.6,
+      width: "300px",
+    },
+    input: {
+      width: '100%',
+      padding: x >= 692 ? '12px' : '24px',
+      fontSize: x >= 692 ? '18px' : '36px',
+      border: '2px solid #ccc',
+      borderRadius: x >= 692 ? '20px' : '40px',
+      marginBottom: '20px',
+      outline: 'none',
+      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    },
+  };
   return (
     <div style={styles.container}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: windowWidth >= 692 ? "60px" : '110px', paddingBottom: windowWidth >= 692 ? null : '70px', }}>
-        <Link to="/mycart" style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? "60px" : '110px', paddingBottom: x >= 692 ? null : '70px', }}>
+        <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
+        <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
+        <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
       </div>
       <div style={{ minHeight: "500px", height: "auto", opacity: 0.9, paddingTop: '80px', display: 'flex', justifyContent: 'center' }}>
         <div style={styles.cardForm}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
             <div>
-              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: windowWidth >= 692 ? "45px" : '70px', }}>Card Info.</h1>
+              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: x >= 692 ? "45px" : '70px', }}>Card Info.</h1>
               <b><hr style={{ width: "200px", backgroundColor: "black", position: "relative", bottom: "14px" }} /></b>
             </div>
           </div>
@@ -151,7 +169,7 @@ const Payment = () => {
             />
             {paymentError && <div style={{ color: 'red' }}>{paymentError}</div>}
             <div style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}>
-              <button type="submit" className="btn btn-warning" style={{ padding: "10px", paddingInline: "40px", fontSize: windowWidth >= 692 ? "20px" : '55px', position: "relative", top: "80px" }} disabled={isProcessing}>
+              <button type="submit" className="btn btn-warning" style={{ padding: "10px", paddingInline: "40px", fontSize: x >= 692 ? "20px" : '55px', position: "relative", top: "80px" }} disabled={isProcessing}>
                 {isProcessing ? "Processing..." : `Pay ₹${totalprice}`}
               </button>
             </div>
@@ -162,38 +180,6 @@ const Payment = () => {
   );
 };
 
-const styles = {
-  container: {
-    minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-    minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
-    height: "auto",
-    width: "auto",
-    alignItems: 'center',
-    background: '#f0f0f0',
-    backgroundImage: `url(${backimage})`, backgroundSize: 'cover'
-  },
-  cardForm: {
-    width: '500px',
-    padding: '20px',
-    borderRadius: '10px',
-    boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
-    background: '#fff',
-  },
-  hr2: {
-    borderWidth: "2px",
-    opacity: 0.6,
-    width: "300px",
-  },
-  input: {
-    width: '100%',
-    padding: window.innerWidth >= 692 ? '12px' : '24px',
-    fontSize: window.innerWidth >= 692 ? '18px' : '36px',
-    border: '2px solid #ccc',
-    borderRadius: window.innerWidth >= 692 ? '20px' : '40px',
-    marginBottom: '20px',
-    outline: 'none',
-    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-  },
-};
+
 
 export default Payment;
