@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import backimg from "./snapedit_1710434121810.jpeg";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateuser, updateuserpassword } from './actions/useractions';
@@ -29,9 +29,20 @@ const Account = () => {
             marginLeft: theme.spacing(1),
         },
         icon: {
-            fontSize: 48, 
+            fontSize: 48, // Adjust the size of the icon as needed
         },
     }));
+useEffect(() => {
+    const setWidth = () => {
+      localStorage.setItem("width", window.innerWidth);
+    };
+    setWidth(); // Call the function to set width once on mount
+
+    // Cleanup function
+    return () => {
+      // If you have any cleanup to do, it will run when the component unmounts
+    };
+  }, []);
     const classes = useStyles();
     const editprof = () => {
         seteditopt(!editopt);
@@ -49,7 +60,6 @@ const Account = () => {
     }
 
     const changepass = () => {
-
         setchangepassword(!changepassword)
     }
 
@@ -295,7 +305,7 @@ const styles = {
     },
     detailsContainer: {
         width: '80%',
-        maxWidth: window.innerWidth >= 692 ? '800px' : window.innerWidth,
+        maxWidth: window.innerWidth >= 692 ? '800px' : '1200px',
         background: 'rgba(255, 255, 255, 0.6)', // Semi-transparent background for better readability
         padding: '20px',
         borderRadius: '10px',

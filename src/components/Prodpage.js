@@ -90,7 +90,7 @@ function Prodpage() {
     },
     mainContent: {
       width: '100%',
-      maxWidth: window.innerWidth >= 692 ? '1200px' : window.innerWidth,
+      maxWidth: window.innerWidth >= 692 ? '1200px' : '1540px',
       minHeight: window.innerWidth >= 692 ? "1000px" : '1640px',
       backgroundColor: 'rgba(255, 255, 255, 0.9)',
       borderRadius: '10px',

@@ -21,7 +21,7 @@ const Forgotpassword = () => {
             justifyContent: 'center',
             alignItems: 'center',
             minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', 
-            maxWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
+            maxWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
             height : "auto",
             width : "auto",
             flexDirection: 'column',

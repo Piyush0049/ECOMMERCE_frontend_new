@@ -22,7 +22,7 @@ const ConfirmOrder = () => {
         container: {
             fontFamily: 'Arial, sans-serif',
             padding: '20px',
-            maxWidth: window.innerWidth,
+            maxWidth: "1540px",
             margin: '0 auto',
             border: '1px solid #ccc',
             borderRadius: '5px',
@@ -106,7 +106,7 @@ const ConfirmOrder = () => {
     return (
         <div style={{
             backgroundImage: `url(${backimage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-            minWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
+            minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
             height: "auto",
             width: "auto", opacity: 0.9, paddingTop: '80px',
         }}>

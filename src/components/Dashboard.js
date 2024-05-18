@@ -191,7 +191,7 @@ const Dashboard = () => {
       {work === "admin" ? (
         <div style={{
           backgroundColor: "#ACE7FF", minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-          minWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
+          minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
           height: "auto",
           width: "auto",
         }}>
@@ -495,7 +495,7 @@ const Dashboard = () => {
           justifyContent: 'center', // Horizontal centering
           alignItems: 'center', // Vertical centering
           minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-          maxWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
+          maxWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
           height: "auto",
           width: "auto",
         }}>
@@ -542,7 +542,7 @@ const styles = {
     width: "300px",
   },
   cartContainer: {
-    maxWidth: window.innerWidth >= 692 ? '900px' : window.innerWidth,
+    maxWidth: window.innerWidth >= 692 ? '900px' : '1540px',
     width: '100%',
     padding: '30px',
     borderRadius: '20px',
@@ -710,7 +710,7 @@ const style = {
 // Inline CSS Styles
 const dashboardStyle = {
   fontFamily: 'Arial, sans-serif',
-  maxWidth:window.innerWidth >= 692 ? '1200px' : window.innerWidth,
+  maxWidth:window.innerWidth >= 692 ? '1200px' : '1540px',
   margin: '0 auto',
   padding: '20px',
   width: '100%',

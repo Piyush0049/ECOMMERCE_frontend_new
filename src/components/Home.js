@@ -22,7 +22,7 @@ useEffect(() => {
     const { products } = useSelector((state) => state.products)
     const containerStyle1 = {
         minHeight: x >= 692 ? '800px' : '1600px', // Adjusted height based on window width
-        maxWidth: x >= 692 ? '1540px' : x,
+        maxWidth: x >= 692 ? '1540px' : '1540px',
         height : "auto",
         width : "auto",
         overflowX: 'hidden', // Prevent horizontal overflow
@@ -33,7 +33,7 @@ useEffect(() => {
 
     const containerStyle2 = {
         minHeight: x >= 692 ? '800px' : '1500px', // Adjusted height based on window width
-        maxWidth: x >= 692 ? '1540px' : x,
+        maxWidth: x >= 692 ? '1540px' : '1540px',
         height : "auto",
         width : "auto",
         overflowX: 'hidden', // Prevent horizontal overflow

@@ -15,7 +15,7 @@ const Myorders = () => {
                 <div key={order._id} style={{ position: 'relative', minHeight: '1450px' }}>
                     <div style={{
                         minHeight: window.innerWidth >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
-                        maxWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
+                        maxWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
                         height: "auto",
                         width: "auto",
                         backgroundColor: "#A7F7FE",
@@ -211,7 +211,7 @@ const styles = {
         fontSize: '50px',
         color: '#666',
         minHeight: window.innerWidth >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
-        minWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
+        minWidth: window.innerWidth >= 692 ? '1540px' : "1540px",
         height: "auto",
         width: "auto",
         backgroundColor: "#A0E1FC",

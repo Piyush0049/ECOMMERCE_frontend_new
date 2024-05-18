@@ -86,7 +86,7 @@ const LocationSelector = () => {
       width: "300px",
     },
     container: {
-      maxWidth: window.innerWidth >= 692 ? '1100px' : window.innerWidth,
+      maxWidth: window.innerWidth >= 692 ? '1100px' : "1540px",
       maxHeight : window.innerWidth >= 692 ? '2000px' : '3000px',
       height : "auto",
       width : "auto",

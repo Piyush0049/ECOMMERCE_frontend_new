@@ -41,7 +41,7 @@ function Allproducts() {
         backgroundPosition: 'center',
         backgroundRepeat: 'repeat',
         minHeight: window.innerWidth >= 692 ? '1200px' : '3000px', // Adjusted height based on window width
-        minWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
+        minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
         height: "auto",
         width: "auto",
     };

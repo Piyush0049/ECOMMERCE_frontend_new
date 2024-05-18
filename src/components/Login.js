@@ -7,7 +7,6 @@ import { usersignup } from './actions/useractions';
 import { useNavigate } from 'react-router-dom';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
-import { useEffect } from 'react';
 const useStyles = makeStyles((theme) => ({
     input: { display: 'none' },
     iconButton: { marginLeft: theme.spacing(1) },
@@ -27,19 +26,6 @@ const LoginPage = () => {
     const [showloginPassword, setShowloginPassword] = useState(true);
     const [showsignupPassword, setShowsignupPassword] = useState(true);
     const [showsignupcPassword, setShowsignupcPassword] = useState(true);
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup function to remove event listener
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -89,8 +75,8 @@ const LoginPage = () => {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            minHeight: windowWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-            minWidth: windowWidth >= 692 ? '1540px' : '1540px',
+            minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
+            minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
             height: "auto",
             width: "auto",
             padding: "0",
@@ -135,10 +121,10 @@ const LoginPage = () => {
                             onMouseLeave={() => setIsHovered(false)}>
                             Login
                         </button>
-                        <p style={{ marginTop: '10px', textAlign: 'center', fontSize: windowWidth >= 692 ? '16px' : '40px', }}>
+                        <p style={{ marginTop: '10px', textAlign: 'center', fontSize: window.innerWidth >= 692 ? '16px' : '40px', }}>
                             Do not have an account? <Link onClick={() => setlogin("signup")}>Sign up now!</Link>
                         </p>
-                        <p style={{ textAlign: 'center', fontSize: windowWidth >= 692 ? '16px' : '40px', }}>
+                        <p style={{ textAlign: 'center', fontSize: window.innerWidth >= 692 ? '16px' : '40px', }}>
                             Forgot Password? <Link to="/password/forgot">Set new password</Link>
                         </p>
                     </form>
@@ -205,7 +191,7 @@ const LoginPage = () => {
                             onMouseLeave={() => setIsHovered(false)}>
                             Signup
                         </button>
-                        <p style={{ allproducts: '10px', textAlign: 'center', fontSize: windowWidth >= 692 ? '16px' : '40px', }}>
+                        <p style={{ allproducts: '10px', textAlign: 'center', fontSize: window.innerWidth >= 692 ? '16px' : '40px', }}>
                             Already have an account? <Link onClick={() => setlogin("login")}>Log in now!</Link>
                         </p>
                     </form>
