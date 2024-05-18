@@ -4,22 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useState } from 'react';
 const ConfirmOrder = () => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup function to remove event listener
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    
     const navigate = useNavigate();
     const { cartitems } = useSelector((state) => state.cart);
     useEffect(() => {
@@ -36,7 +22,7 @@ const ConfirmOrder = () => {
         container: {
             fontFamily: 'Arial, sans-serif',
             padding: '20px',
-            maxWidth: '1200px',
+            maxWidth: window.innerWidth,
             margin: '0 auto',
             border: '1px solid #ccc',
             borderRadius: '5px',
@@ -76,7 +62,7 @@ const ConfirmOrder = () => {
         checkoutButton: {
             marginTop: '80px',
             padding: '15px 30px',
-            fontSize: windowWidth >= 692 ? '18px' : '60px',
+            fontSize: window.innerWidth >= 692 ? '18px' : '60px',
             backgroundColor: '#007bff',
             color: '#fff',
             border: 'none',
@@ -119,8 +105,8 @@ const ConfirmOrder = () => {
 
     return (
         <div style={{
-            backgroundImage: `url(${backimage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: windowWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-            minWidth: windowWidth >= 692 ? '1540px' : '1540px',
+            backgroundImage: `url(${backimage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
+            minWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
             height: "auto",
             width: "auto", opacity: 0.9, paddingTop: '80px',
         }}>

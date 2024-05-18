@@ -14,20 +14,6 @@ function Prodpage() {
   const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   const [addrev, setaddrev] = useState(false)
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup function to remove event listener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
 
   const subreview = () => {
     if (isAuthenticated) {
@@ -92,8 +78,8 @@ function Prodpage() {
       fontFamily: 'Arial, sans-serif',
       color: '#333',
       backgroundColor : "#A6E5FF",
-      minHeight: windowWidth >= 692 ? '1000px' : '2700px',  // Adjusted height based on window width
-      minWidth: windowWidth >= 692 ? '1540px' : '1540px',
+      minHeight: window.innerWidth >= 692 ? '1000px' : '2700px',  // Adjusted height based on window width
+      minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
       height: "auto",
       width: "auto",
       display: 'flex',
@@ -104,8 +90,8 @@ function Prodpage() {
     },
     mainContent: {
       width: '100%',
-      maxWidth: windowWidth >= 692 ? '1200px' : '1540px',
-      minHeight: windowWidth >= 692 ? "1000px" : '1640px',
+      maxWidth: window.innerWidth >= 692 ? '1200px' : window.innerWidth,
+      minHeight: window.innerWidth >= 692 ? "1000px" : '1640px',
       backgroundColor: 'rgba(255, 255, 255, 0.9)',
       borderRadius: '10px',
       boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
@@ -131,7 +117,7 @@ function Prodpage() {
       borderRadius: '10px',
     },
     reviewsHeading: {
-      fontSize: windowWidth >= 692 ? '24px' : '45px',
+      fontSize: window.innerWidth >= 692 ? '24px' : '45px',
       fontWeight: 'bold',
       marginTop: "17px",
       marginBottom: '20px',
@@ -145,13 +131,13 @@ function Prodpage() {
       marginTop: '20px',
     },
     username: {
-      fontSize: windowWidth >= 692 ? "18px" : '40px',
+      fontSize: window.innerWidth >= 692 ? "18px" : '40px',
       fontWeight: 'bold',
       color: '#333',
       marginBottom: '10px',
     },
     comment: {
-      fontSize: windowWidth >= 692 ? "16px" : '32px',
+      fontSize: window.innerWidth >= 692 ? "16px" : '32px',
       color: '#333',
       marginBottom: '10px',
     },
@@ -167,12 +153,12 @@ function Prodpage() {
       textAlign: 'center',
       lineHeight: '24px',
       fontWeight: 'bold',
-      fontSize: windowWidth >= 692 ? "14px" : '28px',
+      fontSize: window.innerWidth >= 692 ? "14px" : '28px',
       color: '#333',
       marginRight: '8px',
     },
     ratingText: {
-      fontSize: windowWidth >= 692 ? "16px" : '30px',
+      fontSize: window.innerWidth >= 692 ? "16px" : '30px',
       color: '#333',
     },
   };
@@ -251,21 +237,21 @@ function Prodpage() {
 
         <div style={{ marginRight: "190px" }}>
           <hr style={{ height: "3px", borderWidth: "2px", borderColor: "black", width: "250px", marginLeft: "2px", color: "black" }} />
-          <h1 style={{ fontSize: windowWidth >= 692 ? "32px" : '60px', marginBottom: '20px', fontWeight: 'bolder', color: '#333' }}>
+          <h1 style={{ fontSize: window.innerWidth >= 692 ? "32px" : '60px', marginBottom: '20px', fontWeight: 'bolder', color: '#333' }}>
             {product.name}
           </h1>
-          <p style={{ fontSize: windowWidth >= 692 ? "18px" : '35px', marginBottom: '30px', lineHeight: '1.6' }}>
+          <p style={{ fontSize: window.innerWidth >= 692 ? "18px" : '35px', marginBottom: '30px', lineHeight: '1.6' }}>
             {product.description}
           </p>
 
           <hr style={{ height: "3px", borderWidth: "2px", borderColor: "black", width: "250px", marginLeft: "2px", color: "black" }} />
 
-          <h1 style={{ fontSize: windowWidth >= 692 ? "36px" : '55px', marginBottom: '20px', fontWeight: 'bold', color: '#333', marginTop: "4px" }}>
+          <h1 style={{ fontSize: window.innerWidth >= 692 ? "36px" : '55px', marginBottom: '20px', fontWeight: 'bold', color: '#333', marginTop: "4px" }}>
             ₹{product.price}
           </h1>
           <hr style={{ height: "3px", borderWidth: "2px", borderColor: "black", width: "250px", marginLeft: "2px", color: "black" }} />
 
-          <p style={{ fontSize: windowWidth >= 692 ? "18px" : '40px', marginBottom: '20px', lineHeight: '1.6', display: "flex" }}>
+          <p style={{ fontSize: window.innerWidth >= 692 ? "18px" : '40px', marginBottom: '20px', lineHeight: '1.6', display: "flex" }}>
             <p style={{ fontWeight: 'bold' }}> Category : </p> <p style={{ marginLeft: "5px" }}>{product.category}</p>
           </p>
           <hr style={{ height: "3px", borderWidth: "2px", borderColor: "black", width: "250px", marginLeft: "2px", color: "black" }} />
@@ -280,7 +266,7 @@ function Prodpage() {
                   padding: '10px 17px',
                   borderRadius: '18px',
                   border: 'none',
-                  fontSize: windowWidth >= 692 ? "18px" : '40px',
+                  fontSize: window.innerWidth >= 692 ? "18px" : '40px',
                   cursor: 'pointer',
                   transition: 'background-color 0.3s',
                   boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)', ...(hoverp ? ButtonHoverStyle : null)
@@ -324,7 +310,7 @@ function Prodpage() {
                   padding: '1px 7px',
                   borderRadius: '5px',
                   border: 'none',
-                  fontSize: windowWidth >= 692 ? "18px" : '38px',
+                  fontSize: window.innerWidth >= 692 ? "18px" : '38px',
                   cursor: 'pointer',
                   transition: 'background-color 0.3s',
                   boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
@@ -335,7 +321,7 @@ function Prodpage() {
               >
                 -
               </button>
-              <span style={{ fontSize: windowWidth >= 692 ? "18px" : '40px', color: '#333' }}>{quantity}</span>
+              <span style={{ fontSize: window.innerWidth >= 692 ? "18px" : '40px', color: '#333' }}>{quantity}</span>
               <button
                 onClick={handleIncrement}
                 disabled={quantity >= product.stock}
@@ -356,7 +342,7 @@ function Prodpage() {
                   padding: '1px 5px',
                   borderRadius: '5px',
                   border: 'none',
-                  fontSize: windowWidth >= 692 ? "18px" : '38px',
+                  fontSize: window.innerWidth >= 692 ? "18px" : '38px',
                   cursor: 'pointer',
                   transition: 'background-color 0.3s',
                   boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
@@ -373,13 +359,13 @@ function Prodpage() {
           </div>
           <div>
             {product.stock > 0 ?
-              (<p style={{ fontSize: windowWidth >= 692 ? "18px" : '40px', color: '#666', lineHeight: '1.6', fontWeight: "bold" }}>
+              (<p style={{ fontSize: window.innerWidth >= 692 ? "18px" : '40px', color: '#666', lineHeight: '1.6', fontWeight: "bold" }}>
 
-                Status : <span style={{ fontSize: windowWidth >= 692 ? "18px" : '40px', color: "green" }}>Instock</span>
+                Status : <span style={{ fontSize: window.innerWidth >= 692 ? "18px" : '40px', color: "green" }}>Instock</span>
               </p>) :
               (<p style={{ fontSize: '18px', color: '#666', lineHeight: '1.6', fontWeight: "bold" }}>
 
-                Status : <span style={{ fontSize: windowWidth >= 692 ? "18px" : '40px', color: "red" }}>Out Of Stock</span>
+                Status : <span style={{ fontSize: window.innerWidth >= 692 ? "18px" : '40px', color: "red" }}>Out Of Stock</span>
               </p>)
             }
             <hr style={{ height: "3px", borderWidth: "2px", borderColor: "black", width: "250px", marginLeft: "2px", color: "black" }} />
@@ -392,7 +378,7 @@ function Prodpage() {
                 padding: '10px 17px',
                 borderRadius: '25px',
                 border: 'none',
-                fontSize: windowWidth >= 692 ? "18px" : '45px',
+                fontSize: window.innerWidth >= 692 ? "18px" : '45px',
                 cursor: 'pointer',
                 transition: 'background-color 0.3s',
                 boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)', ...(hoverr ? ButtonHoverStyle : null)
@@ -406,7 +392,7 @@ function Prodpage() {
           {addrev ? (
             <>
               <div style={{
-                maxWidth: "400px",
+                maxWidth: window.innerWidth >= 692 ? '1200px' : "300px",
                 margin: "auto",
                 textAlign: "center",
                 marginTop: "140px",
@@ -421,7 +407,7 @@ function Prodpage() {
                   fontFamily: "Arial, sans-serif",
                   color: "#333",
                   fontWeight: "bold",
-                  fontSize: windowWidth >= 692 ? "18px" : '45px',
+                  fontSize: window.innerWidth >= 692 ? "18px" : '45px',
                 }}>Add Product Review</h2>
                 <form onSubmit={handleSubmit}>
                   <div style={{ marginBottom: "20px" }}>
@@ -452,7 +438,7 @@ function Prodpage() {
                         border: "1px solid #ccc",
                         boxSizing: "border-box",
                         minHeight: "100px",
-                        fontSize: windowWidth >= 692 ? "15px" : '40px',
+                        fontSize: window.innerWidth >= 692 ? "15px" : '40px',
                       }}
                       required
                     />
@@ -467,7 +453,7 @@ function Prodpage() {
                         borderRadius: "5px",
                         border: "1px solid #ccc",
                         boxSizing: "border-box",
-                        fontSize: windowWidth >= 692 ? "15px" : '40px',
+                        fontSize: window.innerWidth >= 692 ? "15px" : '40px',
                       }}
                       required
                     >
@@ -486,7 +472,7 @@ function Prodpage() {
                     color: "#fff",
                     borderRadius: "5px",
                     border: "none",
-                    fontSize: windowWidth >= 692 ? "18px" : '45px',
+                    fontSize: window.innerWidth >= 692 ? "18px" : '45px',
                     fontWeight: "bold"
                   }}>
                     Submit Review

@@ -29,7 +29,7 @@ const Account = () => {
             marginLeft: theme.spacing(1),
         },
         icon: {
-            fontSize: 48, // Adjust the size of the icon as needed
+            fontSize: 48, 
         },
     }));
     const classes = useStyles();
@@ -49,6 +49,7 @@ const Account = () => {
     }
 
     const changepass = () => {
+
         setchangepassword(!changepassword)
     }
 
@@ -294,7 +295,7 @@ const styles = {
     },
     detailsContainer: {
         width: '80%',
-        maxWidth: window.innerWidth >= 692 ? '800px' : '1200px',
+        maxWidth: window.innerWidth >= 692 ? '800px' : window.innerWidth,
         background: 'rgba(255, 255, 255, 0.6)', // Semi-transparent background for better readability
         padding: '20px',
         borderRadius: '10px',

@@ -6,6 +6,14 @@ import { useState, useEffect } from 'react';
 import { deleteuser, userlogout } from './actions/useractions';
 
 function Headers() {
+  const [x, setx] = useState("");
+useEffect(() => {
+    if(localStorage.getItem("width") !== null){
+        setx(localStorage.getItem("width"));
+    }else{
+        setx(window.innerWidth);
+    }
+  }, []);
   const dispatch = useDispatch();
   const headerStyle = {
     position: 'fixed',
@@ -35,52 +43,36 @@ function Headers() {
     }
   }
 
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup function to remove event listener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const a = windowWidth >= 692 ? "0" : '2';
+  const a = x >= 692 ? "0" : '2';
 
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark" style={headerStyle}>
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand" style={{ fontSize: windowWidth >= 692 ? "20px" : '60px' }}>Snap & Shop</Link>
+          <Link to="/" className="navbar-brand" style={{ fontSize: x >= 692 ? "20px" : '60px' }}>Snap & Shop</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="/Home" className="nav-link" aria-current="page" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>Home</Link>
+                <Link to="/Home" className="nav-link" aria-current="page" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>Home</Link>
               </li>
               <li className="nav-item">
-                <Link to="/products" className="nav-link" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>Products</Link>
+                <Link to="/products" className="nav-link" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>Products</Link>
               </li>
               <li className="nav-item">
-                <Link to="/myorders" className="nav-link" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>My Orders</Link>
+                <Link to="/myorders" className="nav-link" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>My Orders</Link>
               </li>
               <li className="nav-item">
-                <Link to="/search" className="nav-link" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>Search<i className="fa-solid fa-magnifying-glass" style={{ fontSize: windowWidth >= 692 ? "17px" : '45px' }}></i></Link>
+                <Link to="/search" className="nav-link" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>Search<i className="fa-solid fa-magnifying-glass" style={{ fontSize: x >= 692 ? "17px" : '45px' }}></i></Link>
               </li>
 
               <li className="nav-item">
-                <div className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>
-                  Your Account<i className="fa-solid fa-user" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}></i>
+                <div className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>
+                  Your Account<i className="fa-solid fa-user" style={{ fontSize: x >= 692 ? "15px" : '45px' }}></i>
                 </div>
-                <ul className="dropdown-menu" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px', position: 'absolute', top: '100%', left: windowWidth > 768 ? "32%" : "190px", transform: 'translateX(-50%)' }}>
+                <ul className="dropdown-menu" style={{ fontSize: x >= 692 ? "15px" : '45px', position: 'absolute', top: '100%', left: x > 768 ? "32%" : "190px", transform: 'translateX(-50%)' }}>
                   {isAuthenticated && user.work === "admin" &&
                     (<li><Link to="/dashboard" className="dropdown-item"><b>Dashboard</b></Link></li>)
                   }
@@ -104,8 +96,8 @@ function Headers() {
               <li className="nav-item">
                 {isAuthenticated && (
                   <li className="nav-item" >
-                    <Link to="/mycart" className="nav-link" style={{ fontSize: windowWidth >= 692 ? "15px" : '45px' }}>My Cart<i className="fa-solid fa-cart-shopping" style={{ fontSize: windowWidth >= 692 ? "20px" : '45px', marginTop: "3px" }}></i>
-                      <span className={`position-absolute top-${a} start-45 translate-middle badge rounded-pill bg-danger`} style={{ width: windowWidth >= 692 ? "17px" : '30px', height: windowWidth >= 692 ? "17px" : '30px', fontSize: windowWidth >= 692 ? "10px" : '25px', textAlign: "center", marginTop: windowWidth > 768 ? "18px" : null, marginBottom: windowWidth > 768 ? null : "25px", marginLeft: "5px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                    <Link to="/mycart" className="nav-link" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>My Cart<i className="fa-solid fa-cart-shopping" style={{ fontSize: x >= 692 ? "20px" : '45px', marginTop: "3px" }}></i>
+                      <span className={`position-absolute top-${a} start-45 translate-middle badge rounded-pill bg-danger`} style={{ width: x >= 692 ? "17px" : '30px', height: x >= 692 ? "17px" : '30px', fontSize: x >= 692 ? "10px" : '25px', textAlign: "center", marginTop: x > 768 ? "18px" : null, marginBottom: x > 768 ? null : "25px", marginLeft: "5px", display: "flex", justifyContent: "center", alignItems: "center" }}>
                         {cartitems !== null && (
                           cartitems.length > 0 && (
                             cartitems.length
@@ -119,20 +111,20 @@ function Headers() {
               <li className="nav-item">
                 {isAuthenticated && (
                   <>
-                    <img onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)} src={profilepic} alt="Uploaded" style={{ width: windowWidth > 768 ? "40px" : "75px", height: windowWidth > 768 ? "40px" : "75px", borderRadius: "100%", marginLeft: windowWidth > 768 ? "10px" : null }} />
+                    <img onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)} src={profilepic} alt="Uploaded" style={{ width: x > 768 ? "40px" : "75px", height: x > 768 ? "40px" : "75px", borderRadius: "100%", marginLeft: x > 768 ? "10px" : null }} />
                     {showMessage && (
                       <div
                         style={{
                           position: 'absolute',
                           top: '100%',
-                          left: windowWidth > 768 ? "50%" : "350px",
+                          left: "50%",
                           transform: 'translateX(-50%)',
                           backgroundColor: '#333',
                           color: '#fff',
                           padding: '10px 20px',
                           whiteSpace: "nowrap",
                           borderRadius: '5px',
-                          fontSize: windowWidth > 768 ? "13px" : "30px",
+                          fontSize: x > 768 ? "13px" : "30px",
                           zIndex: '999',
                         }}
                       >

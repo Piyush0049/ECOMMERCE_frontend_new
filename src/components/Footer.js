@@ -1,63 +1,88 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-function Footer() {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+function Footer() {
+  const [x, setx] = useState("");
+useEffect(() => {
+    if(localStorage.getItem("width") !== null){
+        setx(localStorage.getItem("width"));
+    }else{
+        setx(window,innerWidth);
+    }
   }, []);
-  
   const footerStyle = {
     backgroundColor: '#333',
     color: '#fff',
     padding: '20px',
-    textAlign: 'center', // Set position to fixed
-    bottom: 0, // Make it span the entire width
-    minHeight: windowWidth >= 692 ? '250px' : '400px', // Adjusted height based on window width
-    height: "auto",
-    minWidth: windowWidth >= 692 ? '1540px' : '1540px',
-    width: "auto"
+    textAlign: 'center',
+    bottom: 0,
+    minHeight: x >= 692 ? '250px' : '400px',
+    height: 'auto',
+    minWidth: x >= 692 ? '1540px' : '1540px',
+    width: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   };
 
   const containerStyle = {
     display: 'flex',
     justifyContent: 'space-around',
+    alignItems: 'center',
+    flex: 1,
+  };
+
+  const headingStyle = {
+    fontSize: x >= 692 ? '15px' : '40px',
+  };
+
+  const paragraphStyle = {
+    width: x >= 692 ? '220px' : '320px',
+    fontSize: x >= 692 ? '15px' : '27px',
   };
 
   const hrStyle = {
     margin: '20px 0',
   };
 
+  const copyrightContainerStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+
   return (
     <div>
       <footer style={footerStyle}>
         <div style={containerStyle}>
-          <div style={{ marginRight: "90px" }}>
-            <h3 style={{ fontSize: windowWidth >= 692 ? "15px" : '40px' }}>About Us</h3>
-            <p style={{ width: windowWidth >= 692 ? "220px" : '320px', fontSize: windowWidth >= 692 ? "15px" : '27px' }}>"Snap & Shop" revolutionizes online shopping by integrating cutting-edge image recognition technology.</p>
+          <div style={{ marginRight: '90px' }}>
+            <h3 style={headingStyle}>About Us</h3>
+            <p style={paragraphStyle}>
+              "Snap & Shop" revolutionizes online shopping by integrating cutting-edge image recognition technology.
+            </p>
           </div>
-          <div style={{ marginRight: "160px" }}>
-            <h3 style={{ fontSize: windowWidth >= 692 ? "15px" : '40px' }}>Contact Us</h3>
-            <p style={{ width: windowWidth >= 692 ? "220px" : '320px', fontSize: windowWidth >= 692 ? "15px" : '27px' }}>Email: S&S@gmail.com</p>
-            <p style={{ width: windowWidth >= 692 ? "220px" : '320px', fontSize: windowWidth >= 692 ? "15px" : '27px' }}>Phone: +94857XXXXX</p>
+          <div style={{ marginRight: '160px' }}>
+            <h3 style={headingStyle}>Contact Us</h3>
+            <p style={paragraphStyle}>Email: S&S@gmail.com</p>
+            <p style={paragraphStyle}>Phone: +94857XXXXX</p>
           </div>
           <div>
-            <h3 style={{ fontSize: windowWidth >= 692 ? "15px" : '40px' }}>Follow Us</h3>
-            <Link to="/" className="nav-link active mt-2" aria-current="page" style={{ width: windowWidth >= 692 ? "220px" : '320px', fontSize: windowWidth >= 692 ? "15px" : '27px' }}>Facebook</Link>
-            <Link to="/" className="nav-link active mt-2" aria-current="page" style={{ width: windowWidth >= 692 ? "220px" : '320px', fontSize: windowWidth >= 692 ? "15px" : '27px' }}>Twitter</Link>
-            <Link to="/" className="nav-link active mt-2" aria-current="page" style={{ width: windowWidth >= 692 ? "220px" : '320px', fontSize: windowWidth >= 692 ? "15px" : '27px' }}>Instagram</Link>
+            <h3 style={headingStyle}>Follow Us</h3>
+            <Link to="/" className="nav-link active mt-2" aria-current="page" style={paragraphStyle}>
+              Facebook
+            </Link>
+            <Link to="/" className="nav-link active mt-2" aria-current="page" style={paragraphStyle}>
+              Twitter
+            </Link>
+            <Link to="/" className="nav-link active mt-2" aria-current="page" style={paragraphStyle}>
+              Instagram
+            </Link>
           </div>
         </div>
         <hr style={hrStyle} />
-        <p style={{ fontSize: windowWidth >= 692 ? "15px" : '27px' }}>&copy; 2024 Snap & Shop. All rights reserved.</p>
+        <div style={copyrightContainerStyle}>
+          <p style={paragraphStyle}>&copy; 2024 Snap & Shop. All rights reserved.</p>
+        </div>
       </footer>
     </div>
   );

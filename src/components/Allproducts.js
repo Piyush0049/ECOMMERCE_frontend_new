@@ -19,21 +19,6 @@ function Allproducts() {
         dispatch(allproducts(params.keyword, pagenum, range[0], range[1], categ));
     }, [dispatch, pagenum, params, categ, range]);
 
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup function to remove event listener
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
     const { products, resultperpage, productcount } = useSelector((state) => state.products);
     const containerStyle = {
         display: 'flex',
@@ -55,8 +40,8 @@ function Allproducts() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'repeat',
-        minHeight: windowWidth >= 692 ? '1200px' : '3000px', // Adjusted height based on window width
-        minWidth: windowWidth >= 692 ? '1540px' : '1540px',
+        minHeight: window.innerWidth >= 692 ? '1200px' : '3000px', // Adjusted height based on window width
+        minWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
         height: "auto",
         width: "auto",
     };
@@ -81,10 +66,10 @@ function Allproducts() {
     return (
         <Fragment>
             <div style={pageStyle}>
-                <h3 style={{ fontFamily: "revert", position: "absolute", left: '40%', color: "black", textAlign: "center", fontSize: windowWidth >= 692 ? '60px' : '80px', marginTop: windowWidth >= 692 ? '80px' : '120px', whiteSpace: "nowrap" }}>All Products</h3>
+                <h3 style={{ fontFamily: "revert", position: "absolute", left: '40%', color: "black", textAlign: "center", fontSize: window.innerWidth >= 692 ? '60px' : '80px', marginTop: window.innerWidth >= 692 ? '80px' : '120px', whiteSpace: "nowrap" }}>All Products</h3>
                 <hr style={{ position: "absolute", top: "140px", borderWidth: "2px", marginLeft: "300px", marginRight: "300px", zIndex: 2 }} />
                 <div style={{ width: 250, position: "relative", top: "200px", left: "50px", zIndex: 4 }}>
-                    <Typography id="range-slider" gutterBottom style={{ color: "#333", marginBottom: "5px", fontSize: windowWidth >= 692 ? '20px' : '40px', fontWeight: "bold", background: 'rgba(255, 255, 255, 0.7)', padding: '10px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.9)' }}>
+                    <Typography id="range-slider" gutterBottom style={{ color: "#333", marginBottom: "5px", fontSize: window.innerWidth >= 692 ? '20px' : '40px', fontWeight: "bold", background: 'rgba(255, 255, 255, 0.7)', padding: '10px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.9)' }}>
                         Amount <i className="fa-solid fa-filter"></i>
                     </Typography>
                     <Slider
@@ -110,8 +95,8 @@ function Allproducts() {
                         }}
                         style={{ padding: '10px' }}
                     />
-                    <Typography id="range-slider" gutterBottom style={{ color: "#333", marginBottom: "5px", fontSize: windowWidth >= 692 ? '20px' : '30px', fontWeight: "bold", marginTop: "15px", background: 'rgba(255, 255, 255, 0.7)', padding: '10px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.9)' }}>
-                        <h5 style={{ fontSize: windowWidth >= 692 ? '30px' : '40px', fontWeight: "bold" }}> <i className="fa-solid fa-list"></i>  Categories </h5>
+                    <Typography id="range-slider" gutterBottom style={{ color: "#333", marginBottom: "5px", fontSize: window.innerWidth >= 692 ? '20px' : '30px', fontWeight: "bold", marginTop: "15px", background: 'rgba(255, 255, 255, 0.7)', padding: '10px', borderRadius: '10px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.9)' }}>
+                        <h5 style={{ fontSize: window.innerWidth >= 692 ? '30px' : '40px', fontWeight: "bold" }}> <i className="fa-solid fa-list"></i>  Categories </h5>
                         <ul>
                             <li style={{ cursor: 'pointer' }} onMouseOver={(e) => e.target.style.color = '#049EDF'} onMouseOut={(e) => e.target.style.color = 'black'} onClick={onClickcateg}>Machine</li>
                             <li style={{ cursor: 'pointer' }} onMouseOver={(e) => e.target.style.color = '#049EDF'} onMouseOut={(e) => e.target.style.color = 'black'} onClick={onClickcateg}>Device</li>

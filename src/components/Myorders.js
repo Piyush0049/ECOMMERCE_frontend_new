@@ -1,7 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const Myorders = () => {
     const { orderdet } = useSelector((state) => state.myorders);
@@ -11,27 +9,13 @@ const Myorders = () => {
     if (orderdet[0] !== null) {
         filteredOrders = orderdet.filter((order) => (order.user === userid));
     }
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup function to remove event listener
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
     return (<>
         <div>
             {filteredOrders.length !== 0 && orderdet[0] !== null ? filteredOrders.map((order) => (
                 <div key={order._id} style={{ position: 'relative', minHeight: '1450px' }}>
                     <div style={{
-                        minHeight: windowWidth >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
-                        minWidth: windowWidth >= 692 ? '1540px' : '1540px',
+                        minHeight: window.innerWidth >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
+                        maxWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
                         height: "auto",
                         width: "auto",
                         backgroundColor: "#A7F7FE",
@@ -62,7 +46,7 @@ const Myorders = () => {
 
                                 <div style={{ display: "flex" }}>
                                     <div style={{ marginLeft: "70px" }}>
-                                        <h2 style={{ marginBottom: "40px", fontSize: windowWidth >= 692 ? null : '50px', }}><b>Shipping Address : </b></h2>
+                                        <h2 style={{ marginBottom: "40px", fontSize: window.innerWidth >= 692 ? null : '50px', }}><b>Shipping Address : </b></h2>
                                         <div style={styles.grandTotalContainer2}>
                                             <div>Address :</div>
                                             <div>{order.shippinginfo.address}</div>
@@ -227,7 +211,7 @@ const styles = {
         fontSize: '50px',
         color: '#666',
         minHeight: window.innerWidth >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
-        minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
+        minWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
         height: "auto",
         width: "auto",
         backgroundColor: "#A0E1FC",

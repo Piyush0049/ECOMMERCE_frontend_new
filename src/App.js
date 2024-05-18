@@ -29,6 +29,9 @@ import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
 import WebFont from "webfontloader";
 function App() {
+  if(window.innerWidth < 1530){
+    localStorage.setItem("width", window.innerWidth)
+  }
   const dispatch = useDispatch();
   const [Stripeapikey, setstripeapikey] = useState("");
   const { isAuthenticated } = useSelector((state) => state.userdetails);
@@ -46,6 +49,9 @@ function App() {
       }
     });
   }, []);
+
+
+  
   return (
     <>
       <Router>

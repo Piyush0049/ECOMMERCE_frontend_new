@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import backimage from './snapedit_1709804086088.jpeg';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 const SearchBar = () => {
     const navigate = useNavigate();
     const [keyword, setKeyword] = useState('');
@@ -25,24 +24,10 @@ const SearchBar = () => {
         backgroundColor: '#7ED5F9',
         color: 'black',
     };
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-        
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup function to remove event listener
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
     return (
-        <div style={{ backgroundImage: `url(${backimage})`, backgroundSize: 'cover', minHeight: windowWidth >= 692 ? '1200px' : '3000px', height : "auto",
+        <div style={{ backgroundImage: `url(${backimage})`, backgroundSize: 'cover', minHeight: window.innerWidth >= 692 ? '1200px' : '3000px', height : "auto",
         width : "auto",// Adjusted height based on window width
-        minWidth: windowWidth >= 692 ? '1540px' : '1540px', }}>
+        minWidth: window.innerWidth >= 692 ? '1540px' : '1540px', }}>
             <div style={styles.container}>
                 <input
                     type="text"
@@ -68,7 +53,7 @@ const styles = {
     container: {
         display: 'flex',
         alignItems: 'center',
-        maxWidth: '500px',
+        maxWidth: window.innerWidth >= 692 ? '500px' : "250px",
         margin: 'auto',
         position: 'relative',
         top: window.innerWidth >= 692 ? '350px' : '500px',

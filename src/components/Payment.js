@@ -7,18 +7,6 @@ import { createorder } from './actions/orderactions';
 import { useStripe } from '@stripe/react-stripe-js';
 const Payment = () => {
   const stripe = useStripe(); 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth); 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
   const [cardDetails, setCardDetails] = useState({
     cardNumber: '',
     expiry: '',
@@ -125,18 +113,18 @@ const Payment = () => {
 
   return (
     <div style={styles.container}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: windowWidth >= 692 ? "60px" : '110px', paddingBottom: windowWidth >= 692 ? null : '70px', }}>
-        <Link to="/mycart" style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: window.innerWidth >= 692 ? "60px" : '110px', paddingBottom: window.innerWidth >= 692 ? null : '70px', }}>
+        <Link to="/mycart" style={{ fontSize: window.innerWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
+        <Link style={{ fontSize: window.innerWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
+        <Link style={{ fontSize: window.innerWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
       </div>
       <div style={{ minHeight: "500px", height: "auto", opacity: 0.9, paddingTop: '80px', display: 'flex', justifyContent: 'center' }}>
         <div style={styles.cardForm}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
             <div>
-              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: windowWidth >= 692 ? "45px" : '70px', }}>Card Info.</h1>
+              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: window.innerWidth >= 692 ? "45px" : '70px', }}>Card Info.</h1>
               <b><hr style={{ width: "200px", backgroundColor: "black", position: "relative", bottom: "14px" }} /></b>
             </div>
           </div>
@@ -180,7 +168,7 @@ const Payment = () => {
 const styles = {
   container: {
     minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-    minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
+    minWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
     height: "auto",
     width: "auto",
     alignItems: 'center',

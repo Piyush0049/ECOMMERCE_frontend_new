@@ -6,21 +6,6 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const LocationSelector = () => {
-
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup function to remove event listener
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
   
   var shippingdet = "";
   const a = localStorage.getItem("shippingdetails");
@@ -101,8 +86,8 @@ const LocationSelector = () => {
       width: "300px",
     },
     container: {
-      maxWidth: '1100px',
-      maxHeight : windowWidth >= 692 ? '2000px' : '3000px',
+      maxWidth: window.innerWidth >= 692 ? '1100px' : window.innerWidth,
+      maxHeight : window.innerWidth >= 692 ? '2000px' : '3000px',
       height : "auto",
       width : "auto",
       margin: 'auto',
@@ -123,7 +108,7 @@ const LocationSelector = () => {
     },
     label: {
       marginBottom: '5px',
-      fontSize: windowWidth >= 692 ? "19px" : '50px',
+      fontSize: window.innerWidth >= 692 ? "19px" : '50px',
     },
     input: {
       marginBottom: '10px',
@@ -132,18 +117,18 @@ const LocationSelector = () => {
       border: '1px solid #ccc',
       borderRadius: '5px',
       boxSizing: 'border-box',
-      height : windowWidth >= 692 ? null : '65px',
-      fontSize : windowWidth >= 692 ? null : '45px',
+      height : window.innerWidth >= 692 ? null : '65px',
+      fontSize : window.innerWidth >= 692 ? null : '45px',
     },
     selectContainer: {
       marginBottom: '20px',
-      fontSize : windowWidth >= 692 ? null : '45px',
+      fontSize : window.innerWidth >= 692 ? null : '45px',
 
     },
     proceedButton: {
       marginTop: '30px',
       padding: '15px 30px',
-      fontSize: windowWidth >= 692 ? "18px" : '45px',
+      fontSize: window.innerWidth >= 692 ? "18px" : '45px',
       backgroundColor: '#007bff',
       color: '#fff',
       border: 'none',
@@ -165,21 +150,21 @@ const LocationSelector = () => {
 
   return (
     <div style={{
-      backgroundImage: `url(${backimage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: windowWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-      minWidth: windowWidth >= 692 ? '1540px' : '1540px',
+      backgroundImage: `url(${backimage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
+      minWidth: window.innerWidth >= 692 ? '1540px' : '1540px',
       height: "auto",
-      width: "auto", paddingTop : windowWidth >= 692 ? "90px" : null
+      width: "auto", paddingTop : window.innerWidth >= 692 ? "90px" : null
     }}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: windowWidth >= 692 ? null : '150px', paddingBottom: windowWidth >= 692 ? null : '50px', }}>
-        <Link to="/mycart" style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: window.innerWidth >= 692 ? null : '150px', paddingBottom: window.innerWidth >= 692 ? null : '50px', }}>
+        <Link to="/mycart" style={{ fontSize: window.innerWidth >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
+        <Link style={{ fontSize: window.innerWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
+        <Link style={{ fontSize: window.innerWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
       </div>
 
       <div style={styles.container}>
-        <h2 style={{ marginBottom: "35px", textAlign: "center", fontSize : windowWidth >= 692 ? null : '70px',}}><b>Add Shipping Details : </b></h2>
+        <h2 style={{ marginBottom: "35px", textAlign: "center", fontSize : window.innerWidth >= 692 ? null : '70px',}}><b>Add Shipping Details : </b></h2>
         <div style={styles.selectContainer}>
           <label style={styles.label}>Name:</label>
           <input
@@ -255,7 +240,7 @@ const LocationSelector = () => {
           <>
 
             <div style={{ textAlign: 'center' }}>
-              <h5 style={{ fontFamily: "revert", marginTop: "20px", fontSize : windowWidth >= 692 ? null : '55px', }}><b>Please check the details before submitting.</b></h5>
+              <h5 style={{ fontFamily: "revert", marginTop: "20px", fontSize : window.innerWidth >= 692 ? null : '55px', }}><b>Please check the details before submitting.</b></h5>
               <button style={styles.proceedButton} onClick={() => handleproceedtocheckout()} >Proceed To Checkout</button>
 
             </div>

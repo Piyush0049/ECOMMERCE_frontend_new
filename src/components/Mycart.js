@@ -6,24 +6,8 @@ import { addtocart } from './actions/cartactions';
 import { removefromcart } from './actions/cartactions';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 const MyCart = () => {
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setWindowWidth(window.innerWidth);
-        };
-        
-        window.addEventListener('resize', handleResize);
-
-        // Cleanup function to remove event listener
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { cartitems } = useSelector((state) => state.cart);
@@ -39,8 +23,8 @@ const MyCart = () => {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            minHeight: windowWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-            minWidth: windowWidth >= 692 ? '1540px' : '1540px',
+            minHeight: window.innerWidth >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
+            minWidth: window.innerWidth >= 692 ? '1540px' : window.innerWidth,
             height : "auto",
             width : "auto",
             padding : "0",
@@ -58,7 +42,7 @@ const MyCart = () => {
             borderRadius: '20px',
             background: 'rgba(255, 255, 255, 0.9)',
             boxShadow: '0px 20px 20px rgba(0, 0, 0, 0.1)',
-            marginTop : windowWidth >= 692 ? "100px" : '25px',
+            marginTop : window.innerWidth >= 692 ? "100px" : '25px',
         },
         product: {
             marginBottom: '30px',
@@ -70,8 +54,8 @@ const MyCart = () => {
             alignItems: 'center',
         },
         image: {
-            width: windowWidth >= 692 ? '100px' : '280px',
-            height: windowWidth >= 692 ? '100px' : '280px',
+            width: window.innerWidth >= 692 ? '100px' : '280px',
+            height: window.innerWidth >= 692 ? '100px' : '280px',
             borderRadius: '10px',
             marginRight: '20px',
         },
@@ -88,12 +72,12 @@ const MyCart = () => {
             padding: '5px',
             borderRadius: '5px',
             border: 'none',
-            fontSize: windowWidth >= 692 ? '20px' : '50px',
+            fontSize: window.innerWidth >= 692 ? '20px' : '50px',
             cursor: 'pointer',
             transition: 'background-color 0.3s',
             marginRight: '5px',
             boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
-            width: windowWidth >= 692 ? '21px' : '40px',
+            width: window.innerWidth >= 692 ? '21px' : '40px',
         },
         quantityButton2: {
             backgroundColor: 'gray',
@@ -108,7 +92,7 @@ const MyCart = () => {
             width: "21px",
         },
         quantityText: {
-            fontSize: windowWidth >= 692 ? '20px' : '35px',
+            fontSize: window.innerWidth >= 692 ? '20px' : '35px',
             color: '#333',
             margin: '0 5px',
             marginRight: "10px"
@@ -116,7 +100,7 @@ const MyCart = () => {
         checkoutButton: {
             marginTop: '30px',
             padding: '15px 30px',
-            fontSize: windowWidth >= 692 ? '16px' : '60px',
+            fontSize: window.innerWidth >= 692 ? '16px' : '60px',
             backgroundColor: '#007bff',
             color: '#fff',
             border: 'none',
@@ -127,7 +111,7 @@ const MyCart = () => {
         },
         grandTotal: {
             marginTop: '30px',
-            fontSize: windowWidth >= 692 ? '24px' : '60px',
+            fontSize: window.innerWidth >= 692 ? '24px' : '60px',
             fontWeight: 'bold',
             textAlign: 'center',
         },
@@ -169,29 +153,29 @@ const MyCart = () => {
 
     return (
         <div style={styles.container}>
-            <div style={{ display: "flex", marginTop : windowWidth >= 692 ? null : '90px', marginLeft : windowWidth >= 692 ? "220px" : null, position : windowWidth >= 692 ? "relative" : null, top : "80px" }}>
-                <Link to="/mycart" style={{ fontSize: windowWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
+            <div style={{ display: "flex", marginTop : window.innerWidth >= 692 ? null : '90px', marginLeft : window.innerWidth >= 692 ? "220px" : null, position : window.innerWidth >= 692 ? "relative" : null, top : "80px" }}>
+                <Link to="/mycart" style={{ fontSize: window.innerWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
                 <hr style={styles.hr2} />
-                <Link style={{ fontSize:  windowWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
+                <Link style={{ fontSize:  window.innerWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
                 <hr style={styles.hr2} />
-                <Link style={{ fontSize:  windowWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
+                <Link style={{ fontSize:  window.innerWidth >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
 
             </div>
             <div style={styles.cartContainer}>
-                <h1 style={{ textAlign: 'center', marginBottom: '30px', fontSize: windowWidth >= 692 ? '45px' : '80px' }}><b>Your Cart : </b></h1>
+                <h1 style={{ textAlign: 'center', marginBottom: '30px', fontSize: window.innerWidth >= 692 ? '45px' : '80px' }}><b>Your Cart : </b></h1>
                 {cartitems === null ? (
                     <div style={{ textAlign: 'center', marginTop: '50px', marginBottom: '50px' }}>
-                        <h2 style={{ fontSize:  windowWidth >= 692 ? '25px' : '60px', fontWeight: 'bold', color: '#333' }}>Your cart is empty</h2>
+                        <h2 style={{ fontSize:  window.innerWidth >= 692 ? '25px' : '60px', fontWeight: 'bold', color: '#333' }}>Your cart is empty</h2>
                     </div>
                 ) : (
                     cartitems.map((p) => (
                         <div key={p} style={styles.product}>
                             <img style={styles.image} src={p.image} alt={p.name} />
                             <div style={styles.details}>
-                                <h3 style={{ marginBottom: '10px', fontSize:  windowWidth >= 692 ? '20px' : '50px', fontWeight: 'bold' }}>{p.name}</h3>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  windowWidth >= 692 ? '16px' : '45px'}}>Price: ₹{p.price}</p>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  windowWidth >= 692 ? '16px' : '45px'}}>Quantity: {p.quantity}</p>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  windowWidth >= 692 ? '16px' : '45px'}}>Total: ₹{p.price * p.quantity}</p>
+                                <h3 style={{ marginBottom: '10px', fontSize:  window.innerWidth >= 692 ? '20px' : '50px', fontWeight: 'bold' }}>{p.name}</h3>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  window.innerWidth >= 692 ? '16px' : '45px'}}>Price: ₹{p.price}</p>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  window.innerWidth >= 692 ? '16px' : '45px'}}>Quantity: {p.quantity}</p>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  window.innerWidth >= 692 ? '16px' : '45px'}}>Total: ₹{p.price * p.quantity}</p>
                             </div>
                             <div style={styles.quantityContainer}>
                                 <button onClick={() => decreaseQuant(p.product, p.quantity)} style={styles.quantityButton}>-</button>
@@ -200,7 +184,7 @@ const MyCart = () => {
                             </div>
                             <i
                                 className="fa-solid fa-trash"
-                                style={{ marginTop: "110px", marginRight: "10px", cursor: "pointer", fontSize : windowWidth >= 692 ? null : '50px', }}
+                                style={{ marginTop: "110px", marginRight: "10px", cursor: "pointer", fontSize : window.innerWidth >= 692 ? null : '50px', }}
                                 onClick={() => deleteprod(p.product, p.quantity, p.stock)}
                                 // Add hover effect
                                 onMouseEnter={(e) => { e.target.style.color = "blue"; }}
