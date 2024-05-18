@@ -137,11 +137,15 @@ useEffect(() => {
       backgroundImage: `url(${backimage})`, backgroundSize: 'cover'
     },
     cardForm: {
-      width: '500px',
+      minWidth: x >= 692 ? "500px" : '1100px',
+      width : "auto",
+      minHeight: x >= 692 ? "500px" : '900px',
+      height : "auto",
       padding: '20px',
       borderRadius: '10px',
       boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
       background: '#fff',
+
     },
     hr2: {
       borderWidth: "2px",
@@ -163,7 +167,7 @@ useEffect(() => {
         <div style={styles.cardForm}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
             <div>
-              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: x >= 692 ? "45px" : '90px', }}>Card Info.</h1>
+              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: x >= 692 ? "45px" : '110px', }}>Card Info.</h1>
               <b><hr style={{ width:  x >= 692 ? "200px" : null, backgroundColor: "black", position: "relative", bottom: "14px" }} /></b>
             </div>
           </div>
@@ -174,7 +178,7 @@ useEffect(() => {
           </div>
           {paymentError && <div style={{ color: 'red' }}>{paymentError}</div>}
           <div style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}>
-            <button onClick={handlePayment} type="button" className="btn btn-warning" style={{ padding: "10px", paddingInline: "40px", fontSize: x >= 692 ? "20px" : '65px', position: "relative", top: x >= 692 ? "80px" : '20px', }} disabled={isProcessing}>
+            <button onClick={handlePayment} type="button" className="btn btn-warning" style={{ padding: "10px", paddingInline: "40px", fontSize: x >= 692 ? "20px" : '55px', position: "relative", top: x >= 692 ? "80px" : '20px', }} disabled={isProcessing}>
               {isProcessing ? "Processing..." : `Pay ₹${totalprice}`}
             </button>
           </div>

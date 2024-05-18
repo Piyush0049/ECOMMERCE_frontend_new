@@ -132,7 +132,7 @@ useEffect(() => {
         keyIcon: {
             cursor: "pointer",
             position: "relative",
-            left: x >= 692 ? "660px" : '1000px',
+            left: x >= 692 ? "660px" : '965px',
             fontSize: x >= 692 ? "18px" : '55px',
             transition: "opacity 0.3s ease",
             "&:hover": {

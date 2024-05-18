@@ -52,7 +52,8 @@ const Myorders = () => {
             top: "10px",
             minHeight: "1100px",
             width: "auto",
-            height: "auto"
+            height: "auto",
+            paddingTop : x >= 692 ? null : '100px',
         },
         header: {
             textAlign: 'center',
