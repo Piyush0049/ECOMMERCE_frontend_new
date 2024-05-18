@@ -114,7 +114,7 @@ useEffect(() => {
   const cardElementOptions = {
     style: {
       base: {
-        fontSize: x >= 692 ? "25px" : '70px',
+        fontSize: x >= 1080 ? "25px" : '70px',
         color: 'green',
         '::placeholder': {
           color: 'gray',
@@ -128,8 +128,8 @@ useEffect(() => {
   };
   const styles = {
     container: {
-      minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-      minWidth: x >= 692 ? '1540px' : '1540px',
+      minHeight: x >= 1080 ? '1000px' : '3000px', // Adjusted height based on window width
+      minWidth: x >= 1080 ? '1540px' : '1540px',
       height: "auto",
       width: "auto",
       alignItems: 'center',
@@ -137,9 +137,9 @@ useEffect(() => {
       backgroundImage: `url(${backimage})`, backgroundSize: 'cover'
     },
     cardForm: {
-      minWidth: x >= 692 ? "500px" : '1100px',
+      minWidth: x >= 1080 ? "500px" : '1100px',
       width : "auto",
-      minHeight: x >= 692 ? "500px" : '900px',
+      minHeight: x >= 1080 ? "500px" : '900px',
       height : "auto",
       padding: '20px',
       borderRadius: '10px',
@@ -156,19 +156,19 @@ useEffect(() => {
 
   return (
     <div style={styles.container}>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? "60px" : '170px', paddingBottom: x >= 692 ? null : '70px', }}>
-        <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 1080 ? "60px" : '170px', paddingBottom: x >= 1080 ? null : '70px', }}>
+        <Link to="/mycart" style={{ fontSize: x >= 1080 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
+        <Link style={{ fontSize: x >= 1080 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
         <hr style={styles.hr2} />
-        <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
+        <Link style={{ fontSize: x >= 1080 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
       </div>
-      <div style={{ minHeight: "500px", height: "auto", opacity: 0.8, paddingTop: '80px', display: 'flex', justifyContent: 'center', minWidth: x >= 692 ? null : '1540px'  }}>
+      <div style={{ minHeight: "500px", height: "auto", opacity: 0.8, paddingTop: '80px', display: 'flex', justifyContent: 'center', minWidth: x >= 1080 ? null : '1540px'  }}>
         <div style={styles.cardForm}>
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
             <div>
-              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: x >= 692 ? "45px" : '110px', }}>Card Info.</h1>
-              <b><hr style={{ width:  x >= 692 ? "200px" : null, backgroundColor: "black", position: "relative", bottom: "14px" }} /></b>
+              <h1 style={{ marginTop: '20px', textAlign: 'center', fontSize: x >= 1080 ? "45px" : '110px', }}>Card Info.</h1>
+              <b><hr style={{ width:  x >= 1080 ? "200px" : null, backgroundColor: "black", position: "relative", bottom: "14px" }} /></b>
             </div>
           </div>
           <div style={{ justifyContent: "center", position: "relative", top: "40px"}}>
@@ -178,7 +178,7 @@ useEffect(() => {
           </div>
           {paymentError && <div style={{ color: 'red' }}>{paymentError}</div>}
           <div style={{ display: "flex", justifyContent: "center", marginTop: "30px" }}>
-            <button onClick={handlePayment} type="button" className="btn btn-warning" style={{ padding: "10px", paddingInline: "40px", fontSize: x >= 692 ? "20px" : '55px', position: "relative", top: x >= 692 ? "80px" : '20px', }} disabled={isProcessing}>
+            <button onClick={handlePayment} type="button" className="btn btn-warning" style={{ padding: "10px", paddingInline: "40px", fontSize: x >= 1080 ? "20px" : '55px', position: "relative", top: x >= 1080 ? "80px" : '20px', }} disabled={isProcessing}>
               {isProcessing ? "Processing..." : `Pay ₹${totalprice}`}
             </button>
           </div>

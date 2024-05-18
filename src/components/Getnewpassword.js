@@ -57,8 +57,8 @@ useEffect(() => {
 
     return (
         <div style={{
-            minHeight: x >= 692 ? '1000px' : '3000px', 
-            maxWidth: x >= 692 ? '1540px' : '1540px',
+            minHeight: x >= 1080 ? '1000px' : '3000px', 
+            maxWidth: x >= 1080 ? '1540px' : '1540px',
             height : "auto",
             width : "auto",
             display: 'flex',

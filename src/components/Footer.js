@@ -17,9 +17,9 @@ useEffect(() => {
     padding: '20px',
     textAlign: 'center',
     bottom: 0,
-    minHeight: x >= 692 ? '250px' : '400px',
+    minHeight: x >= 1080 ? '250px' : '400px',
     height: 'auto',
-    minWidth: x >= 692 ? '1540px' : '1540px',
+    minWidth: x >= 1080 ? '1540px' : '1540px',
     width: 'auto',
     display: 'flex',
     flexDirection: 'column',
@@ -34,12 +34,12 @@ useEffect(() => {
   };
 
   const headingStyle = {
-    fontSize: x >= 692 ? '15px' : '40px',
+    fontSize: x >= 1080 ? '15px' : '40px',
   };
 
   const paragraphStyle = {
-    width: x >= 692 ? '220px' : '320px',
-    fontSize: x >= 692 ? '15px' : '27px',
+    width: x >= 1080 ? '220px' : '320px',
+    fontSize: x >= 1080 ? '15px' : '27px',
   };
 
   const hrStyle = {

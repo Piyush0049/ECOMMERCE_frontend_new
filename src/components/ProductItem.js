@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 function ProductItem({ product, innerWidth }) {
   const cardStyle = {
-    width: innerWidth >= 692 ? null : '370px', // Full width for smaller screens
-    height: innerWidth >= 692 ? null : "600px",
+    width: innerWidth >= 1080 ? null : '370px', // Full width for smaller screens
+    height: innerWidth >= 1080 ? null : "600px",
     borderRadius: '10px',
     transition: 'transform 0.3s',
     boxShadow: '8px 8px 8px rgba(0, 0, 0, 0.1)',
@@ -77,7 +77,7 @@ function ProductItem({ product, innerWidth }) {
           src={product.images[0].url}
           className="card-img-top"
           alt="..."
-          style={{ backgroundColor: '#B3F7F8', height: window.innerWidth >= 692 ? "300px" : "400px" }}
+          style={{ backgroundColor: '#B3F7F8', height: window.innerWidth >= 1080 ? "300px" : "400px" }}
         />
 
         <div className="card-body" style={{ backgroundColor: '#62C4C6', borderRadius: '10px' }}>

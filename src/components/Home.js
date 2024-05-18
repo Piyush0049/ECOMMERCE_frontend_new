@@ -21,8 +21,8 @@ useEffect(() => {
 
     const { products } = useSelector((state) => state.products)
     const containerStyle1 = {
-        minHeight: x >= 692 ? '800px' : '1600px', // Adjusted height based on window width
-        minWidth: x >= 692 ? '1540px' : '1540px',
+        minHeight: x >= 1080 ? '800px' : '1600px', // Adjusted height based on window width
+        minWidth: x >= 1080 ? '1540px' : '1540px',
         height : "auto",
         width : "auto",
         overflowX: 'hidden', // Prevent horizontal overflow
@@ -33,8 +33,8 @@ useEffect(() => {
     };
 
     const containerStyle2 = {
-        minHeight: x >= 692 ? '800px' : '1500px', // Adjusted height based on window width
-        minWidth: x >= 692 ? '1540px' : '1540px',
+        minHeight: x >= 1080 ? '800px' : '1500px', // Adjusted height based on window width
+        minWidth: x >= 1080 ? '1540px' : '1540px',
         height : "auto",
         width : "auto",
         overflowX: 'hidden', // Prevent horizontal overflow
@@ -82,16 +82,16 @@ useEffect(() => {
                 <div style={textStyle}>
                     <h1 style={{
                         fontFamily: "fantasy",
-                        fontSize: x >= 692 ? '50px' : '105px',
-                        marginLeft: x >= 692 ? '70px' : '00px',
+                        fontSize: x >= 1080 ? '50px' : '105px',
+                        marginLeft: x >= 1080 ? '70px' : '00px',
                         whiteSpace: 'nowrap' // Ensure text stays on one line
                     }}>
                         WELCOME TO SNAP & SHOP
                     </h1>
                     <h1 style={{
                         fontFamily: "fantasy",
-                        fontSize: x >= 692 ? '35px' : '70px',
-                        marginLeft: x >= 692 ? '180px' : '290px',
+                        fontSize: x >= 1080 ? '35px' : '70px',
+                        marginLeft: x >= 1080 ? '180px' : '290px',
                         marginTop: "30px",
                         whiteSpace: 'nowrap' // Ensure text stays on one line
                     }}>
@@ -101,7 +101,7 @@ useEffect(() => {
                 </div>
             </div>
             <div style={containerStyle2}>
-                <h3 style={{ fontFamily: "revert", position: "absolute", left: '50%', transform: 'translateX(-50%)', color: "black", textAlign: "center", fontSize:x >= 692 ? '50px' : '100px', marginTop: x >= 692 ? '80px' : '40px', whiteSpace: 'nowrap'}}>Featured Products : </h3>
+                <h3 style={{ fontFamily: "revert", position: "absolute", left: '50%', transform: 'translateX(-50%)', color: "black", textAlign: "center", fontSize:x >= 1080 ? '50px' : '100px', marginTop: x >= 1080 ? '80px' : '40px', whiteSpace: 'nowrap'}}>Featured Products : </h3>
                 <hr style={{ position: "relative", top: "140px", borderWidth: "2px", opacity: 0.9, marginLeft: "300px", marginRight: "300px" }} />
                 <div style={productsContainerStyle}>
                     {products.map(product => (

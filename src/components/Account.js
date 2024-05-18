@@ -79,20 +79,20 @@ useEffect(() => {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-            minWidth: x >= 692 ? '1540px' : '1540px',
+            minHeight: x >= 1080 ? '1000px' : '3000px', // Adjusted height based on window width
+            minWidth: x >= 1080 ? '1540px' : '1540px',
             padding: '20px',
             backgroundImage: `url(${backimg})`,
         },
         heading: {
-            fontSize: x >= 692 ? '40px' : '85px',
+            fontSize: x >= 1080 ? '40px' : '85px',
             marginBottom: '30px',
             color: '#333',
             fontWeight: 'bold',
         },
         detailsContainer: {
             width: '80%',
-            maxWidth: x >= 692 ? '800px' : '1200px',
+            maxWidth: x >= 1080 ? '800px' : '1200px',
             background: 'rgba(255, 255, 255, 0.6)', // Semi-transparent background for better readability
             padding: '20px',
             borderRadius: '10px',
@@ -102,7 +102,7 @@ useEffect(() => {
             marginBottom: '20px'
         },
         label: {
-            fontSize: x >= 692 ? '16px' : '50px',
+            fontSize: x >= 1080 ? '16px' : '50px',
             fontWeight: 'bold',
             marginBottom: '5px',
             color: '#555',
@@ -112,12 +112,12 @@ useEffect(() => {
             marginBottom: '5px',
             color: '#555',
             zIndex: 2,
-            fontSize: x >= 692 ? '35px' : '50px',
+            fontSize: x >= 1080 ? '35px' : '50px',
             textAlign: "center",
             fontWeight: "bold",
         },
         value: {
-            fontSize: x >= 692 ? '12px' : '50px',
+            fontSize: x >= 1080 ? '12px' : '50px',
             marginBottom: '20px',
             color: '#777',
             zIndex: 2
@@ -125,15 +125,15 @@ useEffect(() => {
         editButton: {
             position: "relative",
             left: "95%",
-            fontSize: x >= 692 ? "18px" : '55px',
+            fontSize: x >= 1080 ? "18px" : '55px',
             cursor: "pointer",
             transition: "opacity 0.3s ease",
         },
         keyIcon: {
             cursor: "pointer",
             position: "relative",
-            left: x >= 692 ? "660px" : '965px',
-            fontSize: x >= 692 ? "18px" : '55px',
+            left: x >= 1080 ? "660px" : '965px',
+            fontSize: x >= 1080 ? "18px" : '55px',
             transition: "opacity 0.3s ease",
             "&:hover": {
                 opacity: 0.7,

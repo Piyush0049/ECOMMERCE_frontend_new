@@ -72,19 +72,19 @@ const LoginPage = () => {
         },
         title1: {
             marginBottom: '20px',
-            fontSize: x >= 692 ? '45px' : '100px',
+            fontSize: x >= 1080 ? '45px' : '100px',
             fontWeight: 'bold',
             color: '#333',
         },
         title2: {
             marginBottom: '40px',
-            fontSize: x >= 692 ? '20px' : '60px',
+            fontSize: x >= 1080 ? '20px' : '60px',
             whiteSpace: 'nowrap',
             fontWeight: 'bold',
             color: '#333',
         },
         form: {
-            width: x >= 692 ? '400px' : '1000px',
+            width: x >= 1080 ? '400px' : '1000px',
             display: 'flex',
             flexDirection: 'column',
             background: 'rgba(255, 255, 255, 0.5)',
@@ -97,7 +97,7 @@ const LoginPage = () => {
             marginBottom: '15px',
             borderRadius: '5px',
             border: '1px solid #ccc',
-            fontSize: x >= 692 ? '16px' : '55px',
+            fontSize: x >= 1080 ? '16px' : '55px',
             outline: 'none',
         },
         button: {
@@ -105,7 +105,7 @@ const LoginPage = () => {
             padding: '10px',
             borderRadius: '5px',
             border: 'none',
-            fontSize: x >= 692 ? '16px' : '50px',
+            fontSize: x >= 1080 ? '16px' : '50px',
             cursor: 'pointer',
             transition: 'background-color 0.3s ease',
             marginTop: '10px',
@@ -139,8 +139,8 @@ const LoginPage = () => {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-            minWidth: x >= 692 ? '1540px' : '1540px',
+            minHeight: x >= 1080 ? '1000px' : '3000px', // Adjusted height based on window width
+            minWidth: x >= 1080 ? '1540px' : '1540px',
             height: "auto",
             width: "auto",
             padding: "0",
@@ -185,10 +185,10 @@ const LoginPage = () => {
                             onMouseLeave={() => setIsHovered(false)}>
                             Login
                         </button>
-                        <p style={{ marginTop: '10px', textAlign: 'center', fontSize: x >= 692 ? '16px' : '40px', }}>
+                        <p style={{ marginTop: '10px', textAlign: 'center', fontSize: x >= 1080 ? '16px' : '40px', }}>
                             Do not have an account? <Link onClick={() => setlogin("signup")}>Sign up now!</Link>
                         </p>
-                        <p style={{ textAlign: 'center', fontSize: x >= 692 ? '16px' : '40px', }}>
+                        <p style={{ textAlign: 'center', fontSize: x >= 1080 ? '16px' : '40px', }}>
                             Forgot Password? <Link to="/password/forgot">Set new password</Link>
                         </p>
                     </form>
@@ -255,7 +255,7 @@ const LoginPage = () => {
                             onMouseLeave={() => setIsHovered(false)}>
                             Signup
                         </button>
-                        <p style={{ allproducts: '10px', textAlign: 'center', fontSize: x >= 692 ? '16px' : '40px', }}>
+                        <p style={{ allproducts: '10px', textAlign: 'center', fontSize: x >= 1080 ? '16px' : '40px', }}>
                             Already have an account? <Link onClick={() => setlogin("login")}>Log in now!</Link>
                         </p>
                     </form>

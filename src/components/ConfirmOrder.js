@@ -43,7 +43,7 @@ const ConfirmOrder = () => {
             textAlign: 'center',
             marginBottom: '80px',
             marginTop: "20px",
-            fontSize: x >= 692 ? null : '50px',
+            fontSize: x >= 1080 ? null : '50px',
         },
         productList: {
             listStyleType: 'none',
@@ -56,7 +56,7 @@ const ConfirmOrder = () => {
             justifyContent: 'space-between',
             fontWeight: 'bold',
             width: "300px",
-            fontSize: x >= 692 ? null : '25px',
+            fontSize: x >= 1080 ? null : '25px',
         },
         grandTotalContainer2: {
             marginTop: '18px',
@@ -64,12 +64,12 @@ const ConfirmOrder = () => {
             justifyContent: 'space-between',
             fontWeight: 'bold',
             width: "300px",
-            fontSize: x >= 692 ? null : '25px',
+            fontSize: x >= 1080 ? null : '25px',
         },
         checkoutButton: {
             marginTop: '80px',
             padding: '15px 30px',
-            fontSize: x >= 692 ? '18px' : '60px',
+            fontSize: x >= 1080 ? '18px' : '60px',
             backgroundColor: '#007bff',
             color: '#fff',
             border: 'none',
@@ -80,8 +80,8 @@ const ConfirmOrder = () => {
             margin: '0 auto',
         },
         image: {
-            width: x >= 692 ? "100px" : '150px',
-            height: x >= 692 ? "100px" : '150px',
+            width: x >= 1080 ? "100px" : '150px',
+            height: x >= 1080 ? "100px" : '150px',
             borderRadius: '10px',
             marginRight: '20px',
         },
@@ -112,17 +112,17 @@ const ConfirmOrder = () => {
 
     return (
         <div style={{
-            backgroundImage: `url(${backimage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-            minWidth: x >= 692 ? '1540px' : '1540px',
+            backgroundImage: `url(${backimage})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: x >= 1080 ? '1000px' : '3000px', // Adjusted height based on window width
+            minWidth: x >= 1080 ? '1540px' : '1540px',
             height: "auto",
             width: "auto", opacity: 0.9, paddingTop: '80px',
         }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 692 ? null : '150px', paddingBottom: x >= 692 ? null : '50px', }}>
-                <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", paddingTop: x >= 1080 ? null : '150px', paddingBottom: x >= 1080 ? null : '50px', }}>
+                <Link to="/mycart" style={{ fontSize: x >= 1080 ? '25px' : '35px', color: "green", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
                 <hr style={styles.hr2} />
-                <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
+                <Link style={{ fontSize: x >= 1080 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
                 <hr style={styles.hr2} />
-                <Link style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
+                <Link style={{ fontSize: x >= 1080 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
             </div>
             <div style={styles.container}>
                 <h1 style={styles.header}><b>Order Summary : </b></h1>
@@ -131,10 +131,10 @@ const ConfirmOrder = () => {
                         <div key={p} style={styles.product}>
                             <img style={styles.image} src={p.image} alt={p.name} />
                             <div style={styles.details}>
-                                <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? "20px" : '50px', fontWeight: 'bold' }}>{p.name}</h3>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}>Price: ₹{p.price}</p>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}>Quantity: {p.quantity}</p>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px' }}><b>Total: ₹{p.price * p.quantity}</b></p>
+                                <h3 style={{ marginBottom: '10px', fontSize: x >= 1080 ? "20px" : '50px', fontWeight: 'bold' }}>{p.name}</h3>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? "20px" : '45px' }}>Price: ₹{p.price}</p>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? "20px" : '45px' }}>Quantity: {p.quantity}</p>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? "20px" : '45px' }}><b>Total: ₹{p.price * p.quantity}</b></p>
                             </div>
                         </div>
                     ))}
@@ -144,7 +144,7 @@ const ConfirmOrder = () => {
                 <div style={{ display: "flex" }}>
 
                     <div style={{ marginLeft: "70px" }}>
-                        <h2 style={{ marginBottom: "40px", fontSize: x >= 692 ? null : '35px' }}><b>Shipping Address : </b></h2>
+                        <h2 style={{ marginBottom: "40px", fontSize: x >= 1080 ? null : '35px' }}><b>Shipping Address : </b></h2>
                         <div style={styles.grandTotalContainer2}>
                             <div>Name :</div>
                             <div>{shippingdet.userDetails.name}</div>
@@ -172,7 +172,7 @@ const ConfirmOrder = () => {
                     </div>
 
                     <div style={{ marginLeft: "450px" }}>
-                        <h2 style={{ fontSize: x >= 692 ? null : '35px', }}><b>Invoice Details : </b></h2>
+                        <h2 style={{ fontSize: x >= 1080 ? null : '35px', }}><b>Invoice Details : </b></h2>
                         <div style={styles.grandTotalContainer}>
                             <div>Sub Total:</div>
                             <div>₹{getTotal().toFixed(2)}</div>
@@ -188,7 +188,7 @@ const ConfirmOrder = () => {
                             justifyContent: 'space-between',
                             fontWeight: 'bold',
                             width: "300px",
-                            fontSize: x >= 692 ? null : '35px',
+                            fontSize: x >= 1080 ? null : '35px',
                         }}>
                             <div>Grand Total:</div>
                             <div>₹{(getTotal() * 1.18).toFixed(2)}</div>

@@ -28,8 +28,8 @@ useEffect(() => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            minHeight: x >= 692 ? '1000px' : '3000px', 
-            maxWidth: x >= 692 ? '1540px' : '1540px',
+            minHeight: x >= 1080 ? '1000px' : '3000px', 
+            maxWidth: x >= 1080 ? '1540px' : '1540px',
             height : "auto",
             width : "auto",
             flexDirection: 'column',
@@ -38,7 +38,7 @@ useEffect(() => {
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center'
         }}>
-            <h2 style={{ marginBottom: '20px', fontSize: x >= 692 ? '40px' : '100px', fontFamily : "sans-serif" }}><b>Forgot Your Password?</b></h2>
+            <h2 style={{ marginBottom: '20px', fontSize: x >= 1080 ? '40px' : '100px', fontFamily : "sans-serif" }}><b>Forgot Your Password?</b></h2>
             <form onSubmit={handleSubmit} style={{ width: '400px', textAlign: 'center' }}>
                 <input
                     type="email"
@@ -47,12 +47,12 @@ useEffect(() => {
                     onChange={handleEmailChange}
                     style={{
                         width: '100%',
-                        padding:  x >= 692 ? '10px' : '30px',
+                        padding:  x >= 1080 ? '10px' : '30px',
                         marginBottom: '15px',
                         borderRadius: '5px',
                         border: '1px solid #ccc',
                         textAlign : "center",
-                        fontSize : x >= 692 ? '18px' : '35px',
+                        fontSize : x >= 1080 ? '18px' : '35px',
                     }}
                     required
                 />
@@ -66,7 +66,7 @@ useEffect(() => {
                         border: 'none',
                         cursor: 'pointer',
                         marginTop : "10px",
-                        fontSize : x >= 692 ? '18px' : '35px',
+                        fontSize : x >= 1080 ? '18px' : '35px',
                     }}
                 >
                     Send Reset Link

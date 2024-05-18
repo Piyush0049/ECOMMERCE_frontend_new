@@ -86,8 +86,8 @@ useEffect(() => {
       fontFamily: 'Arial, sans-serif',
       color: '#333',
       backgroundColor : "#A6E5FF",
-      minHeight: x >= 692 ? '1000px' : '3000px',  // Adjusted height based on window width
-      minWidth: x >= 692 ? '1540px' : '1540px',
+      minHeight: x >= 1080 ? '1000px' : '3000px',  // Adjusted height based on window width
+      minWidth: x >= 1080 ? '1540px' : '1540px',
       height: "auto",
       width: "auto",
       display: 'flex',
@@ -98,8 +98,8 @@ useEffect(() => {
     },
     mainContent: {
       width: '100%',
-      maxWidth: x >= 692 ? '1200px' : '1540px',
-      minHeight: x >= 692 ? "1000px" : '1640px',
+      maxWidth: x >= 1080 ? '1200px' : '1540px',
+      minHeight: x >= 1080 ? "1000px" : '1640px',
       backgroundColor: 'rgba(255, 255, 255, 0.9)',
       borderRadius: '10px',
       boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)',
@@ -125,7 +125,7 @@ useEffect(() => {
       borderRadius: '10px',
     },
     reviewsHeading: {
-      fontSize: x >= 692 ? '24px' : '45px',
+      fontSize: x >= 1080 ? '24px' : '45px',
       fontWeight: 'bold',
       marginTop: "17px",
       marginBottom: '20px',
@@ -139,13 +139,13 @@ useEffect(() => {
       marginTop: '20px',
     },
     username: {
-      fontSize: x >= 692 ? "18px" : '40px',
+      fontSize: x >= 1080 ? "18px" : '40px',
       fontWeight: 'bold',
       color: '#333',
       marginBottom: '10px',
     },
     comment: {
-      fontSize: x >= 692 ? "16px" : '32px',
+      fontSize: x >= 1080 ? "16px" : '32px',
       color: '#333',
       marginBottom: '10px',
     },
@@ -161,12 +161,12 @@ useEffect(() => {
       textAlign: 'center',
       lineHeight: '24px',
       fontWeight: 'bold',
-      fontSize: x >= 692 ? "14px" : '28px',
+      fontSize: x >= 1080 ? "14px" : '28px',
       color: '#333',
       marginRight: '8px',
     },
     ratingText: {
-      fontSize: x >= 692 ? "16px" : '30px',
+      fontSize: x >= 1080 ? "16px" : '30px',
       color: '#333',
     },
   };
@@ -245,21 +245,21 @@ useEffect(() => {
 
         <div style={{ marginRight: "190px" }}>
           <hr style={{ height: "3px", borderWidth: "2px", borderColor: "black", width: "250px", marginLeft: "2px", color: "black" }} />
-          <h1 style={{ fontSize: x >= 692 ? "32px" : '60px', marginBottom: '20px', fontWeight: 'bolder', color: '#333' }}>
+          <h1 style={{ fontSize: x >= 1080 ? "32px" : '60px', marginBottom: '20px', fontWeight: 'bolder', color: '#333' }}>
             {product.name}
           </h1>
-          <p style={{ fontSize: x >= 692 ? "18px" : '35px', marginBottom: '30px', lineHeight: '1.6' }}>
+          <p style={{ fontSize: x >= 1080 ? "18px" : '35px', marginBottom: '30px', lineHeight: '1.6' }}>
             {product.description}
           </p>
 
           <hr style={{ height: "3px", borderWidth: "2px", borderColor: "black", width: "250px", marginLeft: "2px", color: "black" }} />
 
-          <h1 style={{ fontSize: x >= 692 ? "36px" : '55px', marginBottom: '20px', fontWeight: 'bold', color: '#333', marginTop: "4px" }}>
+          <h1 style={{ fontSize: x >= 1080 ? "36px" : '55px', marginBottom: '20px', fontWeight: 'bold', color: '#333', marginTop: "4px" }}>
             ₹{product.price}
           </h1>
           <hr style={{ height: "3px", borderWidth: "2px", borderColor: "black", width: "250px", marginLeft: "2px", color: "black" }} />
 
-          <p style={{ fontSize: x >= 692 ? "18px" : '40px', marginBottom: '20px', lineHeight: '1.6', display: "flex" }}>
+          <p style={{ fontSize: x >= 1080 ? "18px" : '40px', marginBottom: '20px', lineHeight: '1.6', display: "flex" }}>
             <p style={{ fontWeight: 'bold' }}> Category : </p> <p style={{ marginLeft: "5px" }}>{product.category}</p>
           </p>
           <hr style={{ height: "3px", borderWidth: "2px", borderColor: "black", width: "250px", marginLeft: "2px", color: "black" }} />
@@ -274,7 +274,7 @@ useEffect(() => {
                   padding: '10px 17px',
                   borderRadius: '18px',
                   border: 'none',
-                  fontSize: x >= 692 ? "18px" : '40px',
+                  fontSize: x >= 1080 ? "18px" : '40px',
                   cursor: 'pointer',
                   transition: 'background-color 0.3s',
                   boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)', ...(hoverp ? ButtonHoverStyle : null)
@@ -318,7 +318,7 @@ useEffect(() => {
                   padding: '1px 7px',
                   borderRadius: '5px',
                   border: 'none',
-                  fontSize: x >= 692 ? "18px" : '38px',
+                  fontSize: x >= 1080 ? "18px" : '38px',
                   cursor: 'pointer',
                   transition: 'background-color 0.3s',
                   boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
@@ -329,7 +329,7 @@ useEffect(() => {
               >
                 -
               </button>
-              <span style={{ fontSize: x >= 692 ? "18px" : '40px', color: '#333' }}>{quantity}</span>
+              <span style={{ fontSize: x >= 1080 ? "18px" : '40px', color: '#333' }}>{quantity}</span>
               <button
                 onClick={handleIncrement}
                 disabled={quantity >= product.stock}
@@ -350,7 +350,7 @@ useEffect(() => {
                   padding: '1px 5px',
                   borderRadius: '5px',
                   border: 'none',
-                  fontSize: x >= 692 ? "18px" : '38px',
+                  fontSize: x >= 1080 ? "18px" : '38px',
                   cursor: 'pointer',
                   transition: 'background-color 0.3s',
                   boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
@@ -367,13 +367,13 @@ useEffect(() => {
           </div>
           <div>
             {product.stock > 0 ?
-              (<p style={{ fontSize: x >= 692 ? "18px" : '40px', color: '#666', lineHeight: '1.6', fontWeight: "bold" }}>
+              (<p style={{ fontSize: x >= 1080 ? "18px" : '40px', color: '#666', lineHeight: '1.6', fontWeight: "bold" }}>
 
-                Status : <span style={{ fontSize: x >= 692 ? "18px" : '40px', color: "green" }}>Instock</span>
+                Status : <span style={{ fontSize: x >= 1080 ? "18px" : '40px', color: "green" }}>Instock</span>
               </p>) :
               (<p style={{ fontSize: '18px', color: '#666', lineHeight: '1.6', fontWeight: "bold" }}>
 
-                Status : <span style={{ fontSize: x >= 692 ? "18px" : '40px', color: "red" }}>Out Of Stock</span>
+                Status : <span style={{ fontSize: x >= 1080 ? "18px" : '40px', color: "red" }}>Out Of Stock</span>
               </p>)
             }
             <hr style={{ height: "3px", borderWidth: "2px", borderColor: "black", width: "250px", marginLeft: "2px", color: "black" }} />
@@ -386,7 +386,7 @@ useEffect(() => {
                 padding: '10px 17px',
                 borderRadius: '25px',
                 border: 'none',
-                fontSize: x >= 692 ? "18px" : '45px',
+                fontSize: x >= 1080 ? "18px" : '45px',
                 cursor: 'pointer',
                 transition: 'background-color 0.3s',
                 boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)', ...(hoverr ? ButtonHoverStyle : null)
@@ -400,7 +400,7 @@ useEffect(() => {
           {addrev ? (
             <>
               <div style={{
-                maxWidth: x >= 692 ? '1200px' : "400px",
+                maxWidth: x >= 1080 ? '1200px' : "400px",
                 margin: "auto",
                 textAlign: "center",
                 marginTop: "140px",
@@ -415,7 +415,7 @@ useEffect(() => {
                   fontFamily: "Arial, sans-serif",
                   color: "#333",
                   fontWeight: "bold",
-                  fontSize: x >= 692 ? "18px" : '45px',
+                  fontSize: x >= 1080 ? "18px" : '45px',
                 }}>Add Product Review</h2>
                 <form onSubmit={handleSubmit}>
                   <div style={{ marginBottom: "20px" }}>
@@ -429,7 +429,7 @@ useEffect(() => {
                         borderRadius: "5px",
                         border: "1px solid #ccc",
                         boxSizing: "border-box",
-                        fontSize:  x >= 692 ? "15px" : '40px',
+                        fontSize:  x >= 1080 ? "15px" : '40px',
                       }}
                       required
                     />
@@ -446,7 +446,7 @@ useEffect(() => {
                         border: "1px solid #ccc",
                         boxSizing: "border-box",
                         minHeight: "100px",
-                        fontSize: x >= 692 ? "15px" : '40px',
+                        fontSize: x >= 1080 ? "15px" : '40px',
                       }}
                       required
                     />
@@ -461,7 +461,7 @@ useEffect(() => {
                         borderRadius: "5px",
                         border: "1px solid #ccc",
                         boxSizing: "border-box",
-                        fontSize: x >= 692 ? "15px" : '40px',
+                        fontSize: x >= 1080 ? "15px" : '40px',
                       }}
                       required
                     >
@@ -480,7 +480,7 @@ useEffect(() => {
                     color: "#fff",
                     borderRadius: "5px",
                     border: "none",
-                    fontSize: x >= 692 ? "18px" : '45px',
+                    fontSize: x >= 1080 ? "18px" : '45px',
                     fontWeight: "bold"
                   }}>
                     Submit Review

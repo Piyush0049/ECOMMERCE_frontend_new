@@ -32,8 +32,8 @@ useEffect(() => {
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-            minWidth: x >= 692 ? '1540px' : '1540px',
+            minHeight: x >= 1080 ? '1000px' : '3000px', // Adjusted height based on window width
+            minWidth: x >= 1080 ? '1540px' : '1540px',
             height : "auto",
             width : "auto",
             padding : "0",
@@ -51,7 +51,7 @@ useEffect(() => {
             borderRadius: '20px',
             background: 'rgba(255, 255, 255, 0.9)',
             boxShadow: '0px 20px 20px rgba(0, 0, 0, 0.1)',
-            marginTop : x >= 692 ? "100px" : '25px',
+            marginTop : x >= 1080 ? "100px" : '25px',
         },
         product: {
             marginBottom: '30px',
@@ -63,8 +63,8 @@ useEffect(() => {
             alignItems: 'center',
         },
         image: {
-            width: x >= 692 ? '100px' : '280px',
-            height: x >= 692 ? '100px' : '280px',
+            width: x >= 1080 ? '100px' : '280px',
+            height: x >= 1080 ? '100px' : '280px',
             borderRadius: '10px',
             marginRight: '20px',
         },
@@ -81,12 +81,12 @@ useEffect(() => {
             padding: '5px',
             borderRadius: '5px',
             border: 'none',
-            fontSize: x >= 692 ? '20px' : '50px',
+            fontSize: x >= 1080 ? '20px' : '50px',
             cursor: 'pointer',
             transition: 'background-color 0.3s',
             marginRight: '5px',
             boxShadow: '0 2px 5px rgba(0, 0, 0, 0.2)',
-            width: x >= 692 ? '21px' : '40px',
+            width: x >= 1080 ? '21px' : '40px',
         },
         quantityButton2: {
             backgroundColor: 'gray',
@@ -101,7 +101,7 @@ useEffect(() => {
             width: "21px",
         },
         quantityText: {
-            fontSize: x >= 692 ? '20px' : '42px',
+            fontSize: x >= 1080 ? '20px' : '42px',
             color: '#333',
             margin: '0 5px',
             marginRight: "10px"
@@ -109,7 +109,7 @@ useEffect(() => {
         checkoutButton: {
             marginTop: '30px',
             padding: '15px 30px',
-            fontSize: x >= 692 ? '16px' : '60px',
+            fontSize: x >= 1080 ? '16px' : '60px',
             backgroundColor: '#007bff',
             color: '#fff',
             border: 'none',
@@ -120,7 +120,7 @@ useEffect(() => {
         },
         grandTotal: {
             marginTop: '30px',
-            fontSize: x >= 692 ? '24px' : '60px',
+            fontSize: x >= 1080 ? '24px' : '60px',
             fontWeight: 'bold',
             textAlign: 'center',
         },
@@ -162,29 +162,29 @@ useEffect(() => {
 
     return (
         <div style={styles.container}>
-            <div style={{ display: "flex", marginLeft : x >= 692 ? "220px" : "60px", position : x >= 692 ? "relative" : null, top : "80px", paddingTop: x >= 692 ? null : '180px', paddingBottom: x >= 692 ? null : '70px', }}>
-                <Link to="/mycart" style={{ fontSize: x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
+            <div style={{ display: "flex", marginLeft : x >= 1080 ? "220px" : "60px", position : x >= 1080 ? "relative" : null, top : "80px", paddingTop: x >= 1080 ? null : '180px', paddingBottom: x >= 1080 ? null : '70px', }}>
+                <Link to="/mycart" style={{ fontSize: x >= 1080 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Place Order <i className="fa-solid fa-cart-shopping"></i></Link>
                 <hr style={styles.hr2} />
-                <Link style={{ fontSize:  x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
+                <Link style={{ fontSize:  x >= 1080 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Confirm Order <i className="fa-solid fa-check"></i></Link>
                 <hr style={styles.hr2} />
-                <Link style={{ fontSize:  x >= 692 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
+                <Link style={{ fontSize:  x >= 1080 ? '25px' : '35px', color: "red", textDecoration: "none" }}>Payment <i className="fa-solid fa-circle-check"></i></Link>
 
             </div>
             <div style={styles.cartContainer}>
-                <h1 style={{ textAlign: 'center', marginBottom: '30px', fontSize: x >= 692 ? '45px' : '80px' }}><b>Your Cart : </b></h1>
+                <h1 style={{ textAlign: 'center', marginBottom: '30px', fontSize: x >= 1080 ? '45px' : '80px' }}><b>Your Cart : </b></h1>
                 {cartitems === null ? (
                     <div style={{ textAlign: 'center', marginTop: '50px', marginBottom: '50px' }}>
-                        <h2 style={{ fontSize:  x >= 692 ? '25px' : '60px', fontWeight: 'bold', color: '#333' }}>Your cart is empty</h2>
+                        <h2 style={{ fontSize:  x >= 1080 ? '25px' : '60px', fontWeight: 'bold', color: '#333' }}>Your cart is empty</h2>
                     </div>
                 ) : (
                     cartitems.map((p) => (
                         <div key={p} style={styles.product}>
                             <img style={styles.image} src={p.image} alt={p.name} />
                             <div style={styles.details}>
-                                <h3 style={{ marginBottom: '10px', fontSize:  x >= 692 ? '20px' : '50px', fontWeight: 'bold' }}>{p.name}</h3>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  x >= 692 ? '16px' : '45px'}}>Price: ₹{p.price}</p>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  x >= 692 ? '16px' : '45px'}}>Quantity: {p.quantity}</p>
-                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  x >= 692 ? '16px' : '45px'}}>Total: ₹{p.price * p.quantity}</p>
+                                <h3 style={{ marginBottom: '10px', fontSize:  x >= 1080 ? '20px' : '50px', fontWeight: 'bold' }}>{p.name}</h3>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  x >= 1080 ? '16px' : '45px'}}>Price: ₹{p.price}</p>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  x >= 1080 ? '16px' : '45px'}}>Quantity: {p.quantity}</p>
+                                <p style={{ marginBottom: '5px', color: '#666', fontSize:  x >= 1080 ? '16px' : '45px'}}>Total: ₹{p.price * p.quantity}</p>
                             </div>
                             <div style={styles.quantityContainer}>
                                 <button onClick={() => decreaseQuant(p.product, p.quantity)} style={styles.quantityButton}>-</button>
@@ -193,7 +193,7 @@ useEffect(() => {
                             </div>
                             <i
                                 className="fa-solid fa-trash"
-                                style={{ marginTop: x >= 692 ? '110px' : '130px', marginRight: "10px", cursor: "pointer", fontSize : x >= 692 ? null : '50px', }}
+                                style={{ marginTop: x >= 1080 ? '110px' : '130px', marginRight: "10px", cursor: "pointer", fontSize : x >= 1080 ? null : '50px', }}
                                 onClick={() => deleteprod(p.product, p.quantity, p.stock)}
                                 // Add hover effect
                                 onMouseEnter={(e) => { e.target.style.color = "blue"; }}

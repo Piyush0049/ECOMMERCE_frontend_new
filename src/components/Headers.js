@@ -43,37 +43,37 @@ useEffect(() => {
     }
   }
 
-  const a = x >= 692 ? "0" : '2';
+  const a = x >= 1080 ? "0" : '2';
 
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark" style={headerStyle}>
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand" style={{ fontSize: x >= 692 ? "20px" : '60px' }}>Snap & Shop</Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style={{ fontSize: x >= 692 ? '30px' : '60px', padding: x >= 692 ? '5px 10px' : '10px 20px' }}>
+          <Link to="/" className="navbar-brand" style={{ fontSize: x >= 1080 ? "20px" : '60px' }}>Snap & Shop</Link>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style={{ fontSize: x >= 1080 ? '30px' : '60px', padding: x >= 1080 ? '5px 10px' : '10px 20px' }}>
   <span className="navbar-toggler-icon"></span>
 </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="/Home" className="nav-link" aria-current="page" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>Home</Link>
+                <Link to="/Home" className="nav-link" aria-current="page" style={{ fontSize: x >= 1080 ? "15px" : '45px' }}>Home</Link>
               </li>
               <li className="nav-item">
-                <Link to="/products" className="nav-link" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>Products</Link>
+                <Link to="/products" className="nav-link" style={{ fontSize: x >= 1080 ? "15px" : '45px' }}>Products</Link>
               </li>
               <li className="nav-item">
-                <Link to="/myorders" className="nav-link" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>My Orders</Link>
+                <Link to="/myorders" className="nav-link" style={{ fontSize: x >= 1080 ? "15px" : '45px' }}>My Orders</Link>
               </li>
               <li className="nav-item">
-                <Link to="/search" className="nav-link" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>Search<i className="fa-solid fa-magnifying-glass" style={{ fontSize: x >= 692 ? "17px" : '45px' }}></i></Link>
+                <Link to="/search" className="nav-link" style={{ fontSize: x >= 1080 ? "15px" : '45px' }}>Search<i className="fa-solid fa-magnifying-glass" style={{ fontSize: x >= 1080 ? "17px" : '45px' }}></i></Link>
               </li>
 
               <li className="nav-item">
-                <div className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>
-                  Your Account<i className="fa-solid fa-user" style={{ fontSize: x >= 692 ? "15px" : '45px' }}></i>
+                <div className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: x >= 1080 ? "15px" : '45px' }}>
+                  Your Account<i className="fa-solid fa-user" style={{ fontSize: x >= 1080 ? "15px" : '45px' }}></i>
                 </div>
-                <ul className="dropdown-menu" style={{ fontSize: x >= 692 ? "15px" : '45px', position: 'absolute', top: '100%', left: x >= 692 ? "32%" : "190px", transform: 'translateX(-50%)' }}>
+                <ul className="dropdown-menu" style={{ fontSize: x >= 1080 ? "15px" : '45px', position: 'absolute', top: '100%', left: x >= 1080 ? "32%" : "190px", transform: 'translateX(-50%)' }}>
                   {isAuthenticated && user.work === "admin" &&
                     (<li><Link to="/dashboard" className="dropdown-item"><b>Dashboard</b></Link></li>)
                   }
@@ -97,8 +97,8 @@ useEffect(() => {
               <li className="nav-item">
                 {isAuthenticated && (
                   <li className="nav-item" >
-                    <Link to="/mycart" className="nav-link" style={{ fontSize: x >= 692 ? "15px" : '45px' }}>My Cart<i className="fa-solid fa-cart-shopping" style={{ fontSize: x >= 692 ? "20px" : '45px', marginTop: "3px" }}></i>
-                      <span className={`position-absolute top-${a} start-45 translate-middle badge rounded-pill bg-danger`} style={{ width: x >= 692 ? "17px" : '30px', height: x >= 692 ? "17px" : '30px', fontSize: x >= 692 ? "10px" : '25px', textAlign: "center", marginTop: x >= 692 ? "18px" : null, marginBottom: x >= 692 ? null : "25px", marginLeft: "5px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                    <Link to="/mycart" className="nav-link" style={{ fontSize: x >= 1080 ? "15px" : '45px' }}>My Cart<i className="fa-solid fa-cart-shopping" style={{ fontSize: x >= 1080 ? "20px" : '45px', marginTop: "3px" }}></i>
+                      <span className={`position-absolute top-${a} start-45 translate-middle badge rounded-pill bg-danger`} style={{ width: x >= 1080 ? "17px" : '30px', height: x >= 1080 ? "17px" : '30px', fontSize: x >= 1080 ? "10px" : '25px', textAlign: "center", marginTop: x >= 1080 ? "18px" : null, marginBottom: x >= 1080 ? null : "25px", marginLeft: "5px", display: "flex", justifyContent: "center", alignItems: "center" }}>
                         {cartitems !== null && (
                           cartitems.length > 0 && (
                             cartitems.length
@@ -112,7 +112,7 @@ useEffect(() => {
               <li className="nav-item">
                 {isAuthenticated && (
                   <>
-                    <img onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)} src={profilepic} alt="Uploaded" style={{ width: x >= 692 ? "40px" : "75px", height: x >= 692 ? "40px" : "75px", borderRadius: "100%", marginLeft: x >= 692 ? "10px" : null }} />
+                    <img onMouseEnter={() => setShowMessage(true)} onMouseLeave={() => setShowMessage(false)} src={profilepic} alt="Uploaded" style={{ width: x >= 1080 ? "40px" : "75px", height: x >= 1080 ? "40px" : "75px", borderRadius: "100%", marginLeft: x >= 1080 ? "10px" : null }} />
                     {showMessage && (
                       <div
                         style={{
@@ -125,7 +125,7 @@ useEffect(() => {
                           padding: '10px 20px',
                           whiteSpace: "nowrap",
                           borderRadius: '5px',
-                          fontSize: x >= 692 ? "13px" : "30px",
+                          fontSize: x >= 1080 ? "13px" : "30px",
                           zIndex: '999',
                         }}
                       >

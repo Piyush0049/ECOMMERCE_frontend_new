@@ -199,7 +199,7 @@ useEffect(() => {
       justifyContent: 'space-between',
       fontWeight: 'bold',
       width: "300px",
-      fontSize: x >= 692 ? null : '25px'
+      fontSize: x >= 1080 ? null : '25px'
     },
     grandTotalContainer3: {
       marginTop: '40px',
@@ -216,7 +216,7 @@ useEffect(() => {
       justifyContent: 'space-between',
       fontWeight: 'bold',
       width: "300px",
-      fontSize: x >= 692 ? null : '25px',
+      fontSize: x >= 1080 ? null : '25px',
       whiteSpace: "nowrap"
     },
     hr2: {
@@ -225,7 +225,7 @@ useEffect(() => {
       width: "300px",
     },
     cartContainer: {
-      maxWidth: x >= 692 ? '900px' : '1540px',
+      maxWidth: x >= 1080 ? '900px' : '1540px',
       width: '100%',
       padding: '30px',
       borderRadius: '20px',
@@ -242,8 +242,8 @@ useEffect(() => {
       alignItems: 'center',
     },
     image: {
-      width: x >= 692 ? '120px' : '140px',
-      height: x >= 692 ? '120px' : '140px',
+      width: x >= 1080 ? '120px' : '140px',
+      height: x >= 1080 ? '120px' : '140px',
       borderRadius: '10px',
       marginRight: '20px',
     },
@@ -312,7 +312,7 @@ useEffect(() => {
       top: "80px",
       opacity: "0.9",
       backgroundColor: "#D2F1FE",
-      height: x >= 692 ? '600px' : '1700px',
+      height: x >= 1080 ? '600px' : '1700px',
       alignItems: "center",
       justifyContent: "center",
       overflowY: "auto",
@@ -321,7 +321,7 @@ useEffect(() => {
       position: "relative",
       top: "20px",
       left: "30px",
-      fontSize: x >= 692 ? '35px' : '43px',
+      fontSize: x >= 1080 ? '35px' : '43px',
       fontWeight: "bold",
       textAlign: "center",
       paddingBottom: "25px"
@@ -345,13 +345,13 @@ useEffect(() => {
     label: {
       marginTop: "20px",
       color: "#666",
-      fontSize: x >= 692 ? '21px' : '35px',
+      fontSize: x >= 1080 ? '21px' : '35px',
       textAlign: "center"
     },
     input: {
       marginBottom: "10px",
       padding: "10px 120px",
-      fontSize: x >= 692 ? '16px' : '32px',
+      fontSize: x >= 1080 ? '16px' : '32px',
       borderRadius: "10px",
       border: "2px solid #ccc",
       textAlign: "center"
@@ -368,7 +368,7 @@ useEffect(() => {
     disabledInput: {
       marginBottom: "10px",
       padding: "8px",
-      fontSize: x >= 692 ? '16px' : '32px',
+      fontSize: x >= 1080 ? '16px' : '32px',
       borderRadius: "5px",
       border: "1px solid #ccc",
       backgroundColor: "#f3f3f3",
@@ -378,7 +378,7 @@ useEffect(() => {
     button: {
       marginTop: "20px",
       padding: "15px 20px",
-      fontSize: x >= 692 ? '16px' : '40px',
+      fontSize: x >= 1080 ? '16px' : '40px',
       backgroundColor: "#28a745",
       color: "#fff",
       border: "none",
@@ -393,7 +393,7 @@ useEffect(() => {
   // Inline CSS Styles
   const dashboardStyle = {
     fontFamily: 'Arial, sans-serif',
-    maxWidth:x >= 692 ? '1200px' : '1540px',
+    maxWidth:x >= 1080 ? '1200px' : '1540px',
     margin: '0 auto',
     padding: '20px',
     width: '100%',
@@ -417,23 +417,23 @@ useEffect(() => {
     <div>
       {work === "admin" ? (
         <div style={{
-          backgroundColor: "#ACE7FF", minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-          minWidth: x >= 692 ? '1540px' : '1540px',
+          backgroundColor: "#ACE7FF", minHeight: x >= 1080 ? '1000px' : '3000px', // Adjusted height based on window width
+          minWidth: x >= 1080 ? '1540px' : '1540px',
           height: "auto",
           width: "auto",
         }}>
           <div style={dashboardStyle}>
             <header style={headerStyle}>
-              <h1 style={{ position: "relative", top: x >= 692 ? '50px' : '100px', fontFamily: "monospace", textDecoration: "underline", fontSize: x >= 692 ? null : '70px', whiteSpace: 'nowrap' }}><b>Admin Dashboard: </b></h1>
+              <h1 style={{ position: "relative", top: x >= 1080 ? '50px' : '100px', fontFamily: "monospace", textDecoration: "underline", fontSize: x >= 1080 ? null : '70px', whiteSpace: 'nowrap' }}><b>Admin Dashboard: </b></h1>
               <nav style={navStyle}>
-                <ul style={{ display: "flex", textDecoration: "none", listStyle: 'none', position: "relative", left: x >= 692 ? "160px" : '220px', marginTop: x >= 692 ? '15px' : '150px', marginBottom: "15px" }}>
+                <ul style={{ display: "flex", textDecoration: "none", listStyle: 'none', position: "relative", left: x >= 1080 ? "160px" : '220px', marginTop: x >= 1080 ? '15px' : '150px', marginBottom: "15px" }}>
                   <li>
                     <span
                       style={{
                         cursor: "pointer",
                         textDecoration: "underline",
                         marginRight: "30px",
-                        fontSize: x >= 692 ? '21px' : '50px',
+                        fontSize: x >= 1080 ? '21px' : '50px',
                         fontFamily: "monospace",
                         color: "gray",
                         transition: "color 0.3s ease",
@@ -452,7 +452,7 @@ useEffect(() => {
                         cursor: "pointer",
                         textDecoration: "underline",
                         marginRight: "30px",
-                        fontSize: x >= 692 ? '21px' : '50px',
+                        fontSize: x >= 1080 ? '21px' : '50px',
                         fontFamily: "monospace",
                         color: "gray",
                         transition: "color 0.3s ease",
@@ -471,7 +471,7 @@ useEffect(() => {
                         cursor: "pointer",
                         textDecoration: "underline",
                         marginRight: "30px",
-                        fontSize: x >= 692 ? '21px' : '50px',
+                        fontSize: x >= 1080 ? '21px' : '50px',
                         fontFamily: "monospace",
                         color: "gray",
                         transition: "color 0.3s ease",
@@ -490,21 +490,21 @@ useEffect(() => {
             {
               opt === "" &&
               <div style={{ position: "relative", top: "80px", opacity: "0.9", backgroundColor: "#D2F1FE", height: "700px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <h1 style={{ fontFamily: "revert-layer", fontSize: x >= 692 ? '50px' : '100px' }}><b>Welcome, ADMIN!</b></h1>
+                <h1 style={{ fontFamily: "revert-layer", fontSize: x >= 1080 ? '50px' : '100px' }}><b>Welcome, ADMIN!</b></h1>
               </div>
             }
             {
               opt === "orders" && orderdets.length > 0 &&
 
-              <div style={{ position: "relative", top: "80px", opacity: "0.9", backgroundColor: "#D2F1FE", height: x >= 692 ? '600px' : '1900px', alignItems: "center", justifyContent: "center", overflowY: "auto", minWidth: x >= 692 ? null : '1300px' }}>
+              <div style={{ position: "relative", top: "80px", opacity: "0.9", backgroundColor: "#D2F1FE", height: x >= 1080 ? '600px' : '1900px', alignItems: "center", justifyContent: "center", overflowY: "auto", minWidth: x >= 1080 ? null : '1300px' }}>
                 {orderdets.map((order, index) => (
                   <div key={index} style={styles.product} onClick={() => { setselectedorder(orderdets.filter(ord => ord._id === order._id)); setopt("theorder") }}>
                     <div style={styles.details}>
-                      <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? '17px' : '45px', fontWeight: 'bold' }}>User_id : {order.user}</h3>
-                      <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? '16px' : '40px', fontWeight: 'bold' }}>Order_id : {order._id}</h3>
-                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '40px', }}>Total: ₹{order.totalPrice}</p>
-                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '40px', }}>Status: <b>{order.orderStatus}</b></p>
-                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '40px', }}>Place On: <b>{order.createdAt.slice(0, 10)}</b></p>
+                      <h3 style={{ marginBottom: '10px', fontSize: x >= 1080 ? '17px' : '45px', fontWeight: 'bold' }}>User_id : {order.user}</h3>
+                      <h3 style={{ marginBottom: '10px', fontSize: x >= 1080 ? '16px' : '40px', fontWeight: 'bold' }}>Order_id : {order._id}</h3>
+                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '40px', }}>Total: ₹{order.totalPrice}</p>
+                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '40px', }}>Status: <b>{order.orderStatus}</b></p>
+                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '40px', }}>Place On: <b>{order.createdAt.slice(0, 10)}</b></p>
                     </div>
                     {
                       order.orderitems.map((item, index) => (
@@ -518,22 +518,22 @@ useEffect(() => {
 
             {opt === "theorder" &&
               <>
-                <div style={{ position: "relative", top: "80px", opacity: "0.9", backgroundColor: "#D2F1FE", height: x >= 692 ? '600px' : '1900px', alignItems: "center", justifyContent: "center", overflowY: "auto" }}>
+                <div style={{ position: "relative", top: "80px", opacity: "0.9", backgroundColor: "#D2F1FE", height: x >= 1080 ? '600px' : '1900px', alignItems: "center", justifyContent: "center", overflowY: "auto" }}>
 
-                  <h1 style={{ position: "relative", top: "20px", left: "30px", fontSize: x >= 692 ? null : '55px', }}><b>Order Summary: </b></h1>
+                  <h1 style={{ position: "relative", top: "20px", left: "30px", fontSize: x >= 1080 ? null : '55px', }}><b>Order Summary: </b></h1>
                   <div style={styles.grandTotalContainer3}>
-                    <div style={{ fontSize: x >= 692 ? '20px' : '40px', whiteSpace: "nowrap" }}>Placed On:</div>
-                    <div style={{ fontSize: x >= 692 ? '20px' : '40px', whiteSpace: "nowrap" }}>{selectedorder[0].createdAt.slice(0, 10)}</div>
+                    <div style={{ fontSize: x >= 1080 ? '20px' : '40px', whiteSpace: "nowrap" }}>Placed On:</div>
+                    <div style={{ fontSize: x >= 1080 ? '20px' : '40px', whiteSpace: "nowrap" }}>{selectedorder[0].createdAt.slice(0, 10)}</div>
                   </div>
                   <ul style={styles.productList}>
                     {selectedorder[0].orderitems.map((product, index) => (
                       <div style={styles.product} key={index}>
                         <img style={styles.image} src={product.image} alt={product.name} />
                         <div style={styles.details}>
-                          <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? '20px' : '43px', fontWeight: 'bold' }}>{product.name}</h3>
-                          <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '38px', }}>Price: ₹{product.price}</p>
-                          <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '38px', }}>Quantity: {product.quantity}</p>
-                          <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '38px', }}>Total: ₹{product.price * product.quantity}</p>
+                          <h3 style={{ marginBottom: '10px', fontSize: x >= 1080 ? '20px' : '43px', fontWeight: 'bold' }}>{product.name}</h3>
+                          <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '38px', }}>Price: ₹{product.price}</p>
+                          <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '38px', }}>Quantity: {product.quantity}</p>
+                          <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '38px', }}>Total: ₹{product.price * product.quantity}</p>
                         </div>
                       </div>
                     ))}
@@ -541,7 +541,7 @@ useEffect(() => {
                   </ul>
                   <div style={{ display: "flex" }}>
                     <div style={{ marginLeft: "70px" }}>
-                      <h2 style={{ marginBottom: "40px", fontSize: x >= 692 ? null : '40px', whiteSpace: "nowrap" }}><b>Shipping Address : </b></h2>
+                      <h2 style={{ marginBottom: "40px", fontSize: x >= 1080 ? null : '40px', whiteSpace: "nowrap" }}><b>Shipping Address : </b></h2>
                       <div style={styles.grandTotalContainer2}>
                         <div>Address :</div>
                         <div>{selectedorder[0].shippinginfo.address}</div>
@@ -563,8 +563,8 @@ useEffect(() => {
                         <div><b>{selectedorder[0].orderStatus}</b></div>
                       </div>
                     </div>
-                    <div style={{ marginLeft: x >= 692 ? '450px' : '350px' }}>
-                      <h2 style={{ fontSize: x >= 692 ? null : '45px' }}><b>Invoice Details : </b></h2>
+                    <div style={{ marginLeft: x >= 1080 ? '450px' : '350px' }}>
+                      <h2 style={{ fontSize: x >= 1080 ? null : '45px' }}><b>Invoice Details : </b></h2>
                       <div style={styles.grandTotalContainer}>
                         <div>Sub Total:</div>
                         <div>₹{selectedorder[0].itemsPrice}</div>
@@ -584,11 +584,11 @@ useEffect(() => {
                       </div>
                     </div>
                   </div>
-                  <select value={selectedStatus} onChange={handleSelectChange} style={{ padding: "7px 20px", position: "relative", bottom: x >= 692 ? '30px' : '5px', left: "67px", borderRadius: "10px", fontFamily: "serif", fontSize: x >= 692 ? '22px' : '30px', textDecoration: "bold", marginRight: "20px" }}>
+                  <select value={selectedStatus} onChange={handleSelectChange} style={{ padding: "7px 20px", position: "relative", bottom: x >= 1080 ? '30px' : '5px', left: "67px", borderRadius: "10px", fontFamily: "serif", fontSize: x >= 1080 ? '22px' : '30px', textDecoration: "bold", marginRight: "20px" }}>
                     <option value="shipped"><b>shipped</b></option>
                     <option value="delivered"><b>delivered</b></option>
                   </select>
-                  <button onClick={() => update()} type="button" className="btn btn-warning" style={{ position: "relative", bottom: x >= 692 ? '34px' : '9px', left: "80px", fontSize: x >= 692 ? null : '30px' }}>Update Status</button>
+                  <button onClick={() => update()} type="button" className="btn btn-warning" style={{ position: "relative", bottom: x >= 1080 ? '34px' : '9px', left: "80px", fontSize: x >= 1080 ? null : '30px' }}>Update Status</button>
 
                 </div>
               </>
@@ -599,23 +599,23 @@ useEffect(() => {
 
               opt === "products" &&
 
-              <div style={{ position: "relative", top: "80px", opacity: "0.9", backgroundColor: "#D2F1FE", height: x >= 692 ? '600px' : '1700px', alignItems: "center", justifyContent: "center", overflowY: "auto" }}>
+              <div style={{ position: "relative", top: "80px", opacity: "0.9", backgroundColor: "#D2F1FE", height: x >= 1080 ? '600px' : '1700px', alignItems: "center", justifyContent: "center", overflowY: "auto" }}>
                 <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-                  <button type="button" className="btn btn-primary" onClick={() => setopt("createproduct")} style={{ fontSize: x >= 692 ? null : '40px' }}>Create New Product</button>
+                  <button type="button" className="btn btn-primary" onClick={() => setopt("createproduct")} style={{ fontSize: x >= 1080 ? null : '40px' }}>Create New Product</button>
                 </div>
                 {allProducts.map((product, index) => (
                   <div key={index} style={styles.product} >
                     <img style={styles.image} src={product.images[0].url} alt={product.name} />
                     <div style={styles.details}>
-                      <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? '17px' : '43px', fontWeight: 'bold' }}>Product Name: {product.name}</h3>
-                      <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? '17px' : '38px', fontWeight: 'bold' }}>Product_id : {product._id}</h3>
-                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '38px', }}>Description: {product.description}</p>
-                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '38px', }}>Stock: <b>{product.stock}</b></p>
-                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '38px', }}>Created/Updated By: <b>{product.user}</b></p>
-                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '38px', }}>Created On: <b>{product.createdAt.slice(0, 10)}</b></p>
+                      <h3 style={{ marginBottom: '10px', fontSize: x >= 1080 ? '17px' : '43px', fontWeight: 'bold' }}>Product Name: {product.name}</h3>
+                      <h3 style={{ marginBottom: '10px', fontSize: x >= 1080 ? '17px' : '38px', fontWeight: 'bold' }}>Product_id : {product._id}</h3>
+                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '38px', }}>Description: {product.description}</p>
+                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '38px', }}>Stock: <b>{product.stock}</b></p>
+                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '38px', }}>Created/Updated By: <b>{product.user}</b></p>
+                      <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '38px', }}>Created On: <b>{product.createdAt.slice(0, 10)}</b></p>
                     </div>
-                    <button type="button" className="btn btn-success" onClick={() => { settheproduct(allProducts.filter(prod => prod._id === product._id)); thepro() }} style={{ fontSize: x >= 692 ? null : '40px', }}>Edit Product</button>
-                    <i className="fa-solid fa-trash ml-4" style={{ position: "relative", left: "10px", fontSize: x >= 692 ? null : '40px', }} onClick={() => deleteprod(product._id)}></i>
+                    <button type="button" className="btn btn-success" onClick={() => { settheproduct(allProducts.filter(prod => prod._id === product._id)); thepro() }} style={{ fontSize: x >= 1080 ? null : '40px', }}>Edit Product</button>
+                    <i className="fa-solid fa-trash ml-4" style={{ position: "relative", left: "10px", fontSize: x >= 1080 ? null : '40px', }} onClick={() => deleteprod(product._id)}></i>
                   </div>
                 ))}
               </div>
@@ -694,17 +694,17 @@ useEffect(() => {
 
             {
               opt === "customers" &&
-              <div style={{ position: "relative", top: "80px", opacity: "0.9", backgroundColor: "#D2F1FE", height: x >= 692 ? '600px' : '1700px', alignItems: "center", justifyContent: "center", overflowY: "auto" }}>
+              <div style={{ position: "relative", top: "80px", opacity: "0.9", backgroundColor: "#D2F1FE", height: x >= 1080 ? '600px' : '1700px', alignItems: "center", justifyContent: "center", overflowY: "auto" }}>
                 <ul style={styles.productList}>
                   {allUsers.map((user, index) => (
                     <li key={index} style={styles.product}>
                       <div style={styles.details}>
-                        <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? '20px' : '40px', fontWeight: 'bold' }}>UserName: {user.username}</h3>
-                        <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '35px' }}>UserID: <b>{user._id}</b></p>
-                        <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '35px' }}>Email: {user.email}</p>
-                        <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? '16px' : '35px' }}><b>Role: {user.work}</b></p>
+                        <h3 style={{ marginBottom: '10px', fontSize: x >= 1080 ? '20px' : '40px', fontWeight: 'bold' }}>UserName: {user.username}</h3>
+                        <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '35px' }}>UserID: <b>{user._id}</b></p>
+                        <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '35px' }}>Email: {user.email}</p>
+                        <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? '16px' : '35px' }}><b>Role: {user.work}</b></p>
                       </div>
-                      <button type="button" className="btn btn-success" onClick={() => { changeroles(user.work, user.email) }} style={{ fontSize: x >= 692 ? null : '40px' }}>Switch Role</button>
+                      <button type="button" className="btn btn-success" onClick={() => { changeroles(user.work, user.email) }} style={{ fontSize: x >= 1080 ? null : '40px' }}>Switch Role</button>
                     </li>
                   ))}
                 </ul>
@@ -721,8 +721,8 @@ useEffect(() => {
           display: 'flex',
           justifyContent: 'center', // Horizontal centering
           alignItems: 'center', // Vertical centering
-          minHeight: x >= 692 ? '1000px' : '3000px', // Adjusted height based on window width
-          maxWidth: x >= 692 ? '1540px' : '1540px',
+          minHeight: x >= 1080 ? '1000px' : '3000px', // Adjusted height based on window width
+          maxWidth: x >= 1080 ? '1540px' : '1540px',
           height: "auto",
           width: "auto",
         }}>

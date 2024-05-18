@@ -53,13 +53,13 @@ const Myorders = () => {
             minHeight: "1100px",
             width: "auto",
             height: "auto",
-            paddingTop : x >= 692 ? null : '100px',
+            paddingTop : x >= 1080 ? null : '100px',
         },
         header: {
             textAlign: 'center',
             marginBottom: '40px',
             marginTop: "20px",
-            fontSize: x >= 692 ? null : '60px',
+            fontSize: x >= 1080 ? null : '60px',
         },
         productList: {
             listStyleType: 'none',
@@ -72,7 +72,7 @@ const Myorders = () => {
             justifyContent: 'space-between',
             fontWeight: 'bold',
             width: "300px",
-            fontSize: x >= 692 ? null : '25px',
+            fontSize: x >= 1080 ? null : '25px',
         },
         grandTotalContainer3: {
             marginTop: '40px',
@@ -89,7 +89,7 @@ const Myorders = () => {
             justifyContent: 'space-between',
             fontWeight: 'bold',
             width: "300px",
-            fontSize: x >= 692 ? null : '25px',
+            fontSize: x >= 1080 ? null : '25px',
         },
         checkoutButton: {
             marginTop: '80px',
@@ -105,8 +105,8 @@ const Myorders = () => {
             margin: '0 auto',
         },
         image: {
-            width: x >= 692 ? "100px" : '150px',
-            height: x >= 692 ? "100px" : '150px',
+            width: x >= 1080 ? "100px" : '150px',
+            height: x >= 1080 ? "100px" : '150px',
             borderRadius: '10px',
             marginRight: '20px',
         },
@@ -124,10 +124,10 @@ const Myorders = () => {
         },
         noOrderMessage: {
             textAlign: 'center',
-            fontSize: x >= 692 ? '50px' : '100px',
+            fontSize: x >= 1080 ? '50px' : '100px',
             color: '#666',
-            minHeight: x >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
-            minWidth: x >= 692 ? '1540px' : "1540px",
+            minHeight: x >= 1080 ? '1600px' : '3000px', // Adjusted height based on window width
+            minWidth: x >= 1080 ? '1540px' : "1540px",
             height: "auto",
             width: "auto",
             backgroundColor: "#A0E1FC",
@@ -142,8 +142,8 @@ const Myorders = () => {
             {filteredOrders.length !== 0 && orderdet[0] !== null ? filteredOrders.map((order) => (
                 <div key={order._id} style={{ position: 'relative', minHeight: '1450px' }}>
                     <div style={{
-                        minHeight: x >= 692 ? '1600px' : '3000px', // Adjusted height based on window width
-                        minWidth: x >= 692 ? '1540px' : '1540px',
+                        minHeight: x >= 1080 ? '1600px' : '3000px', // Adjusted height based on window width
+                        minWidth: x >= 1080 ? '1540px' : '1540px',
                         height: "auto",
                         width: "auto",
                         backgroundColor: "#A7F7FE",
@@ -155,7 +155,7 @@ const Myorders = () => {
                             <div style={styles.container}>
                                 <h1 style={styles.header}><b>My Order Summary : </b></h1>
                                 <div style={styles.grandTotalContainer3}>
-                                    <div style={{ fontSize: x >= 692 ? "20px" : '37px', whiteSpace: 'nowrap' }}>
+                                    <div style={{ fontSize: x >= 1080 ? "20px" : '37px', whiteSpace: 'nowrap' }}>
                                         Placed On: {order.createdAt.toString().slice(0, 10)}
                                     </div>
 
@@ -165,10 +165,10 @@ const Myorders = () => {
                                         <div key={p._id} style={styles.product}>
                                             <img style={styles.image} src={p.image} alt={p.name} />
                                             <div style={styles.details}>
-                                                <h3 style={{ marginBottom: '10px', fontSize: x >= 692 ? "20px" : '50px', fontWeight: 'bold' }}>{p.name}</h3>
-                                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px', }}>Price: ₹{p.price}</p>
-                                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px', }}>Quantity: {p.quantity}</p>
-                                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 692 ? "20px" : '45px', }}>Total: ₹{p.price * p.quantity}</p>
+                                                <h3 style={{ marginBottom: '10px', fontSize: x >= 1080 ? "20px" : '50px', fontWeight: 'bold' }}>{p.name}</h3>
+                                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? "20px" : '45px', }}>Price: ₹{p.price}</p>
+                                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? "20px" : '45px', }}>Quantity: {p.quantity}</p>
+                                                <p style={{ marginBottom: '5px', color: '#666', fontSize: x >= 1080 ? "20px" : '45px', }}>Total: ₹{p.price * p.quantity}</p>
                                             </div>
                                         </div>
                                     ))}
@@ -176,7 +176,7 @@ const Myorders = () => {
 
                                 <div style={{ display: "flex" }}>
                                     <div style={{ marginLeft: "70px" }}>
-                                        <h2 style={{ marginBottom: "40px", fontSize: x >= 692 ? null : '50px', }}><b>Shipping Address : </b></h2>
+                                        <h2 style={{ marginBottom: "40px", fontSize: x >= 1080 ? null : '50px', }}><b>Shipping Address : </b></h2>
                                         <div style={styles.grandTotalContainer2}>
                                             <div>Address :</div>
                                             <div>{order.shippinginfo.address}</div>
@@ -200,7 +200,7 @@ const Myorders = () => {
                                     </div>
 
                                     <div style={{ marginLeft: "450px" }}>
-                                        <h2 style={{ marginBottom: "40px", fontSize: x >= 692 ? null : '50px', }}><b>Invoice Details : </b></h2>
+                                        <h2 style={{ marginBottom: "40px", fontSize: x >= 1080 ? null : '50px', }}><b>Invoice Details : </b></h2>
                                         <div style={styles.grandTotalContainer}>
                                             <div>Sub Total:</div>
                                             <div>₹{order.itemsPrice}</div>
@@ -215,8 +215,8 @@ const Myorders = () => {
                                         </div>
                                         <hr style={{ marginTop: '30px', borderWidth: "3px", borderColor: "black" }} />
                                         <div style={styles.grandTotalContainer}>
-                                            <div style={{ fontSize: x >= 692 ? null : '35px' }}><b>Grand Total:</b></div>
-                                            <div style={{ fontSize: x >= 692 ? null : '35px' }}><b>₹{order.totalPrice}</b></div>
+                                            <div style={{ fontSize: x >= 1080 ? null : '35px' }}><b>Grand Total:</b></div>
+                                            <div style={{ fontSize: x >= 1080 ? null : '35px' }}><b>₹{order.totalPrice}</b></div>
                                         </div>
                                     </div>
                                 </div>
