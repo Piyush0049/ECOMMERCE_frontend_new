@@ -66,6 +66,7 @@ useEffect(() => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    console.log(cardDetails)
     setCardDetails({
       ...cardDetails,
       [name]: value
