@@ -8,6 +8,9 @@ import { deleteuser, userlogout } from './actions/useractions';
 function Headers() {
   const [x, setx] = useState("");
 useEffect(() => {
+  if(localStorage.getItem("token") === null){
+    localStorage.removeItem("width");
+  }
     if(localStorage.getItem("width") !== null){
         setx(localStorage.getItem("width"));
     }else{
