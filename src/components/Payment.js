@@ -129,7 +129,7 @@ useEffect(() => {
   const styles = {
     container: {
       minHeight: x >= 692 ? '1000px' : '3000px', 
-      minWidth: x >= 692 ? '1540px' : x,
+      minWidth: x >= 692 ? '1540px' : '1540px',
       height: "auto",
       width: "auto",
       alignItems: 'center',

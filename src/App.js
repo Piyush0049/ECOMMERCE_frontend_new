@@ -41,6 +41,7 @@ function App() {
       setstripeapikey(data.stripeapikey);
     }
     getsapikey();
+    console.log(Stripeapikey);
   }, [dispatch]);
   useEffect(() => {
     WebFont.load({
