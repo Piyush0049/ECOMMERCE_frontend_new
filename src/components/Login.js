@@ -59,7 +59,61 @@ const LoginPage = () => {
             console.log(error);
         }
     };
-
+    const styles = {
+        container: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '100vh',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+        },
+        title1: {
+            marginBottom: '20px',
+            fontSize: x >= 692 ? '45px' : '100px',
+            fontWeight: 'bold',
+            color: '#333',
+        },
+        title2: {
+            marginBottom: '40px',
+            fontSize: x >= 692 ? '20px' : '60px',
+            whiteSpace: 'nowrap',
+            fontWeight: 'bold',
+            color: '#333',
+        },
+        form: {
+            width: x >= 692 ? '400px' : '1000px',
+            display: 'flex',
+            flexDirection: 'column',
+            background: 'rgba(255, 255, 255, 0.5)',
+            padding: '20px',
+            borderRadius: '10px',
+            boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.4)',
+        },
+        input: {
+            padding: "10px",
+            marginBottom: '15px',
+            borderRadius: '5px',
+            border: '1px solid #ccc',
+            fontSize: x >= 692 ? '16px' : '55px',
+            outline: 'none',
+        },
+        button: {
+            color: '#fff',
+            padding: '10px',
+            borderRadius: '5px',
+            border: 'none',
+            fontSize: x >= 692 ? '16px' : '50px',
+            cursor: 'pointer',
+            transition: 'background-color 0.3s ease',
+            marginTop: '10px',
+            fontWeight: 'bold',
+            boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+        },
+    };
+    
 
     const [isHovered, setIsHovered] = useState(false);
 
@@ -211,59 +265,5 @@ const LoginPage = () => {
     );
 };
 
-const styles = {
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100vh',
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-    },
-    title1: {
-        marginBottom: '20px',
-        fontSize: x >= 692 ? '45px' : '100px',
-        fontWeight: 'bold',
-        color: '#333',
-    },
-    title2: {
-        marginBottom: '40px',
-        fontSize: x >= 692 ? '20px' : '60px',
-        whiteSpace: 'nowrap',
-        fontWeight: 'bold',
-        color: '#333',
-    },
-    form: {
-        width: x >= 692 ? '400px' : '1000px',
-        display: 'flex',
-        flexDirection: 'column',
-        background: 'rgba(255, 255, 255, 0.5)',
-        padding: '20px',
-        borderRadius: '10px',
-        boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.4)',
-    },
-    input: {
-        padding: "10px",
-        marginBottom: '15px',
-        borderRadius: '5px',
-        border: '1px solid #ccc',
-        fontSize: x >= 692 ? '16px' : '55px',
-        outline: 'none',
-    },
-    button: {
-        color: '#fff',
-        padding: '10px',
-        borderRadius: '5px',
-        border: 'none',
-        fontSize: x >= 692 ? '16px' : '50px',
-        cursor: 'pointer',
-        transition: 'background-color 0.3s ease',
-        marginTop: '10px',
-        fontWeight: 'bold',
-        boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-    },
-};
 
 export default LoginPage;
