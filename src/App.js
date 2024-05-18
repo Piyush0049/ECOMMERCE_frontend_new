@@ -42,7 +42,7 @@ function App() {
     }
     getsapikey();
     console.log(Stripeapikey);
-  }, [dispatch]);
+  }, [dispatch, Stripeapikey]);
   useEffect(() => {
     WebFont.load({
       google: {
