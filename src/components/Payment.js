@@ -167,7 +167,7 @@ useEffect(() => {
               <b><hr style={{ width:  x >= 692 ? "200px" : null, backgroundColor: "black", position: "relative", bottom: "14px" }} /></b>
             </div>
           </div>
-          <div style={{ justifyContent: "center", position: "relative", top: "40px", minWidth: x >= 692 ? null : '1540px',minHeight: x >= 692 ? null : '1500px',n  }}>
+          <div style={{ justifyContent: "center", position: "relative", top: "40px", minWidth: x >= 692 ? null : '1540px',minHeight: x >= 692 ? null : '1500px' }}>
             <CardNumberElement options={cardElementOptions} />
             <CardExpiryElement options={cardElementOptions} />
             <CardCvcElement options={cardElementOptions} />
