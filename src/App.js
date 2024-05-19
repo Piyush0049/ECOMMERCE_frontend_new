@@ -1,34 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import Headers from "./components/Headers";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
+import Home from "./components/Home";
+import Footer from "./components/Footer";
+import Prodpage from "./components/Prodpage";
+import Allproducts from "./components/Allproducts"
+import Searchbar from "./components/Searchbar";
+import LoginPage from "./components/Login";
+import Account from "./components/Account";
+import Getnewpassword from "./components/Getnewpassword";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import React from "react";
+import Forgotpassword from "./components/Forgotpassword";
+import Mycart from "./components/Mycart";
+import Shippingpage from "./components/Shippingpage";
+import Payment from "./components/Payment"
+import ConfirmOrder from "./components/ConfirmOrder";
 import axios from "axios";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import WebFont from "webfontloader";
-import Headers from "./components/Headers";
-import Footer from "./components/Footer";
-import Home from "./components/Home";
-import LoginPage from "./components/Login";
-import Prodpage from "./components/Prodpage";
-import Allproducts from "./components/Allproducts";
-import Searchbar from "./components/Searchbar";
-import Account from "./components/Account";
-import Forgotpassword from "./components/Forgotpassword";
-import Mycart from "./components/Mycart";
-import Getnewpassword from "./components/Getnewpassword";
-import Shippingpage from "./components/Shippingpage";
-import Payment from "./components/Payment";
-import ConfirmOrder from "./components/ConfirmOrder";
 import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
-
+import WebFont from "webfontloader";
 function App() {
-  const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state) => state.userdetails.isAuthenticated);
-  const ud = useSelector((state) => state.userdetails);
-  const [Stripeapikey, setStripeapikey] = useState("");
 
+  const { isAuthenticated } = useSelector((state) => state.userdetails);
+  const ud = useSelector((state) => state.userdetails)
   useEffect(() => {
     if (Object.keys(ud).length === 1) {
       localStorage.setItem("status", "none");
@@ -41,46 +44,39 @@ function App() {
     }
   }, [ud, isAuthenticated]);
 
-  useEffect(() => {
-    if (localStorage.getItem("status") === "none" || localStorage.getItem("status") === "loggedin") {
-      if (window.innerWidth < 1350) {
-        localStorage.setItem("width", window.innerWidth);
-      }
+  if (localStorage.getItem("status") === "none" || localStorage.getItem("status") === "loggedin") {
+    if (window.innerWidth < 1350) {
+      localStorage.setItem("width", window.innerWidth)
     }
+  }
 
-    if (localStorage.getItem("status") === "loggedout") {
-      localStorage.removeItem("status");
-    }
-  }, []);
+  if (localStorage.getItem("status") === "loggedout") {
+    localStorage.removeItem("width");
+  }
+
+
+  const dispatch = useDispatch();
+  const [Stripeapikey, setstripeapikey] = useState("");
 
   useEffect(() => {
     const getsapikey = async () => {
-      try {
-        const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true });
-        setStripeapikey(data.stripeapikey);
-      } catch (error) {
-        console.error("Error fetching Stripe API key:", error);
-      }
-    };
+      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true });
+      setstripeapikey(data.stripeapikey);
+    }
     getsapikey();
-  }, [dispatch]);
+  }, [dispatch, Stripeapikey]);
 
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ["Mulish:200,300,400,500,600,700,800,900"],
-      },
+        families: ['Mulish:200,300,400,500,600,700,800,900']
+      }
     });
   }, []);
 
-  const Layout = () => {
-    const location = useLocation();
-    useEffect(() => {
-      console.log(location)
-    }, [location]);
-
-    return (
-      <>
+  return (
+    <>
+      <Router>
         <Headers />
         <Routes>
           {isAuthenticated ? (
@@ -98,7 +94,7 @@ function App() {
               <Route path="/auth/password/reset/:id" element={<Getnewpassword />} />
               <Route path="/shipping" element={<Shippingpage />} />
               <Route path="/confirmorder" element={<ConfirmOrder />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />}></Route>
               <Route
                 path="/payment"
                 element={
@@ -134,14 +130,8 @@ function App() {
           )}
         </Routes>
         <Footer />
-      </>
-    );
-  };
-
-  return (
-    <Router>
-      <Layout />
-    </Router>
+      </Router>
+    </>
   );
 }
 

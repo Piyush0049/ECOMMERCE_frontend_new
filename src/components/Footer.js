@@ -2,24 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 function Footer() {
   const [x, setx] = useState("");
-  const location = useLocation();
-
   useEffect(() => {
-    console.log(location)
-  }, [location]);
-
-
-   useEffect(() => {
-    if(localStorage.getItem("width") !== null){
-        setx(localStorage.getItem("width"));
-    }else{
-        setx(window.innerWidth);
+    if (localStorage.getItem("width") !== null) {
+      setx(localStorage.getItem("width"));
+    } else {
+      setx(window.innerWidth);
     }
   }, []);
-
   const footerStyle = {
     backgroundColor: '#333',
     color: '#fff',

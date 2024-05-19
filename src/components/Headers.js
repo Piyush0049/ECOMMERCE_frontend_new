@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import profilepic from "./snap--shop-high-resolution-logo.png";
+import { useState, useEffect } from 'react';
 import { deleteuser, userlogout } from './actions/useractions';
 
 function Headers() {
-  const [x, setx] = useState(window.innerWidth);
-  const location = useLocation();
-  const dispatch = useDispatch();
-  const { cartitems } = useSelector((state) => state.cart);
-  const { isAuthenticated, user } = useSelector((state) => state.userdetails);
-  const [showMessage, setShowMessage] = useState(false);
-
+  const [x, setx] = useState("");
   useEffect(() => {
     if (localStorage.getItem("width") !== null) {
       setx(localStorage.getItem("width"));
@@ -19,10 +14,20 @@ function Headers() {
       setx(window.innerWidth);
     }
   }, []);
+  const dispatch = useDispatch();
+  const headerStyle = {
+    position: 'fixed',
+    top: 0,
+    width: '100%',
+    zIndex: 999,
+    backgroundColor: 'black',
+    opacity: 0.7,
+    color: '#ffffff',
+  };
 
-  useEffect(() => {
-    console.log(location)
-  }, [location]);
+  const { cartitems } = useSelector((state) => state.cart);
+  const { isAuthenticated, user } = useSelector((state) => state.userdetails);
+  const [showMessage, setShowMessage] = useState(false);
 
   const logout = () => {
     if (window.confirm("Are you sure you want to log out?")) {
@@ -41,16 +46,6 @@ function Headers() {
   }
 
   const a = x >= 1080 ? "0" : '2';
-
-  const headerStyle = {
-    position: 'fixed',
-    top: 0,
-    width: '100%',
-    zIndex: 999,
-    backgroundColor: 'black',
-    opacity: 0.7,
-    color: '#ffffff',
-  };
 
   return (
     <div>
@@ -75,6 +70,7 @@ function Headers() {
               <li className="nav-item">
                 <Link to="/search" className="nav-link" style={{ fontSize: x >= 1080 ? "15px" : '45px' }}>Search<i className="fa-solid fa-magnifying-glass" style={{ fontSize: x >= 1080 ? "17px" : '45px' }}></i></Link>
               </li>
+
               <li className="nav-item">
                 <div className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{ fontSize: x >= 1080 ? "15px" : '45px' }}>
                   Your Account<i className="fa-solid fa-user" style={{ fontSize: x >= 1080 ? "15px" : '45px' }}></i>
@@ -83,11 +79,13 @@ function Headers() {
                   {isAuthenticated && user.work === "admin" &&
                     (<li><Link to="/dashboard" className="dropdown-item"><b>Dashboard</b></Link></li>)
                   }
+
                   {!isAuthenticated ?
                     (<li><Link to="/login" className="dropdown-item">Log In</Link></li>)
                     :
                     (null)
                   }
+
                   <li><Link to="/account" className="dropdown-item">My Account</Link></li>
                   {isAuthenticated &&
                     (<>
@@ -97,6 +95,7 @@ function Headers() {
                   }
                 </ul>
               </li>
+
               <li className="nav-item">
                 {isAuthenticated && (
                   <li className="nav-item" >
@@ -111,6 +110,7 @@ function Headers() {
                   </li>
                 )}
               </li>
+
               <li className="nav-item">
                 {isAuthenticated && (
                   <>
