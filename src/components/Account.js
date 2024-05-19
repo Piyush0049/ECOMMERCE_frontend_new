@@ -16,6 +16,7 @@ useEffect(() => {
         setx(window.innerWidth);
     }
   }, []);
+    console.log(localStorage.getItem("width"));
     const dispatch = useDispatch();
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');

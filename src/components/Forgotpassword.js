@@ -29,7 +29,7 @@ useEffect(() => {
             justifyContent: 'center',
             alignItems: 'center',
             minHeight: x >= 1080 ? '1000px' : '3000px', 
-            maxWidth: x >= 1080 ? '1540px' : '1540px',
+            minWidth: x >= 1080 ? '1540px' : '1540px',
             height : "auto",
             width : "auto",
             flexDirection: 'column',
