@@ -11,7 +11,7 @@ const Myorders = () => {
         } else {
             setx(window.innerWidth);
         }
-        dispatch(usersallorders)
+        dispatch(usersallorders())
     }, [dispatch]);
     const { orderdet } = useSelector((state) => state.myorders);
     const { user } = useSelector((state) => state.userdetails);
