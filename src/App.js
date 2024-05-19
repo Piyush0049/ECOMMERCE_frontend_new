@@ -28,6 +28,7 @@ import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
 import WebFont from "webfontloader";
+import { useLocation } from "react-router-dom";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.userdetails);
@@ -86,7 +87,48 @@ function App() {
 const Content = () => {
   const location = useLocation();
   const { isAuthenticated } = useSelector((state) => state.userdetails);
+  const ud = useSelector((state) => state.userdetails);
 
+  useEffect(() => {
+    if (Object.keys(ud).length === 1) {
+      localStorage.setItem("status", "none");
+    }
+    if (Object.keys(ud).length === 3 && isAuthenticated) {
+      localStorage.setItem("status", "loggedin");
+    }
+    if (Object.keys(ud).length === 3 && !isAuthenticated) {
+      localStorage.setItem("status", "loggedout");
+    }
+  }, [ud, isAuthenticated]);
+
+  if (localStorage.getItem("status") === "none" || localStorage.getItem("status") === "loggedin") {
+    if (window.innerWidth < 1350) {
+      localStorage.setItem("width", window.innerWidth);
+    }
+  }
+
+  if (localStorage.getItem("status") === "loggedout") {
+    localStorage.removeItem("status");
+  }
+
+  const dispatch = useDispatch();
+  const [Stripeapikey, setstripeapikey] = useState("");
+
+  useEffect(() => {
+    const getsapikey = async () => {
+      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true });
+      setstripeapikey(data.stripeapikey);
+    };
+    getsapikey();
+  }, [dispatch, Stripeapikey]);
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Mulish:200,300,400,500,600,700,800,900']
+      }
+    });
+  }, []);
   return (
     <>
       <Headers key={location.pathname} />
