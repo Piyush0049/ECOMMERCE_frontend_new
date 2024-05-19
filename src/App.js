@@ -27,7 +27,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
-import WebFont from "webfontloader";
 function App() {
 
   const { isAuthenticated } = useSelector((state) => state.userdetails);
@@ -52,6 +51,7 @@ function App() {
 
   if (localStorage.getItem("status") === "loggedout") {
     localStorage.removeItem("width");
+    localStorage.removeItem("status");
   }
   console.log(window.innerWidth)
   const dispatch = useDispatch();
@@ -64,14 +64,6 @@ function App() {
     }
     getsapikey();
   }, [dispatch, Stripeapikey]);
-
-  useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ['Mulish:200,300,400,500,600,700,800,900']
-      }
-    });
-  }, []);
 
   return (
     <>
