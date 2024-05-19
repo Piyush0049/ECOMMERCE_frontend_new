@@ -14,7 +14,7 @@ import Searchbar from "./components/Searchbar";
 import LoginPage from "./components/Login";
 import Account from "./components/Account";
 import Getnewpassword from "./components/Getnewpassword";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import React from "react";
 import Forgotpassword from "./components/Forgotpassword";
@@ -56,29 +56,7 @@ function App() {
     localStorage.removeItem("status");
   }
 
-  
-
-  useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ['Mulish:200,300,400,500,600,700,800,900']
-      }
-    });
-  }, []);
-
-  return (
-    <>
-      <Router>
-        { /* Move useLocation hook inside Router context */ }
-        <Content />
-      </Router>
-    </>
-  );
-}
-
-const Content = () => {
-  const location = useLocation();
-  const { isAuthenticated } = useSelector((state) => state.userdetails);
+  const dispatch = useDispatch();
   const [Stripeapikey, setstripeapikey] = useState("");
 
   useEffect(() => {
@@ -87,7 +65,17 @@ const Content = () => {
       setstripeapikey(data.stripeapikey);
     };
     getsapikey();
-  }, [ Stripeapikey]);
+  }, [dispatch, Stripeapikey]);
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Mulish:200,300,400,500,600,700,800,900']
+      }
+    });
+  }, []);
+  const location = useLocation();
+
   return (
     <>
       <Headers key={location.pathname} />
@@ -145,6 +133,5 @@ const Content = () => {
       <Footer key={location.pathname} />
     </>
   );
-};
+}
 
-export default App;
