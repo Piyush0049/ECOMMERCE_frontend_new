@@ -7,13 +7,11 @@ import { deleteuser, userlogout } from './actions/useractions';
 
 function Headers() {
   const [x, setx] = useState("");
-useEffect(() => {
     if(localStorage.getItem("width") !== null){
         setx(localStorage.getItem("width"));
     }else{
         setx(window.innerWidth);
     }
-  }, []);
   const dispatch = useDispatch();
   const headerStyle = {
     position: 'fixed',
