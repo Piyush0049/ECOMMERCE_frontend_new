@@ -44,7 +44,7 @@ function App() {
     }
   }, [ud, isAuthenticated]);
 
-  if (localStorage.getItem("status") === "none" || localStorage.getItem("status") === "loggedin") {
+  if (localStorage.getItem("status") === "none") {
     if (window.innerWidth < 1350) {
       localStorage.setItem("width", window.innerWidth)
     }
