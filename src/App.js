@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
-import {useSelector } from "react-redux";
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import axios from "axios";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import WebFont from "webfontloader";
-
 import Headers from "./components/Headers";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Prodpage from "./components/Prodpage";
@@ -15,14 +13,21 @@ import Searchbar from "./components/Searchbar";
 import LoginPage from "./components/Login";
 import Account from "./components/Account";
 import Getnewpassword from "./components/Getnewpassword";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import React from "react";
 import Forgotpassword from "./components/Forgotpassword";
 import Mycart from "./components/Mycart";
 import Shippingpage from "./components/Shippingpage";
 import Payment from "./components/Payment";
 import ConfirmOrder from "./components/ConfirmOrder";
+import axios from "axios";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
+import WebFont from "webfontloader";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.userdetails);
@@ -31,21 +36,35 @@ function App() {
   useEffect(() => {
     if (Object.keys(ud).length === 1) {
       localStorage.setItem("status", "none");
-    } else if (Object.keys(ud).length === 3) {
-      localStorage.setItem("status", isAuthenticated ? "loggedin" : "loggedout");
+    }
+    if (Object.keys(ud).length === 3 && isAuthenticated) {
+      localStorage.setItem("status", "loggedin");
+    }
+    if (Object.keys(ud).length === 3 && !isAuthenticated) {
+      localStorage.setItem("status", "loggedout");
     }
   }, [ud, isAuthenticated]);
 
+  if (localStorage.getItem("status") === "none" || localStorage.getItem("status") === "loggedin") {
+    if (window.innerWidth < 1350) {
+      localStorage.setItem("width", window.innerWidth);
+    }
+  }
+
+  if (localStorage.getItem("status") === "loggedout") {
+    localStorage.removeItem("status");
+  }
+
+  const dispatch = useDispatch();
+  const [Stripeapikey, setstripeapikey] = useState("");
+
   useEffect(() => {
-    if (localStorage.getItem("status") === "none" || localStorage.getItem("status") === "loggedin") {
-      if (window.innerWidth < 1350) {
-        localStorage.setItem("width", window.innerWidth);
-      }
-    }
-    if (localStorage.getItem("status") === "loggedout") {
-      localStorage.removeItem("status");
-    }
-  }, []);
+    const getsapikey = async () => {
+      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true });
+      setstripeapikey(data.stripeapikey);
+    };
+    getsapikey();
+  }, [dispatch, Stripeapikey]);
 
   useEffect(() => {
     WebFont.load({
@@ -56,24 +75,18 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <>
+      <Router>
+        { /* Move useLocation hook inside Router context */ }
+        <Content />
+      </Router>
+    </>
   );
 }
 
-const AppContent = () => {
+const Content = () => {
   const location = useLocation();
   const { isAuthenticated } = useSelector((state) => state.userdetails);
-  const [Stripeapikey, setstripeapikey] = useState("");
-
-  useEffect(() => {
-    const getsapikey = async () => {
-      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true });
-      setstripeapikey(data.stripeapikey);
-    };
-    getsapikey();
-  }, []);
 
   return (
     <>
