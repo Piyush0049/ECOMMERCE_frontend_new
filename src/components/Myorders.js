@@ -11,7 +11,8 @@ const Myorders = () => {
         } else {
             setx(window.innerWidth);
         }
-    }, []);
+        dispatch(usersallorders)
+    }, [dispatch]);
     const { orderdet } = useSelector((state) => state.myorders);
     const { user } = useSelector((state) => state.userdetails);
     const userid = user._id;
@@ -19,9 +20,6 @@ const Myorders = () => {
     if (orderdet[0] !== null) {
         filteredOrders = orderdet.filter((order) => (order.user === userid));
     }
-    useEffect(() => {
-        dispatch(usersallorders)
-      }, [dispatch]);
     const styles = {
         title: {
             textAlign: 'center',

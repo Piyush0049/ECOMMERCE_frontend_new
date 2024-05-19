@@ -29,12 +29,35 @@ import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
 import WebFont from "webfontloader";
 function App() {
-  if (window.innerWidth < 1350) {
-    localStorage.setItem("width", window.innerWidth)
+  
+  const { isAuthenticated } = useSelector((state) => state.userdetails);
+  const ud = useSelector((state) => state.userdetails)
+  useEffect(() => {
+    if(Object.keys(ud).length === 1){
+      localStorage.setItem("status", "none");
+    }
+    if(Object.keys(ud).length === 3 && isAuthenticated){
+      localStorage.setItem("status", "loggedin");
+    }
+    if(Object.keys(ud).length === 3 && !isAuthenticated){
+      localStorage.setItem("status", "loggedout");
+    }
+  }, []);
+
+  if(localStorage.getItem("status")=== "none" || localStorage.getItem("status") === "loggedin"){
+    if (window.innerWidth < 1350) {
+      localStorage.setItem("width", window.innerWidth)
+    }
   }
+
+  if(localStorage.getItem("status") === "loggedout"){
+    localStorage.removeItem("status");
+  }
+
+
   const dispatch = useDispatch();
   const [Stripeapikey, setstripeapikey] = useState("");
-  const { isAuthenticated } = useSelector((state) => state.userdetails);
+  
   useEffect(() => {
     const getsapikey = async () => {
       const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true });
