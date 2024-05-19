@@ -2,16 +2,18 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import profilepic from "./snap--shop-high-resolution-logo.png";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { deleteuser, userlogout } from './actions/useractions';
 
 function Headers() {
   const [x, setx] = useState("");
+useEffect(() => {
     if(localStorage.getItem("width") !== null){
         setx(localStorage.getItem("width"));
     }else{
         setx(window.innerWidth);
     }
+  }, []);
   const dispatch = useDispatch();
   const headerStyle = {
     position: 'fixed',
