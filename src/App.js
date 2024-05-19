@@ -1,10 +1,12 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import WebFont from "webfontloader";
+
 import Headers from "./components/Headers";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate
-} from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Prodpage from "./components/Prodpage";
@@ -13,51 +15,39 @@ import Searchbar from "./components/Searchbar";
 import LoginPage from "./components/Login";
 import Account from "./components/Account";
 import Getnewpassword from "./components/Getnewpassword";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import React from "react";
 import Forgotpassword from "./components/Forgotpassword";
 import Mycart from "./components/Mycart";
 import Shippingpage from "./components/Shippingpage";
 import Payment from "./components/Payment";
 import ConfirmOrder from "./components/ConfirmOrder";
-import axios from "axios";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
-import WebFont from "webfontloader";
-import { useLocation } from "react-router-dom";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.userdetails);
   const ud = useSelector((state) => state.userdetails);
+  const dispatch = useDispatch();
+  const [Stripeapikey, setstripeapikey] = useState("");
 
   useEffect(() => {
     if (Object.keys(ud).length === 1) {
       localStorage.setItem("status", "none");
-    }
-    if (Object.keys(ud).length === 3 && isAuthenticated) {
-      localStorage.setItem("status", "loggedin");
-    }
-    if (Object.keys(ud).length === 3 && !isAuthenticated) {
-      localStorage.setItem("status", "loggedout");
+    } else if (Object.keys(ud).length === 3) {
+      localStorage.setItem("status", isAuthenticated ? "loggedin" : "loggedout");
     }
   }, [ud, isAuthenticated]);
 
-  if (localStorage.getItem("status") === "none" || localStorage.getItem("status") === "loggedin") {
-    if (window.innerWidth < 1350) {
-      localStorage.setItem("width", window.innerWidth);
+  useEffect(() => {
+    if (localStorage.getItem("status") === "none" || localStorage.getItem("status") === "loggedin") {
+      if (window.innerWidth < 1350) {
+        localStorage.setItem("width", window.innerWidth);
+      }
     }
-  }
-
-  if (localStorage.getItem("status") === "loggedout") {
-    localStorage.removeItem("status");
-  }
-
-  const dispatch = useDispatch();
-  const [Stripeapikey, setstripeapikey] = useState("");
+    if (localStorage.getItem("status") === "loggedout") {
+      localStorage.removeItem("status");
+    }
+  }, []);
 
   useEffect(() => {
     const getsapikey = async () => {
@@ -65,7 +55,7 @@ function App() {
       setstripeapikey(data.stripeapikey);
     };
     getsapikey();
-  }, [dispatch, Stripeapikey]);
+  }, [dispatch]);
 
   useEffect(() => {
     WebFont.load({
@@ -76,42 +66,15 @@ function App() {
   }, []);
 
   return (
-    <>
-      <Router>
-        <Content />
-      </Router>
-    </>
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 
-const Content = () => {
+const AppContent = () => {
   const location = useLocation();
   const { isAuthenticated } = useSelector((state) => state.userdetails);
-  const ud = useSelector((state) => state.userdetails);
-
-  useEffect(() => {
-    if (Object.keys(ud).length === 1) {
-      localStorage.setItem("status", "none");
-    }
-    if (Object.keys(ud).length === 3 && isAuthenticated) {
-      localStorage.setItem("status", "loggedin");
-    }
-    if (Object.keys(ud).length === 3 && !isAuthenticated) {
-      localStorage.setItem("status", "loggedout");
-    }
-  }, [ud, isAuthenticated]);
-
-  if (localStorage.getItem("status") === "none" || localStorage.getItem("status") === "loggedin") {
-    if (window.innerWidth < 1350) {
-      localStorage.setItem("width", window.innerWidth);
-    }
-  }
-
-  if (localStorage.getItem("status") === "loggedout") {
-    localStorage.removeItem("status");
-  }
-
-  const dispatch = useDispatch();
   const [Stripeapikey, setstripeapikey] = useState("");
 
   useEffect(() => {
@@ -120,15 +83,8 @@ const Content = () => {
       setstripeapikey(data.stripeapikey);
     };
     getsapikey();
-  }, [dispatch, Stripeapikey]);
-
-  useEffect(() => {
-    WebFont.load({
-      google: {
-        families: ['Mulish:200,300,400,500,600,700,800,900']
-      }
-    });
   }, []);
+
   return (
     <>
       <Headers key={location.pathname} />
