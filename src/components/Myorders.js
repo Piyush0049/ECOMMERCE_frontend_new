@@ -53,7 +53,7 @@ const Myorders = () => {
             minHeight: "1100px",
             width: "auto",
             height: "auto",
-            paddingTop : x >= 1080 ? null : '100px',
+            paddingTop: x >= 1080 ? null : '100px',
         },
         header: {
             textAlign: 'center',
@@ -131,10 +131,16 @@ const Myorders = () => {
             height: "auto",
             width: "auto",
             backgroundColor: "#A0E1FC",
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh'
         },
         textMessage: {
             position: "relative",
-            top: "300px"
+            top: "300px",
+            fontSize: x >= 1080 ? null : '110px',
+            textAlign: 'center'
         }
     };
     return (<>
@@ -224,7 +230,10 @@ const Myorders = () => {
                         </div>
                     </div>
                 </div>
-            )) : <div style={styles.noOrderMessage}><h1 style={styles.textMessage}><b>No orders to display!</b></h1></div>}
+            )) : <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+                <h1 style="text-align: center;"><b>No orders to display!</b></h1>
+            </div>
+            }
         </div>
 
 
