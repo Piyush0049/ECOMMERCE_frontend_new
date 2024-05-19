@@ -24,7 +24,7 @@ function Home() {
     return (
         <>
             <div style={{
-                minHeight: x >= 1080 ? '800px' : '1600px', // Adjusted height based on window width
+                minHeight: x >= 1080 ? '1000px' : '1600px', // Adjusted height based on window width
                 minWidth: x >= 1080 ? '1540px' : '1540px',
                 height: "auto",
                 width: "auto",
@@ -71,7 +71,7 @@ function Home() {
                 </div>
             </div>
             <div style={{
-                minHeight: x >= 1080 ? '800px' : '1500px', // Adjusted height based on window width
+                minHeight: x >= 1080 ? '1000px' : '1500px', // Adjusted height based on window width
                 minWidth: x >= 1080 ? '1540px' : '1540px',
                 height: "auto",
                 width: "auto",

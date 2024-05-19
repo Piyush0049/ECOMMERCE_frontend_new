@@ -49,7 +49,7 @@ function Allproducts() {
         backgroundPosition: 'center',
         backgroundRepeat: 'repeat',
         minHeight: x >= 1080 ? '1200px' : '3000px', // Adjusted height based on window width
-        minWidth: x >= 1080 ? '1540px' : '1500px',
+        minWidth: x >= 1080 ? '1540px' : '1540px',
         height: "auto",
         width: "auto",
     };
