@@ -42,7 +42,7 @@ function App() {
     if(Object.keys(ud).length === 3 && !isAuthenticated){
       localStorage.setItem("status", "loggedout");
     }
-  }, []);
+  }, [ud, isAuthenticated]);
 
   if(localStorage.getItem("status")=== "none" || localStorage.getItem("status") === "loggedin"){
     if (window.innerWidth < 1350) {
