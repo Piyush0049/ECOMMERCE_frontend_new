@@ -53,8 +53,7 @@ function App() {
   if (localStorage.getItem("status") === "loggedout") {
     localStorage.removeItem("width");
   }
-
-
+  console.log(window.innerWidth)
   const dispatch = useDispatch();
   const [Stripeapikey, setstripeapikey] = useState("");
 
