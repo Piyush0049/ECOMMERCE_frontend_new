@@ -4,7 +4,6 @@ import {
   Routes,
   Route,
   Navigate,
-  useLocation
 } from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
@@ -74,12 +73,11 @@ function App() {
       }
     });
   }, []);
-  const location = useLocation();
 
   return (
     <>
     <Router>
-      <Headers key={location.pathname} />
+      <Headers/>
       <Routes>
         {isAuthenticated ? (
           <>
@@ -131,7 +129,7 @@ function App() {
           </>
         )}
       </Routes>
-      <Footer key={location.pathname} />
+      <Footer/>
       </Router>
     </>
   );

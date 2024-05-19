@@ -21,7 +21,7 @@ function Headers() {
   }, []);
 
   useEffect(() => {
-    // This useEffect will trigger when the location (path) changes
+    console.log(location)
   }, [location]);
 
   const logout = () => {
