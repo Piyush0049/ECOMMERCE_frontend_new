@@ -50,7 +50,6 @@ function App() {
   }
 
   if (localStorage.getItem("status") === "loggedout") {
-    localStorage.removeItem("width");
     localStorage.removeItem("status");
   }
   console.log(window.innerWidth)
