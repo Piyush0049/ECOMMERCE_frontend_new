@@ -28,7 +28,6 @@ function App() {
   const { isAuthenticated } = useSelector((state) => state.userdetails);
   const ud = useSelector((state) => state.userdetails);
   const dispatch = useDispatch();
-  const [Stripeapikey, setstripeapikey] = useState("");
 
   useEffect(() => {
     if (Object.keys(ud).length === 1) {
@@ -48,14 +47,6 @@ function App() {
       localStorage.removeItem("status");
     }
   }, []);
-
-  useEffect(() => {
-    const getsapikey = async () => {
-      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true });
-      setstripeapikey(data.stripeapikey);
-    };
-    getsapikey();
-  }, [dispatch]);
 
   useEffect(() => {
     WebFont.load({
