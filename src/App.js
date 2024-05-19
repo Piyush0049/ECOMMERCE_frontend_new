@@ -74,9 +74,7 @@ function App() {
       }
     });
   }, []);
-
   const location = useLocation();
-
   return (
     <>
       <Router>

@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
 function Footer() {
   const [x, setx] = useState("");
+useEffect(() => {
     if(localStorage.getItem("width") !== null){
         setx(localStorage.getItem("width"));
     }else{
         setx(window.innerWidth);
     }
+  }, []);
   const footerStyle = {
     backgroundColor: '#333',
     color: '#fff',
