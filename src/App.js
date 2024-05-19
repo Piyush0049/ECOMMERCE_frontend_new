@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
+  useLocation
 } from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
@@ -13,7 +14,7 @@ import Searchbar from "./components/Searchbar";
 import LoginPage from "./components/Login";
 import Account from "./components/Account";
 import Getnewpassword from "./components/Getnewpassword";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import React from "react";
 import Forgotpassword from "./components/Forgotpassword";
@@ -55,16 +56,7 @@ function App() {
     localStorage.removeItem("status");
   }
 
-  const dispatch = useDispatch();
-  const [Stripeapikey, setstripeapikey] = useState("");
-
-  useEffect(() => {
-    const getsapikey = async () => {
-      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true });
-      setstripeapikey(data.stripeapikey);
-    };
-    getsapikey();
-  }, [dispatch, Stripeapikey]);
+  
 
   useEffect(() => {
     WebFont.load({
@@ -87,7 +79,15 @@ function App() {
 const Content = () => {
   const location = useLocation();
   const { isAuthenticated } = useSelector((state) => state.userdetails);
+  const [Stripeapikey, setstripeapikey] = useState("");
 
+  useEffect(() => {
+    const getsapikey = async () => {
+      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true });
+      setstripeapikey(data.stripeapikey);
+    };
+    getsapikey();
+  }, [ Stripeapikey]);
   return (
     <>
       <Headers key={location.pathname} />
