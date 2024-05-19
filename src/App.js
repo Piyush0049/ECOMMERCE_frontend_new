@@ -14,7 +14,7 @@ import LoginPage from "./components/Login";
 import Account from "./components/Account";
 import Getnewpassword from "./components/Getnewpassword";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react"; 
+import { useEffect, useState } from "react";
 import React from "react";
 import Forgotpassword from "./components/Forgotpassword";
 import Mycart from "./components/Mycart";
@@ -28,9 +28,8 @@ import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
 import WebFont from "webfontloader";
-import { usersallorders } from "./components/actions/orderactions";
 function App() {
-  if(window.innerWidth < 1350){
+  if (window.innerWidth < 1350) {
     localStorage.setItem("width", window.innerWidth)
   }
   const dispatch = useDispatch();
@@ -38,15 +37,12 @@ function App() {
   const { isAuthenticated } = useSelector((state) => state.userdetails);
   useEffect(() => {
     const getsapikey = async () => {
-      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true});
+      const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true });
       setstripeapikey(data.stripeapikey);
     }
     getsapikey();
-    console.log(Stripeapikey);
   }, [dispatch, Stripeapikey]);
-  useEffect(() => {
-    dispatch(usersallorders)
-  }, [dispatch]);
+
   useEffect(() => {
     WebFont.load({
       google: {
@@ -56,7 +52,7 @@ function App() {
   }, []);
 
 
-  
+
   return (
     <>
       <Router>
@@ -77,11 +73,11 @@ function App() {
               <Route path="/auth/password/reset/:id" element={<Getnewpassword />} />
               <Route path="/shipping" element={<Shippingpage />} />
               <Route path="/confirmorder" element={<ConfirmOrder />} />
-              <Route path="/dashboard" element={<Dashboard/>}></Route>
+              <Route path="/dashboard" element={<Dashboard />}></Route>
               <Route
                 path="/payment"
                 element={
-                  Stripeapikey  && (
+                  Stripeapikey && (
                     <Elements stripe={loadStripe(Stripeapikey)}>
                       <Payment />
                     </Elements>
@@ -89,7 +85,7 @@ function App() {
                 }
               />
               <Route path="/success" element={<Success />} />
-              <Route path="/myorders" element={<Myorders/>} />
+              <Route path="/myorders" element={<Myorders />} />
             </>
           ) : (
             <>
@@ -107,8 +103,8 @@ function App() {
               <Route path="/shipping" element={<LoginPage />} />
               <Route path="/payment" element={<LoginPage />} />
               <Route path="/confirmorder" element={<LoginPage />} />
-              <Route path="/myorders" element={<LoginPage/>} />
-              <Route path="/dashboard" element={<Dashboard/>}/>
+              <Route path="/myorders" element={<LoginPage />} />
+              <Route path="/dashboard" element={<Dashboard />} />
             </>
           )}
         </Routes>

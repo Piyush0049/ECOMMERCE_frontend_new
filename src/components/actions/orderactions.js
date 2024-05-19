@@ -57,6 +57,7 @@ export const usersallorders = () => async(dispatch) => {
             type: USERS_ALLORDERS_SUCCESS,
             payload: data
         })
+        localStorage.setItem("allmyorders", JSON.stringify(data.order))
     } catch (error) {
         dispatch({
             type: USERS_ALLORDERS_FAIL,

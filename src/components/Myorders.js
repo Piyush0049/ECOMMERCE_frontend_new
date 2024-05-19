@@ -1,7 +1,9 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { usersallorders } from './actions/orderactions';
 const Myorders = () => {
+    const dispatch = useDispatch();
     const [x, setx] = useState("");
     useEffect(() => {
         if (localStorage.getItem("width") !== null) {
@@ -17,7 +19,9 @@ const Myorders = () => {
     if (orderdet[0] !== null) {
         filteredOrders = orderdet.filter((order) => (order.user === userid));
     }
-
+    useEffect(() => {
+        dispatch(usersallorders)
+      }, [dispatch]);
     const styles = {
         title: {
             textAlign: 'center',
