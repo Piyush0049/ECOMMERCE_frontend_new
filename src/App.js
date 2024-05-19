@@ -28,6 +28,7 @@ import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
 import WebFont from "webfontloader";
+import { usersallorders } from "./components/actions/orderactions";
 function App() {
   if(window.innerWidth < 1350){
     localStorage.setItem("width", window.innerWidth)
@@ -43,6 +44,9 @@ function App() {
     getsapikey();
     console.log(Stripeapikey);
   }, [dispatch, Stripeapikey]);
+  useEffect(() => {
+    dispatch(usersallorders)
+  }, [dispatch]);
   useEffect(() => {
     WebFont.load({
       google: {

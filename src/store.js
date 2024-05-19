@@ -24,12 +24,7 @@ let initstate = {
         cartitems: localStorage.getItem("cartitem") 
             ? JSON.parse(localStorage.getItem("cartitem")) 
             : [],
-    },
-    myorders: {
-        orderdet: localStorage.getItem("myorder") 
-            ? JSON.parse(localStorage.getItem("myorder")) 
-            : [],
-    },
+    }
 };
 
 // Define middleware

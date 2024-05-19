@@ -1,5 +1,5 @@
 import axios from "axios";
-import { USER_ORDER_REQUEST, USER_ORDER_SUCCESS, USER_ORDER_FAIL, USER_ORDERSTAT_REQUEST, USER_ORDERSTAT_SUCCESS, USER_ORDERSTAT_FAIL, ALL_ORDERS_FAIL, ALL_ORDERS_REQUEST, ALL_ORDERS_SUCCESS  } from "../constants/orderconstants";
+import { USER_ORDER_REQUEST, USER_ORDER_SUCCESS, USER_ORDER_FAIL, USER_ORDERSTAT_REQUEST, USER_ORDERSTAT_SUCCESS, USER_ORDERSTAT_FAIL, ALL_ORDERS_FAIL, ALL_ORDERS_REQUEST, ALL_ORDERS_SUCCESS, USERS_ALLORDERS_REQUEST ,USERS_ALLORDERS_SUCCESS,USERS_ALLORDERS_FAIL  } from "../constants/orderconstants";
 export const createorder = (order) => async (dispatch, getState) => {
     try {
         dispatch({ type: USER_ORDER_REQUEST })
@@ -49,6 +49,21 @@ export const updatestatus = (orderid, orderStatus) => async (dispatch, getState)
     }
 }
 
+export const usersallorders = () => async(dispatch) => {
+    try {
+        dispatch({ type: USERS_ALLORDERS_REQUEST })
+        const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/getallmyorders", { withCredentials: true})
+        dispatch({
+            type: USERS_ALLORDERS_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: USERS_ALLORDERS_FAIL,
+            payload: error.response.data.message
+        });
+    }
+}
 
 export const getallorders = () => async (dispatch, getState) => {
     try {
