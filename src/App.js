@@ -78,6 +78,7 @@ function App() {
 
   return (
     <>
+    <Router>
       <Headers key={location.pathname} />
       <Routes>
         {isAuthenticated ? (
@@ -131,6 +132,7 @@ function App() {
         )}
       </Routes>
       <Footer key={location.pathname} />
+      </Router>
     </>
   );
 }
