@@ -27,7 +27,6 @@ import Dashboard from "./components/Dashboard";
 function App() {
   const { isAuthenticated } = useSelector((state) => state.userdetails);
   const ud = useSelector((state) => state.userdetails);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (Object.keys(ud).length === 1) {
