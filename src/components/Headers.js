@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import profilepic from "./snap--shop-high-resolution-logo.png";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { deleteuser, userlogout } from './actions/useractions';
 
 function Headers() {
