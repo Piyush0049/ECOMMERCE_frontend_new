@@ -8,7 +8,7 @@ import {
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Prodpage from "./components/Prodpage";
-import Allproducts from "./components/Allproducts"
+import Allproducts from "./components/Allproducts";
 import Searchbar from "./components/Searchbar";
 import LoginPage from "./components/Login";
 import Account from "./components/Account";
@@ -19,7 +19,7 @@ import React from "react";
 import Forgotpassword from "./components/Forgotpassword";
 import Mycart from "./components/Mycart";
 import Shippingpage from "./components/Shippingpage";
-import Payment from "./components/Payment"
+import Payment from "./components/Payment";
 import ConfirmOrder from "./components/ConfirmOrder";
 import axios from "axios";
 import { Elements } from "@stripe/react-stripe-js";
@@ -28,42 +28,41 @@ import Success from "./components/Success";
 import Myorders from "./components/Myorders";
 import Dashboard from "./components/Dashboard";
 import WebFont from "webfontloader";
-import { useLocation } from "react-router-dom";
+
 function App() {
-  
   const { isAuthenticated } = useSelector((state) => state.userdetails);
-  const ud = useSelector((state) => state.userdetails)
+  const ud = useSelector((state) => state.userdetails);
+
   useEffect(() => {
-    if(Object.keys(ud).length === 1){
+    if (Object.keys(ud).length === 1) {
       localStorage.setItem("status", "none");
     }
-    if(Object.keys(ud).length === 3 && isAuthenticated){
+    if (Object.keys(ud).length === 3 && isAuthenticated) {
       localStorage.setItem("status", "loggedin");
     }
-    if(Object.keys(ud).length === 3 && !isAuthenticated){
+    if (Object.keys(ud).length === 3 && !isAuthenticated) {
       localStorage.setItem("status", "loggedout");
     }
   }, [ud, isAuthenticated]);
 
-  if(localStorage.getItem("status")=== "none" || localStorage.getItem("status") === "loggedin"){
+  if (localStorage.getItem("status") === "none" || localStorage.getItem("status") === "loggedin") {
     if (window.innerWidth < 1350) {
-      localStorage.setItem("width", window.innerWidth)
+      localStorage.setItem("width", window.innerWidth);
     }
   }
 
-  if(localStorage.getItem("status") === "loggedout"){
+  if (localStorage.getItem("status") === "loggedout") {
     localStorage.removeItem("status");
   }
 
-
   const dispatch = useDispatch();
   const [Stripeapikey, setstripeapikey] = useState("");
-  
+
   useEffect(() => {
     const getsapikey = async () => {
       const { data } = await axios.get("https://snap-n-shop-fullmernstack-ecommerce.onrender.com/api/v1/stripeapikey", { withCredentials: true });
       setstripeapikey(data.stripeapikey);
-    }
+    };
     getsapikey();
   }, [dispatch, Stripeapikey]);
 
@@ -74,66 +73,77 @@ function App() {
       }
     });
   }, []);
-  const location = useLocation();
+
   return (
     <>
       <Router>
-        <Headers key={location.pathname}/>
-        <Routes>
-          {isAuthenticated ? (
-            <>
-              <Route path="/" element={<Navigate to="/Home" />} />
-              <Route path="/Home" element={<Home />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/product/:id" element={<Prodpage />} />
-              <Route path="/products" element={<Allproducts />} />
-              <Route path="/products/:keyword" element={<Allproducts />} />
-              <Route path="/search" element={<Searchbar />} />
-              <Route path="/account" element={<Account />} />
-              <Route path="/password/forgot" element={<Forgotpassword />} />
-              <Route path="/mycart" element={<Mycart />} />
-              <Route path="/auth/password/reset/:id" element={<Getnewpassword />} />
-              <Route path="/shipping" element={<Shippingpage />} />
-              <Route path="/confirmorder" element={<ConfirmOrder />} />
-              <Route path="/dashboard" element={<Dashboard />}></Route>
-              <Route
-                path="/payment"
-                element={
-                  Stripeapikey && (
-                    <Elements stripe={loadStripe(Stripeapikey)}>
-                      <Payment />
-                    </Elements>
-                  )
-                }
-              />
-              <Route path="/success" element={<Success />} />
-              <Route path="/myorders" element={<Myorders />} />
-            </>
-          ) : (
-            <>
-              <Route path="/" element={<Navigate to="/login" />} />
-              <Route path="/Home" element={<LoginPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/product/:id" element={<Prodpage />} />
-              <Route path="/products" element={<Allproducts />} />
-              <Route path="/products/:keyword" element={<Allproducts />} />
-              <Route path="/search" element={<Searchbar />} />
-              <Route path="/account" element={<LoginPage />} />
-              <Route path="/password/forgot" element={<Forgotpassword />} />
-              <Route path="/auth/password/reset/:id" element={<Getnewpassword />} />
-              <Route path="/mycart" element={<LoginPage />} />
-              <Route path="/shipping" element={<LoginPage />} />
-              <Route path="/payment" element={<LoginPage />} />
-              <Route path="/confirmorder" element={<LoginPage />} />
-              <Route path="/myorders" element={<LoginPage />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-            </>
-          )}
-        </Routes>
-        <Footer key={location.pathname}/>
+        <Content />
       </Router>
     </>
   );
 }
+
+const Content = () => {
+  const location = useLocation();
+  const { isAuthenticated } = useSelector((state) => state.userdetails);
+
+  return (
+    <>
+      <Headers key={location.pathname} />
+      <Routes>
+        {isAuthenticated ? (
+          <>
+            <Route path="/" element={<Navigate to="/Home" />} />
+            <Route path="/Home" element={<Home />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/product/:id" element={<Prodpage />} />
+            <Route path="/products" element={<Allproducts />} />
+            <Route path="/products/:keyword" element={<Allproducts />} />
+            <Route path="/search" element={<Searchbar />} />
+            <Route path="/account" element={<Account />} />
+            <Route path="/password/forgot" element={<Forgotpassword />} />
+            <Route path="/mycart" element={<Mycart />} />
+            <Route path="/auth/password/reset/:id" element={<Getnewpassword />} />
+            <Route path="/shipping" element={<Shippingpage />} />
+            <Route path="/confirmorder" element={<ConfirmOrder />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route
+              path="/payment"
+              element={
+                Stripeapikey && (
+                  <Elements stripe={loadStripe(Stripeapikey)}>
+                    <Payment />
+                  </Elements>
+                )
+              }
+            />
+            <Route path="/success" element={<Success />} />
+            <Route path="/myorders" element={<Myorders />} />
+          </>
+        ) : (
+          <>
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/Home" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/product/:id" element={<Prodpage />} />
+            <Route path="/products" element={<Allproducts />} />
+            <Route path="/products/:keyword" element={<Allproducts />} />
+            <Route path="/search" element={<Searchbar />} />
+            <Route path="/account" element={<LoginPage />} />
+            <Route path="/password/forgot" element={<Forgotpassword />} />
+            <Route path="/auth/password/reset/:id" element={<Getnewpassword />} />
+            <Route path="/mycart" element={<LoginPage />} />
+            <Route path="/shipping" element={<LoginPage />} />
+            <Route path="/payment" element={<LoginPage />} />
+            <Route path="/confirmorder" element={<LoginPage />} />
+            <Route path="/myorders" element={<LoginPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </>
+        )}
+      </Routes>
+      <Footer key={location.pathname} />
+    </>
+  );
+};
 
 export default App;
